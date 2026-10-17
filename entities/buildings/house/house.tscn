@@ -5,6 +5,7 @@
 
 [node name="House" type="Node2D" unique_id=1098136617]
 script = ExtResource("1_w5mkd")
+gold_cost = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1430240970]
 position = Vector2(8, 16)

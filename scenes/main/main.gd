@@ -40,7 +40,7 @@ var building_parts: Dictionary[Vector2i, BuildingPart]
 
 var tick_entities: Dictionary[Node, bool] # HashSet
 
-var gold: int = 0:
+var gold: int = 5:
 	set(val):
 		gold = val
 		gold_label.text = "Gold: " + str(val)
@@ -196,6 +196,10 @@ func _do_tool(grid_pos: Vector2i, tool: Array) -> void:
 		[ToolKind.BUILDING, var bld]:
 			if get_tile_type(grid_pos) == TileType.NOTHING:
 				var b = bld[0].instantiate()
+				if gold < b.gold_cost:
+					b.queue_free()
+					return
+				gold -= b.gold_cost
 				b.placement_reason = BaseBuilding.PlacementReason.PLAYER
 				b.grid_pos = grid_pos
 				entity_root.add_child(b)

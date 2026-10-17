@@ -5,6 +5,7 @@
 
 [node name="Pedestal" type="Node2D" unique_id=943344368]
 script = ExtResource("1_uil2h")
+gold_cost = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=808363458]
 modulate = Color(1, 0.19607843, 0, 1)
