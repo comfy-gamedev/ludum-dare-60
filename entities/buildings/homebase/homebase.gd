@@ -62,7 +62,7 @@ func _grid_transform_changed() -> void:
 	_update.call_deferred()
 
 
-func can_place_item(pos: Vector2i) -> bool:
+func can_place_item(pos: Vector2i, _item_type: Item) -> bool:
 	var part = _pos_to_part(pos)
 	if part == 8: return false
 	return true
