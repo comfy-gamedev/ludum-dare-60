@@ -4,10 +4,20 @@
 [ext_resource type="Script" uid="uid://0wrib8htgifv" path="res://scenes/main/main.gd" id="1_k2fmo"]
 [ext_resource type="Texture2D" uid="uid://blu3aj82w5ps8" path="res://assets/ui/frame.png" id="3_6q06x"]
 [ext_resource type="Script" uid="uid://c5g65pt2gw0v1" path="res://scenes/main/hotbar.gd" id="3_ow5a4"]
-[ext_resource type="Texture2D" uid="uid://ctrope6st2ckv" path="res://assets/ui/path_icon.png" id="4_ow5a4"]
-[ext_resource type="Texture2D" uid="uid://r63jdvojly4a" path="res://assets/ui/x_icon.png" id="5_hujxm"]
 [ext_resource type="Texture2D" uid="uid://dl1aswhpdtrq0" path="res://assets/ui/frame_on.png" id="5_yyfjg"]
-[ext_resource type="Texture2D" uid="uid://ixjui85tt6wx" path="res://entities/buildings/house/house.png" id="7_yyfjg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b1x3f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hujxm"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+texture = ExtResource("5_yyfjg")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6q06x"]
 content_margin_left = 3.0
@@ -20,16 +30,11 @@ texture_margin_top = 2.0
 texture_margin_right = 2.0
 texture_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hujxm"]
-content_margin_left = 3.0
-content_margin_top = 3.0
-content_margin_right = 3.0
-content_margin_bottom = 3.0
-texture = ExtResource("5_yyfjg")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
+[sub_resource type="Theme" id="Theme_yyfjg"]
+Button/styles/focus = SubResource("StyleBoxEmpty_b1x3f")
+Button/styles/hover = SubResource("StyleBoxTexture_hujxm")
+Button/styles/normal = SubResource("StyleBoxTexture_6q06x")
+Button/styles/pressed = SubResource("StyleBoxTexture_hujxm")
 
 [sub_resource type="Animation" id="Animation_hujxm"]
 length = 0.001
@@ -94,6 +99,9 @@ occlusion_enabled = false
 
 [node name="EntityRoot" type="Node2D" parent="." unique_id=625467341]
 
+[node name="PreviewRoot" type="Node2D" parent="." unique_id=968687368]
+z_index = 2
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=440019095]
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="." unique_id=553167334]
@@ -106,37 +114,9 @@ anchor_bottom = 1.0
 offset_top = -22.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = SubResource("Theme_yyfjg")
 theme_override_constants/separation = 1
 script = ExtResource("3_ow5a4")
-frame_off = SubResource("StyleBoxTexture_6q06x")
-frame_on = SubResource("StyleBoxTexture_hujxm")
-
-[node name="PanelContainer" type="PanelContainer" parent="UICanvasLayer/Hotbar" unique_id=1019396242]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_6q06x")
-
-[node name="TextureRect" type="TextureRect" parent="UICanvasLayer/Hotbar/PanelContainer" unique_id=478398573]
-layout_mode = 2
-texture = ExtResource("4_ow5a4")
-stretch_mode = 2
-
-[node name="PanelContainer3" type="PanelContainer" parent="UICanvasLayer/Hotbar" unique_id=475566146]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_6q06x")
-
-[node name="TextureRect" type="TextureRect" parent="UICanvasLayer/Hotbar/PanelContainer3" unique_id=1678819042]
-layout_mode = 2
-texture = ExtResource("7_yyfjg")
-stretch_mode = 2
-
-[node name="PanelContainer2" type="PanelContainer" parent="UICanvasLayer/Hotbar" unique_id=441458244]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_6q06x")
-
-[node name="TextureRect" type="TextureRect" parent="UICanvasLayer/Hotbar/PanelContainer2" unique_id=1185227955]
-layout_mode = 2
-texture = ExtResource("5_hujxm")
-stretch_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="UICanvasLayer" unique_id=1324507170]
 anchors_preset = 15
@@ -154,3 +134,5 @@ text = "Gold: 0"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1026538169]
 libraries/ = SubResource("AnimationLibrary_b1x3f")
+
+[connection signal="selection_changed" from="UICanvasLayer/Hotbar" to="." method="_on_hotbar_selection_changed"]

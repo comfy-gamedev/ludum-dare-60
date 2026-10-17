@@ -21,13 +21,19 @@ enum TileType {
 	BUILDING,
 }
 
+enum ToolKind {
+	SURFACE,
+	BUILDING,
+	ERASE,
+}
+
 @onready var surface_tile_map_layer: TileMapLayer = $SurfaceTileMapLayer
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var hotbar: HBoxContainer = $UICanvasLayer/Hotbar
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var entity_root: Node2D = $EntityRoot
+@onready var preview_root: Node2D = $PreviewRoot
 
-@onready var tick_label: Label = $DebugCanvasLayer/TickLabel
 @onready var gold_label: Label = $UICanvasLayer/GoldLabel
 
 var building_parts: Dictionary[Vector2i, BuildingPart]
@@ -43,6 +49,7 @@ var _ticking: bool = true
 var _t: float = 0.0
 var _tick_t: int = 0
 
+var _tool_preview: Node2D
 
 func _ready() -> void:
 	current = self
@@ -61,6 +68,11 @@ func _ready() -> void:
 	camera_2d.limit_top = 0
 	camera_2d.limit_right = int(WORLD_SIZE.x * GridMetric.GRID_PX.x)
 	camera_2d.limit_bottom = int(WORLD_SIZE.y * GridMetric.GRID_PX.y)
+	
+	hotbar.add_hotbar_item(preload("uid://ctrope6st2ckv"), [ToolKind.SURFACE, [1, Vector2i(1, 0)]])
+	hotbar.add_hotbar_item(preload("uid://ixjui85tt6wx"), [ToolKind.BUILDING, [preload("uid://6gtvs4ggkcwd"), false]])
+	hotbar.add_hotbar_item(preload("uid://bxo6h0qpw2tyl"), [ToolKind.BUILDING, [preload("uid://qwy22yet3em5"), true]])
+	hotbar.add_hotbar_item(preload("uid://r63jdvojly4a"), [ToolKind.ERASE, []])
 
 
 func _process(delta: float) -> void:
@@ -95,12 +107,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			var gp: Vector2i = Vector2i((get_viewport().canvas_transform.affine_inverse() * event.position / GridMetric.GRID_PX).floor())
-			_do_tool(gp, hotbar.selected)
+			_do_tool(gp, hotbar.get_data(hotbar.selected))
 	
 	elif event is InputEventMouseMotion:
-		if hotbar.selected != 1 and event.button_mask & MOUSE_BUTTON_MASK_LEFT:
-			var gp: Vector2i = Vector2i((get_viewport().canvas_transform.affine_inverse() * event.position / GridMetric.GRID_PX).floor())
-			_do_tool(gp, hotbar.selected)
+		var gp: Vector2i = Vector2i((get_viewport().canvas_transform.affine_inverse() * event.position / GridMetric.GRID_PX).floor())
+		if _tool_preview:
+			_tool_preview.position = Vector2(gp) * GridMetric.GRID_PX
+		if hotbar.get_data(hotbar.selected)[0] != ToolKind.BUILDING and event.button_mask & MOUSE_BUTTON_MASK_LEFT:
+			_do_tool(gp, hotbar.get_data(hotbar.selected))
 
 
 func _start_tickin() -> void:
@@ -131,7 +145,6 @@ func get_tile_type(grid_pos: Vector2i) -> TileType:
 
 
 func building_add_part(building: BaseBuilding, grid_pos: Vector2i, part: int) -> void:
-	print("add part ", building, " ", part)
 	assert(grid_pos not in building_parts)
 	var bp = BuildingPart.new()
 	bp.building = building
@@ -174,18 +187,18 @@ func unregister_tick_entity(ent: Node) -> void:
 	ent.tree_exiting.disconnect(unregister_tick_entity)
 
 
-func _do_tool(grid_pos: Vector2i, tool: int) -> void:
+func _do_tool(grid_pos: Vector2i, tool: Array) -> void:
 	match tool:
-		0:
+		[ToolKind.SURFACE, var cell]:
 			if get_tile_type(grid_pos) == TileType.NOTHING:
-				surface_tile_map_layer.set_cell(grid_pos, 1, Vector2i(1, 0))
-		1:
+				surface_tile_map_layer.set_cell(grid_pos, cell[0], cell[1])
+		[ToolKind.BUILDING, var bld]:
 			if get_tile_type(grid_pos) == TileType.NOTHING:
-				var h = HOUSE.instantiate()
-				h.placement_reason = BaseBuilding.PlacementReason.PLAYER
-				h.grid_pos = grid_pos
-				entity_root.add_child(h)
-		2:
+				var b = bld[0].instantiate()
+				b.placement_reason = BaseBuilding.PlacementReason.PLAYER
+				b.grid_pos = grid_pos
+				entity_root.add_child(b)
+		[ToolKind.ERASE, _]:
 			var bp = get_building_part(grid_pos)
 			if bp:
 				if bp.building.placement_reason == BaseBuilding.PlacementReason.PLAYER:
@@ -194,6 +207,18 @@ func _do_tool(grid_pos: Vector2i, tool: int) -> void:
 			else:
 				if get_world_rect().has_point(grid_pos) and get_tile_type(grid_pos) != TileType.NOTHING:
 					surface_tile_map_layer.set_cell(grid_pos, 1, Vector2i(0, 0))
+
+
+func _on_hotbar_selection_changed() -> void:
+	if _tool_preview:
+		_tool_preview.queue_free()
+		_tool_preview = null
+	var data = hotbar.get_data(hotbar.selected)
+	if data[0] == ToolKind.BUILDING:
+		_tool_preview = data[1][0].instantiate()
+		_tool_preview.is_preview = true
+		_tool_preview.modulate.a = 0.5
+		preview_root.add_child(_tool_preview)
 
 
 class BuildingPart:
