@@ -9,6 +9,7 @@
 script = ExtResource("1_838ka")
 gold_cost = 1
 item_costs = Array[ExtResource("2_4c0lw")]([ExtResource("3_5dai4")])
+type_name = "Factory"
 
 [node name="SlotSprite0" type="Sprite2D" parent="." unique_id=454115154]
 position = Vector2(8, 8)

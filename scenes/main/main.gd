@@ -39,6 +39,7 @@ enum ToolKind {
 var building_parts: Dictionary[Vector2i, BuildingPart]
 
 var tick_entities: Dictionary[Node, bool] # HashSet
+var pedestals: Array[BaseBuilding] = []
 
 var gold: int = 5:
 	set(val):
@@ -195,11 +196,25 @@ func _do_tool(grid_pos: Vector2i, tool: Array) -> void:
 				surface_tile_map_layer.set_cell(grid_pos, cell[0], cell[1])
 		[ToolKind.BUILDING, var bld]:
 			if get_tile_type(grid_pos) == TileType.NOTHING:
-				var b = bld[0].instantiate()
+				var b : BaseBuilding = bld[0].instantiate()
+				
 				if gold < b.gold_cost:
 					b.queue_free()
 					return
+				if b.item_costs.size() > 0:
+					if pedestals.size() < 1:
+						return
+					for i in b.item_costs:
+						if not pedestals.any(func(p): return p.item and p.item.item == i):
+							return
+					for i in b.item_costs:
+						var ped = pedestals[pedestals.find(func(p): return p.item.item == i)]
+						ped.item.sprite.queue_free()
+						ped.item = null
 				gold -= b.gold_cost
+				
+				if b.type_name == "Pedestal":
+					pedestals.append(b)
 				b.placement_reason = BaseBuilding.PlacementReason.PLAYER
 				b.grid_pos = grid_pos
 				entity_root.add_child(b)
@@ -207,6 +222,8 @@ func _do_tool(grid_pos: Vector2i, tool: Array) -> void:
 			var bp = get_building_part(grid_pos)
 			if bp:
 				if bp.building.placement_reason == BaseBuilding.PlacementReason.PLAYER:
+					if bp.building.type_name == "Pedestal":
+						pedestals.erase(bp.building)
 					bp.building.get_parent().remove_child(bp.building)
 					bp.building.queue_free()
 			else:

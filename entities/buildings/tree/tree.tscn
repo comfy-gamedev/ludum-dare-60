@@ -19,6 +19,7 @@ fill_to = Vector2(0.5, 0)
 [node name="Tree" type="Node2D" unique_id=744563053]
 script = ExtResource("1_bafd8")
 item = ExtResource("2_ucxdr")
+type_name = "Tree"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=873779887]
 position = Vector2(8, 16)
