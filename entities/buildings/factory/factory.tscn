@@ -6,26 +6,31 @@
 [node name="Factory" type="Node2D" unique_id=29687319]
 script = ExtResource("1_838ka")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1929405179]
-position = Vector2(-4, -4)
+[node name="SlotSprite0" type="Sprite2D" parent="." unique_id=454115154]
+position = Vector2(8, 8)
+scale = Vector2(2, 2)
 texture = ExtResource("1_s3d1n")
 hframes = 4
 vframes = 2
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1534128979]
-position = Vector2(4, -4)
+[node name="SlotSprite1" type="Sprite2D" parent="." unique_id=835922612]
+position = Vector2(-8, 8)
+scale = Vector2(2, 2)
 texture = ExtResource("1_s3d1n")
 hframes = 4
 vframes = 2
 
-[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=835922612]
-position = Vector2(-4, 4)
+[node name="SlotSprite2" type="Sprite2D" parent="." unique_id=1929405179]
+position = Vector2(-8, -8)
+scale = Vector2(2, 2)
 texture = ExtResource("1_s3d1n")
 hframes = 4
 vframes = 2
 
-[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=454115154]
-position = Vector2(4, 4)
+[node name="SlotSprite3" type="Sprite2D" parent="." unique_id=1534128979]
+position = Vector2(8, -8)
+scale = Vector2(2, 2)
 texture = ExtResource("1_s3d1n")
 hframes = 4
 vframes = 2
+frame = 2

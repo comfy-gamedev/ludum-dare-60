@@ -7,6 +7,9 @@ const LITTLE_GUY = preload("uid://bgsxcf5vjn2kd")
 var can_spawn: bool = true
 
 func _ready() -> void:
+	if is_preview:
+		return
+	
 	Main.current.register_tick_entity(self)
 	Main.current.building_add_part(self, grid_pos, 0)
 

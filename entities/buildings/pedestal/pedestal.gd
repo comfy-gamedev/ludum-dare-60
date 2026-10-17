@@ -17,7 +17,7 @@ func can_take_item(_pos: Vector2i) -> bool:
 
 func place_item(_pos: Vector2i, item_inst: ItemInstance) -> void:
 	item = item_inst
-	item_inst.sprite.position = position
+	item_inst.sprite.position = position + Vector2(0, -4)
 
 
 func get_item(_pos: Vector2i) -> ItemInstance:
