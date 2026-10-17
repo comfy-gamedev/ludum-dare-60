@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b6ueuaycfmiyo"]
+
+[ext_resource type="Script" uid="uid://dflfhqnsg6n2m" path="res://item_sprite.gd" id="1_7mxwa"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vi8y8"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Environment" id="Environment_mehiu"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="ItemSprite" type="Sprite2D" unique_id=637216572]
+visible = false
+z_index = 1
+texture = SubResource("ViewportTexture_vi8y8")
+centered = false
+script = ExtResource("1_7mxwa")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=2095311028]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(16, 16)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport" unique_id=124043423]
+environment = SubResource("Environment_mehiu")
+
+[node name="Mesh" type="MeshInstance3D" parent="SubViewport" unique_id=616963171]
+transform = Transform3D(-0.9855174, 0.02861774, -0.16714178, 0, 0.98565644, 0.16876249, 0.16957405, 0.16631837, -0.97138166, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=183850587]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 4.352115, 7.315426)
+fov = 20.0

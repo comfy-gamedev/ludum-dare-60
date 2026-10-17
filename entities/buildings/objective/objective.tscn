@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kc23kghe407a"]
+
+[ext_resource type="Script" uid="uid://d1un202wp3u8x" path="res://entities/buildings/objective/objective.gd" id="1_ve3gv"]
+
+[node name="Objective" type="Node2D" unique_id=634543322]
+script = ExtResource("1_ve3gv")

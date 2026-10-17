@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bgsxcf5vjn2kd"]
+
+[ext_resource type="Script" uid="uid://cip3n78w45j87" path="res://entities/little_guy/little_guy.gd" id="1_36gwl"]
+[ext_resource type="Texture2D" uid="uid://biyu0bcpw1ns4" path="res://icon.svg" id="2_45jtf"]
+
+[node name="LittleGuy" type="Node2D" unique_id=1917063793]
+script = ExtResource("1_36gwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=115117552]
+position = Vector2(8, 16)
+texture = ExtResource("2_45jtf")
+centered = false
+offset = Vector2(-8, -16)
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1660368291]
+position = Vector2(8, 8)
+points = PackedVector2Array(-7, 0, 0, 0)
+width = 1.0

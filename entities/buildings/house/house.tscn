@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://6gtvs4ggkcwd"]
+
+[ext_resource type="Script" uid="uid://rhuvjdbgr37k" path="res://entities/buildings/house/house.gd" id="1_w5mkd"]
+[ext_resource type="Texture2D" uid="uid://ixjui85tt6wx" path="res://entities/buildings/house/house.png" id="2_vupst"]
+
+[node name="House" type="Node2D" unique_id=1098136617]
+script = ExtResource("1_w5mkd")
+gold_cost = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1430240970]
+position = Vector2(8, 16)
+texture = ExtResource("2_vupst")
+centered = false
+offset = Vector2(-8, -16)
