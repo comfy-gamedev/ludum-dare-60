@@ -13,6 +13,9 @@ const TREE = preload("uid://bayold7n6brg0")
 const PIT = preload("uid://btc2onty6jr4i")
 const HOMEBASE = preload("uid://xgk4sw8nurj8")
 
+const BASE_TILE_SOURCE = 1
+const PATH_TILE_SOURCE = 2
+
 static var current: Main
 
 enum TileType {
@@ -81,7 +84,7 @@ func _ready() -> void:
 	camera_2d.limit_right = int(WORLD_SIZE.x * GridMetric.GRID_PX.x)
 	camera_2d.limit_bottom = int(WORLD_SIZE.y * GridMetric.GRID_PX.y)
 	
-	hotbar.add_hotbar_item(preload("uid://ctrope6st2ckv"), [ToolKind.SURFACE, [1, Vector2i(1, 0)]])
+	hotbar.add_hotbar_item(preload("uid://ctrope6st2ckv"), [ToolKind.SURFACE, [PATH_TILE_SOURCE, Vector2i(0, 0)]])
 	hotbar.add_hotbar_item(preload("uid://ixjui85tt6wx"), [ToolKind.BUILDING, [preload("uid://6gtvs4ggkcwd"), false]])
 	hotbar.add_hotbar_item(preload("uid://bxo6h0qpw2tyl"), [ToolKind.BUILDING, [preload("uid://qwy22yet3em5"), true]])
 	hotbar.add_hotbar_item(preload("uid://bxo6h0qpw2tyl"), [ToolKind.BUILDING, [preload("uid://cy1ktd1fykiqy"), false]])
@@ -156,7 +159,7 @@ func get_tile_type(grid_pos: Vector2i) -> TileType:
 	var source = surface_tile_map_layer.get_cell_source_id(grid_pos)
 	var coord = surface_tile_map_layer.get_cell_atlas_coords(grid_pos)
 	match [source, coord]:
-		[1, Vector2i(1, 0)]: return TileType.PATH
+		[PATH_TILE_SOURCE, _]: return TileType.PATH
 	
 	return TileType.NOTHING
 
@@ -204,6 +207,43 @@ func unregister_tick_entity(ent: Node) -> void:
 	ent.tree_exiting.disconnect(unregister_tick_entity)
 
 
+func connect_paths(a: Vector2i, b: Vector2i) -> void:
+	assert((a-b) in GridMetric.DIRS)
+	assert(get_tile_type(a) == TileType.PATH)
+	assert(get_tile_type(b) == TileType.PATH)
+	
+	var nbor_map: Dictionary[int, Vector2i] = {
+		0b0000: Vector2i(0, 0),
+		0b0001: Vector2i(3, 1),
+		0b0010: Vector2i(2, 1),
+		0b0011: Vector2i(1, 3),
+		0b0100: Vector2i(3, 0),
+		0b0101: Vector2i(1, 1),
+		0b0110: Vector2i(0, 3),
+		0b0111: Vector2i(3, 3),
+		0b1000: Vector2i(2, 0),
+		0b1001: Vector2i(1, 2),
+		0b1010: Vector2i(1, 0),
+		0b1011: Vector2i(3, 2),
+		0b1100: Vector2i(0, 2),
+		0b1101: Vector2i(2, 2),
+		0b1110: Vector2i(2, 3),
+		0b1111: Vector2i(0, 1),
+	}
+	
+	var f = func (p: Vector2i, d: Vector2i) -> void:
+		var s = surface_tile_map_layer.get_cell_source_id(p)
+		var c = surface_tile_map_layer.get_cell_atlas_coords(p)
+		var n = nbor_map.find_key(c)
+		assert(n != null)
+		var r = GridMetric.dir_to_rot(d)
+		var nn = n | (1 << r)
+		var cc = nbor_map[nn]
+		surface_tile_map_layer.set_cell(p, s, cc)
+	
+	f.call(a, b-a)
+	f.call(b, a-b)
+
 func _do_tool(grid_pos: Vector2i, tool: Array) -> void:
 	match tool:
 		[ToolKind.SURFACE, var cell]:
@@ -243,7 +283,7 @@ func _do_tool(grid_pos: Vector2i, tool: Array) -> void:
 					bp.building.queue_free()
 			else:
 				if get_world_rect().has_point(grid_pos) and get_tile_type(grid_pos) != TileType.NOTHING:
-					surface_tile_map_layer.set_cell(grid_pos, 1, Vector2i(0, 0))
+					surface_tile_map_layer.set_cell(grid_pos, BASE_TILE_SOURCE, Vector2i(0, 0))
 
 
 func _on_hotbar_selection_changed() -> void:
