@@ -14,6 +14,7 @@ func can_take_item(_pos: Vector2i) -> bool:
 
 func place_item(_pos: Vector2i, item_inst: ItemInstance) -> void:
 	Main.current.gold += item_inst.value
+	item_inst.sprite.queue_free()
 
 
 func get_item(_pos: Vector2i) -> ItemInstance:

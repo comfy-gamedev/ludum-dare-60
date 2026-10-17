@@ -147,5 +147,10 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
+[node name="GoldLabel" type="Label" parent="UICanvasLayer" unique_id=17194083]
+offset_right = 72.0
+offset_bottom = 23.0
+text = "Gold: 0"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1026538169]
 libraries/ = SubResource("AnimationLibrary_b1x3f")

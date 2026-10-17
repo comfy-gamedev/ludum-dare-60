@@ -10,6 +10,7 @@ const META_REGISTERED_PARTS = &"Main__registered_parts"
 
 const HOUSE = preload("uid://6gtvs4ggkcwd")
 const TREE = preload("uid://bayold7n6brg0")
+const PIT = preload("uid://btc2onty6jr4i")
 
 static var current: Main
 
@@ -27,12 +28,16 @@ enum TileType {
 @onready var entity_root: Node2D = $EntityRoot
 
 @onready var tick_label: Label = $DebugCanvasLayer/TickLabel
+@onready var gold_label: Label = $UICanvasLayer/GoldLabel
 
 var building_parts: Dictionary[Vector2i, BuildingPart]
 
 var tick_entities: Dictionary[Node, bool] # HashSet
 
-var gold: int = 0
+var gold: int = 0:
+	set(val):
+		gold = val
+		gold_label.text = "Gold: " + str(val)
 
 var _ticking: bool = true
 var _t: float = 0.0
