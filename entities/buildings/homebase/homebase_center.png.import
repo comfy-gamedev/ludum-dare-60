@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ngw8xvyb2st"
-path="res://.godot/imported/factory_atlas.png-adbb2ae5c0e6ea98e407169a53caaddb.ctex"
+uid="uid://c3yyernxxl2g0"
+path="res://.godot/imported/homebase_center.png-b3b5c535b7b1ccce0d11759335c2afde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/buildings/factory/factory_atlas.png"
-dest_files=["res://.godot/imported/factory_atlas.png-adbb2ae5c0e6ea98e407169a53caaddb.ctex"]
+source_file="res://entities/buildings/homebase/homebase_center.png"
+dest_files=["res://.godot/imported/homebase_center.png-b3b5c535b7b1ccce0d11759335c2afde.ctex"]
 
 [params]
 

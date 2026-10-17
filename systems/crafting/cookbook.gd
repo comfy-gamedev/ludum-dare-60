@@ -6,6 +6,7 @@ const RECIPE_DIR = "res://systems/crafting/recipes/"
 
 static var recipes: Array[Recipe]
 
+
 static func _static_init() -> void:
 	for f in DirAccess.get_files_at(RECIPE_DIR):
 		if f.ends_with(".tres"):
