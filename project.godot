@@ -40,6 +40,8 @@ import/blender/enabled=false
 [gui]
 
 common/auto_focus_strategy=1
+theme/custom="uid://cxg141t68uyj7"
+theme/custom_font="uid://cm3cxhvhfpph5"
 
 [input]
 
