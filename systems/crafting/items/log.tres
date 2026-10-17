@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dr8h1qvukffh4"]
+
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="1_8h5b0"]
+[ext_resource type="ArrayMesh" uid="uid://cqvbl3o5p7nf8" path="res://assets/shid/girth_log.glb" id="1_t10kp"]
+
+[resource]
+script = ExtResource("1_8h5b0")
+name = "Log"
+mesh = ExtResource("1_t10kp")
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

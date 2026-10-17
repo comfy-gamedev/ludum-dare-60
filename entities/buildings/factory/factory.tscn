@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://qwy22yet3em5"]
+
+[ext_resource type="Script" uid="uid://deyns8y8x6uq3" path="res://entities/buildings/factory/factory.gd" id="1_838ka"]
+[ext_resource type="Texture2D" uid="uid://d082pk6q21lbm" path="res://entities/buildings/factory/factory.png" id="1_s3d1n"]
+
+[node name="Factory" type="Node2D" unique_id=29687319]
+script = ExtResource("1_838ka")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1929405179]
+position = Vector2(-4, -4)
+texture = ExtResource("1_s3d1n")
+hframes = 4
+vframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1534128979]
+position = Vector2(4, -4)
+texture = ExtResource("1_s3d1n")
+hframes = 4
+vframes = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=835922612]
+position = Vector2(-4, 4)
+texture = ExtResource("1_s3d1n")
+hframes = 4
+vframes = 2
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=454115154]
+position = Vector2(4, 4)
+texture = ExtResource("1_s3d1n")
+hframes = 4
+vframes = 2
