@@ -34,6 +34,7 @@ func tick(t: int) -> void:
 			var lookdir = GridMetric.rotate_dir(grid_facing, turn)
 			var look = grid_pos + lookdir
 			if Main.current.get_tile_type(look) == Main.TileType.PATH:
+				Main.current.connect_paths(grid_pos, look)
 				grid_pos = look
 				grid_facing = lookdir
 				break
