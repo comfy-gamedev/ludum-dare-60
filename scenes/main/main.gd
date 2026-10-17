@@ -32,6 +32,7 @@ var building_parts: Dictionary[Vector2i, BuildingPart]
 
 var tick_entities: Dictionary[Node, bool] # HashSet
 
+var gold: int = 0
 
 var _ticking: bool = true
 var _t: float = 0.0

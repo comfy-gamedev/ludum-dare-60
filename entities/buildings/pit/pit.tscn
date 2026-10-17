@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://btc2onty6jr4i"]
+
+[ext_resource type="Script" uid="uid://hl8jnkpo616c" path="res://entities/buildings/pit/pit.gd" id="1_7i8w7"]
+[ext_resource type="Texture2D" uid="uid://biyu0bcpw1ns4" path="res://icon.svg" id="2_jnbq8"]
+
+[node name="Pit" type="Node2D" unique_id=234020847]
+script = ExtResource("1_7i8w7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=462331627]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_jnbq8")
+flip_v = true
