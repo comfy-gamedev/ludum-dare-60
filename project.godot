@@ -40,6 +40,8 @@ import/blender/enabled=false
 [gui]
 
 common/auto_focus_strategy=1
+theme/custom="uid://cxg141t68uyj7"
+theme/custom_font="uid://cm3cxhvhfpph5"
 
 [input]
 
@@ -124,6 +126,46 @@ pan_down={
 "unicode": 115,
 "location": 0,
 "echo": false,
+"script": null
+)]
+}
+zoom_toggle={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,
+"resource_local_to_scene": false,
+"resource_name": "",
+"device": -1,
+"window_id": 0,
+"alt_pressed": false,
+"shift_pressed": false,
+"ctrl_pressed": false,
+"meta_pressed": false,
+"button_mask": 8,
+"position": Vector2(146, 26),
+"global_position": Vector2(158, 86),
+"factor": 1.0,
+"button_index": 4,
+"canceled": false,
+"pressed": true,
+"double_click": false,
+"script": null
+), Object(InputEventMouseButton,
+"resource_local_to_scene": false,
+"resource_name": "",
+"device": -1,
+"window_id": 0,
+"alt_pressed": false,
+"shift_pressed": false,
+"ctrl_pressed": false,
+"meta_pressed": false,
+"button_mask": 16,
+"position": Vector2(335, 32),
+"global_position": Vector2(347, 92),
+"factor": 1.0,
+"button_index": 5,
+"canceled": false,
+"pressed": true,
+"double_click": false,
 "script": null
 )]
 }

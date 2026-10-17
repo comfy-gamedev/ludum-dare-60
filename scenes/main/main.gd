@@ -50,6 +50,7 @@ var gold: int = 5:
 var _ticking: bool = true
 var _t: float = 0.0
 var _tick_t: int = 0
+var tick_count: int = 0
 
 var _tool_preview: Node2D
 
@@ -90,7 +91,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var pan = Input.get_vector("pan_left", "pan_right", "pan_up", "pan_down")
 	if pan:
-		camera_2d.position += pan * PAN_SPEED * delta
+		camera_2d.position += pan * PAN_SPEED * delta / camera_2d.zoom
 		# sync pos within limits
 		(func (): camera_2d.position = camera_2d.get_screen_center_position()).call_deferred()
 	
@@ -100,6 +101,7 @@ func _process(delta: float) -> void:
 		while _t > tick_sec:
 			_t -= tick_sec
 			_tick()
+			tick_count += 1
 			_tick_t += 1
 			if _tick_t > CYCLE_END:
 				_tick_t = 0
@@ -116,7 +118,10 @@ func _tick() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event.is_action_pressed("zoom_toggle"):
+		camera_2d.zoom = Vector2(0.5, 0.5) if camera_2d.zoom == Vector2.ONE else Vector2.ONE
+	
+	elif event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			var gp: Vector2i = Vector2i((get_viewport().canvas_transform.affine_inverse() * event.position / GridMetric.GRID_PX).floor())
 			_do_tool(gp, hotbar.get_data(hotbar.selected))
@@ -127,7 +132,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_tool_preview.position = Vector2(gp) * GridMetric.GRID_PX
 		if hotbar.get_data(hotbar.selected)[0] != ToolKind.BUILDING and event.button_mask & MOUSE_BUTTON_MASK_LEFT:
 			_do_tool(gp, hotbar.get_data(hotbar.selected))
-
+	
 
 func _start_tickin() -> void:
 	_ticking = true

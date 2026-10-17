@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bepnbksq2ybva"]
+
+[ext_resource type="Script" uid="uid://djoygc0a7l8dq" path="res://scenes/end_scene/end_scene.gd" id="1_beabo"]
+[ext_resource type="Theme" uid="uid://cxg141t68uyj7" path="res://default_theme.tres" id="2_eoerb"]
+[ext_resource type="Resource" uid="uid://dr8h1qvukffh4" path="res://systems/crafting/items/log.tres" id="2_n06uv"]
+
+[node name="EndScene" type="Node2D" unique_id=1162492104]
+script = ExtResource("1_beabo")
+item = ExtResource("2_n06uv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=97282324]
+offset_right = 240.0
+offset_bottom = 160.0
+color = Color(0.14901961, 0.7882353, 0.17254902, 1)
+
+[node name="Label3" type="Label" parent="." unique_id=1343485487]
+z_index = 2
+offset_top = 40.0
+offset_right = 240.0
+offset_bottom = 53.0
+theme = ExtResource("2_eoerb")
+text = "Days spent: 9999"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="." unique_id=324413373]
+z_index = 2
+offset_left = 2.0
+offset_top = 113.0
+offset_right = 140.0
+offset_bottom = 158.0
+theme = ExtResource("2_eoerb")
+text = "Targets:
+Gold: <1000
+Silver: < 2000
+Bronze: < 4000"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2016504266]
+z_index = 2
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 240.0
+offset_bottom = 58.0
+theme = ExtResource("2_eoerb")
+bbcode_enabled = true
+text = "You completed the ritual 
+with a [wave amp=50.0 freq=5.0 connected=1][color=GOLD]GOLD[/color][/wave] Score!"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1239131946]
+z_index = 2
+offset_left = 143.0
+offset_top = 128.0
+offset_right = 239.0
+offset_bottom = 159.0
+theme = ExtResource("2_eoerb")
+text = "Main Menu"
+
+[node name="logs" type="Node2D" parent="." unique_id=1340864861]
+
+[node name="Timer" type="Timer" parent="." unique_id=1636534742]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
