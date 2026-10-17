@@ -50,6 +50,7 @@ var gold: int = 5:
 var _ticking: bool = true
 var _t: float = 0.0
 var _tick_t: int = 0
+var tick_count: int = 0
 
 var _tool_preview: Node2D
 
@@ -100,6 +101,7 @@ func _process(delta: float) -> void:
 		while _t > tick_sec:
 			_t -= tick_sec
 			_tick()
+			tick_count += 1
 			_tick_t += 1
 			if _tick_t > CYCLE_END:
 				_tick_t = 0

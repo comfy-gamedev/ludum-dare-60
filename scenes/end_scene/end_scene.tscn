@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bepnbksq2ybva"]
+
+[ext_resource type="Script" uid="uid://djoygc0a7l8dq" path="res://scenes/end_scene/end_scene.gd" id="1_beabo"]
+
+[node name="EndScene" type="Node2D" unique_id=1162492104]
+script = ExtResource("1_beabo")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=97282324]
+offset_right = 266.0
+offset_bottom = 185.0
+color = Color(0.14901961, 0.7882353, 0.17254902, 1)
+
+[node name="Label3" type="Label" parent="." unique_id=1343485487]
+offset_left = 2.0
+offset_top = 62.0
+offset_right = 127.0
+offset_bottom = 140.0
+text = "Days spent: 
+9999"
+
+[node name="Label4" type="Label" parent="." unique_id=324413373]
+offset_left = 127.0
+offset_top = 62.0
+offset_right = 240.0
+offset_bottom = 163.0
+text = "Targets:
+Gold: <1000
+Silver: < 4000
+Bronze: < 8000"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2016504266]
+offset_left = 1.0
+offset_right = 240.0
+offset_bottom = 56.0
+bbcode_enabled = true
+text = "You completed the ritual 
+with a [wave amp=50.0 freq=5.0 connected=1][color=GOLD]GOLD[/color][/wave] Score!"
+
+[node name="Button" type="Button" parent="." unique_id=1239131946]
+offset_left = 14.0
+offset_top = 117.0
+offset_right = 110.0
+offset_bottom = 148.0
+text = "Main Menu"
