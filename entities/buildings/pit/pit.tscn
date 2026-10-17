@@ -5,6 +5,7 @@
 
 [node name="Pit" type="Node2D" unique_id=234020847]
 script = ExtResource("1_7i8w7")
+type_name = "Pit"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=462331627]
 modulate = Color(0, 0, 0, 1)

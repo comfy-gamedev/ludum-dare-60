@@ -19,6 +19,8 @@ var is_preview: bool = false
 @export var gold_cost: int = 0
 @export var item_costs: Array[Item] = []
 
+@export var type_name := "Replace Me"
+
 @abstract func can_place_item(pos: Vector2i, item: Item) -> bool
 
 @abstract func can_take_item(pos: Vector2i) -> bool
