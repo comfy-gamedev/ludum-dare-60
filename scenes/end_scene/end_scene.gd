@@ -7,6 +7,7 @@ var logs = []
 const ITEM_SPRITE = preload("uid://b6ueuaycfmiyo")
 
 func _ready():
+	ticks = Globals.elapsed_days
 	var Rich_label = $RichTextLabel
 	if ticks < 1000:
 		Rich_label.text = "You completed the ritual\n with a [wave amp=50.0 freq=5.0 connected=1][color=GOLD]GOLD[/color][/wave] Score!"
@@ -35,3 +36,7 @@ func _on_timer_timeout() -> void:
 	sprite.position = Vector2(randi_range(10, 250), -10) if randi() % 2 == 0 else Vector2(250, randi_range(-10, 150))
 	add_child(sprite)
 	logs.append(sprite)
+
+
+func _on_button_pressed() -> void:
+	SceneGirl.change_scene("res://scenes/main/main.tscn")

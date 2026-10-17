@@ -1,12 +1,6 @@
 [gd_scene format=3 uid="uid://b6ueuaycfmiyo"]
 
-[ext_resource type="Shader" uid="uid://cntxev2rmhm6n" path="res://systems/palette_shader/palette_canvas_item.gdshader" id="1_0bwhr"]
 [ext_resource type="Script" uid="uid://dflfhqnsg6n2m" path="res://item_sprite.gd" id="1_7mxwa"]
-[ext_resource type="CompressedTexture3D" uid="uid://dmc0ewjymx6si" path="res://systems/palette_shader/lut.png" id="2_0bwhr"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8g81"]
-shader = ExtResource("1_0bwhr")
-shader_parameter/lut = ExtResource("2_0bwhr")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_vi8y8"]
 viewport_path = NodePath("SubViewport")
@@ -18,7 +12,6 @@ ambient_light_color = Color(1, 1, 1, 1)
 [node name="ItemSprite" type="Sprite2D" unique_id=637216572]
 visible = false
 z_index = 1
-material = SubResource("ShaderMaterial_c8g81")
 texture = SubResource("ViewportTexture_vi8y8")
 centered = false
 script = ExtResource("1_7mxwa")

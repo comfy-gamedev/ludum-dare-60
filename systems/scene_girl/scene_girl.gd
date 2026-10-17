@@ -17,8 +17,8 @@ signal load_progress(value: float)
 ## Automatically set to 0.0 when running in an exported build.
 var minimum_load_time: float = 1.0
 
-var default_transition_scene: PackedScene = preload("res://autoload/scene_girl/default_scene_transition.tscn")
-var default_loading_screen_scene: PackedScene = preload("res://autoload/scene_girl/default_loading_screen.tscn")
+var default_transition_scene: PackedScene = preload("res://systems/scene_girl/default_scene_transition.tscn")
+var default_loading_screen_scene: PackedScene = preload("res://systems/scene_girl/default_loading_screen.tscn")
 
 var _default_transition: AnimationPlayer = null
 var _current_transition: AnimationPlayer = null

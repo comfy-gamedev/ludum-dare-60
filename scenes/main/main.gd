@@ -5,6 +5,7 @@ const TICK_RATE = 2.0
 const PAN_SPEED = 16.0 * 10.0
 const WORLD_SIZE = Vector2i(128, 128)
 const CYCLE_END = 20
+const OBJECTIVE_GOAL = 1
 
 const META_REGISTERED_PARTS = &"Main__registered_parts"
 
@@ -12,6 +13,7 @@ const HOUSE = preload("uid://6gtvs4ggkcwd")
 const TREE = preload("uid://bayold7n6brg0")
 const PIT = preload("uid://btc2onty6jr4i")
 const HOMEBASE = preload("uid://xgk4sw8nurj8")
+const OBJECTIVE = preload("uid://kc23kghe407a")
 
 const BASE_TILE_SOURCE = 1
 const PATH_TILE_SOURCE = 2
@@ -50,10 +52,12 @@ var gold: int = 5:
 		gold = val
 		gold_label.text = "Gold: " + str(val)
 
+var objective_count = 0
+
 var _ticking: bool = true
 var _t: float = 0.0
 var _tick_t: int = 0
-var tick_count: int = 0
+var day_count: int = 0
 
 var _tool_preview: Node2D
 
@@ -64,6 +68,11 @@ func _ready() -> void:
 	@warning_ignore("integer_division")
 	hb.grid_pos = WORLD_SIZE / 2
 	entity_root.add_child(hb)
+	
+	var ob = OBJECTIVE.instantiate()
+	@warning_ignore("integer_division")
+	ob.grid_pos = (WORLD_SIZE / 2) + Vector2i(4, 0)
+	entity_root.add_child(ob)
 	
 	for y in WORLD_SIZE.y:
 		for x in WORLD_SIZE.x:
@@ -104,13 +113,13 @@ func _process(delta: float) -> void:
 		while _t > tick_sec:
 			_t -= tick_sec
 			_tick()
-			tick_count += 1
 			_tick_t += 1
 			if _tick_t > CYCLE_END:
 				_tick_t = 0
 				_t = 0.0
 				_ticking = false
 				animation_player.play("night")
+				day_count += 1
 				break
 
 

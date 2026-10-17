@@ -1,6 +1,29 @@
 [gd_scene format=3 uid="uid://kc23kghe407a"]
 
 [ext_resource type="Script" uid="uid://d1un202wp3u8x" path="res://entities/buildings/objective/objective.gd" id="1_ve3gv"]
+[ext_resource type="Resource" uid="uid://dr8h1qvukffh4" path="res://systems/crafting/items/log.tres" id="2_dwg0q"]
+[ext_resource type="Texture2D" uid="uid://biyu0bcpw1ns4" path="res://icon.svg" id="3_44jwa"]
 
 [node name="Objective" type="Node2D" unique_id=634543322]
 script = ExtResource("1_ve3gv")
+need = ExtResource("2_dwg0q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=921488265]
+position = Vector2(8, 14)
+scale = Vector2(1, 0.25)
+texture = ExtResource("3_44jwa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=298831799]
+position = Vector2(8, 2)
+scale = Vector2(1, 0.25)
+texture = ExtResource("3_44jwa")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1384005746]
+position = Vector2(14, 8)
+scale = Vector2(0.25, 1)
+texture = ExtResource("3_44jwa")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1197334115]
+position = Vector2(2, 8)
+scale = Vector2(0.25, 1)
+texture = ExtResource("3_44jwa")
