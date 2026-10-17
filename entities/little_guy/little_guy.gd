@@ -48,7 +48,7 @@ func tick(t: int) -> void:
 					if bp.building.can_take_item(look):
 						_held_item = bp.building.take_item(look)
 				else:
-					if bp.building.can_place_item(look):
+					if bp.building.can_place_item(look, _held_item.item):
 						bp.building.place_item(look, _held_item)
 						_held_item = null
 

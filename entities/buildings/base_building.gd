@@ -13,7 +13,7 @@ var grid_rot: int
 var placement_reason: PlacementReason = PlacementReason.WORLDGEN
 
 
-@abstract func can_place_item(pos: Vector2i) -> bool
+@abstract func can_place_item(pos: Vector2i, item: Item) -> bool
 
 @abstract func can_take_item(pos: Vector2i) -> bool
 

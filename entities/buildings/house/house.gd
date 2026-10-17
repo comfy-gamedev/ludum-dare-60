@@ -23,7 +23,7 @@ func tick(t: int) -> void:
 		can_spawn = false
 
 
-func can_place_item(pos: Vector2i) -> bool:
+func can_place_item(pos: Vector2i, _item_type: Item) -> bool:
 	assert(pos == grid_pos)
 	return false
 

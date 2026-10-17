@@ -4,7 +4,7 @@ func _ready() -> void:
 	Main.current.building_add_part(self, grid_pos, 0)
 
 
-func can_place_item(_pos: Vector2i) -> bool:
+func can_place_item(_pos: Vector2i, _item_type: Item) -> bool:
 	return true
 
 
