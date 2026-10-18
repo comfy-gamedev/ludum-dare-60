@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://bqy0ry7p2dqpu"]
+
+[ext_resource type="Script" uid="uid://dpuopuvr10t3x" path="res://systems/crafting/recipe_item.gd" id="1_f8feb"]
+[ext_resource type="Resource" uid="uid://bo28er4xv5xbo" path="res://systems/crafting/items/cuberry.tres" id="2_pmy78"]
+[ext_resource type="Script" uid="uid://cxexxx4lluwrm" path="res://systems/crafting/recipe_item_single.gd" id="3_pmy78"]
+[ext_resource type="Resource" uid="uid://dcbi7ka0kvgjf" path="res://systems/crafting/items/flour.tres" id="4_fm1qi"]
+[ext_resource type="Script" uid="uid://cfipoik8do1er" path="res://systems/crafting/recipe.gd" id="4_phqic"]
+
+[sub_resource type="Resource" id="Resource_6q06x"]
+script = ExtResource("3_pmy78")
+item = ExtResource("2_pmy78")
+metadata/_custom_type_script = "uid://cxexxx4lluwrm"
+
+[resource]
+script = ExtResource("4_phqic")
+ingredients = Array[ExtResource("1_f8feb")]([SubResource("Resource_6q06x")])
+result = ExtResource("4_fm1qi")
+metadata/_custom_type_script = "uid://cfipoik8do1er"
