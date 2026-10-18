@@ -141,7 +141,7 @@ func _tick() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_toggle"):
-		camera_2d.zoom = Vector2(0.5, 0.5) if camera_2d.zoom == Vector2.ONE else Vector2.ONE
+		camera_2d.zoom = Vector2(0.25, 0.25) if camera_2d.zoom == Vector2.ONE else Vector2.ONE
 	
 	elif event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
