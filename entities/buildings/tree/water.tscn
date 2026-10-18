@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ceiw0p6112gmu"]
+
+[ext_resource type="PackedScene" uid="uid://bayold7n6brg0" path="res://entities/buildings/tree/tree.tscn" id="1_3xgim"]
+[ext_resource type="Texture2D" uid="uid://s3m0bniix2ym" path="res://entities/buildings/tree/water.png" id="2_2tixe"]
+[ext_resource type="Resource" uid="uid://dnrw1g5j5q7b8" path="res://systems/crafting/items/water.tres" id="2_p5v53"]
+
+[node name="Water" unique_id=744563053 instance=ExtResource("1_3xgim")]
+item = ExtResource("2_p5v53")
+
+[node name="Sprite2D" parent="." index="0" unique_id=873779887]
+texture = ExtResource("2_2tixe")

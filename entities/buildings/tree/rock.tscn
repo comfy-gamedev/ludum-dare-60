@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cpag0rr03s5qo"]
+
+[ext_resource type="PackedScene" uid="uid://bayold7n6brg0" path="res://entities/buildings/tree/tree.tscn" id="1_t4op1"]
+[ext_resource type="Texture2D" uid="uid://5j154576qks4" path="res://entities/buildings/tree/rock.png" id="2_8b3ws"]
+[ext_resource type="Resource" uid="uid://pyc3op2eww5v" path="res://systems/crafting/items/rock.tres" id="2_v6qoy"]
+
+[node name="Rock" unique_id=744563053 instance=ExtResource("1_t4op1")]
+item = ExtResource("2_v6qoy")
+
+[node name="Sprite2D" parent="." index="0" unique_id=873779887]
+texture = ExtResource("2_8b3ws")

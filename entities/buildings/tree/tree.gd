@@ -3,6 +3,8 @@ extends BaseBuilding
 
 @export var item: Item
 
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 
 func _ready() -> void:
 	Main.current.building_add_part(self, grid_pos, 0)

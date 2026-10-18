@@ -2,19 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dmkggvnc7jqfc" path="res://entities/buildings/tree/tree.gd" id="1_bafd8"]
 [ext_resource type="Resource" uid="uid://dr8h1qvukffh4" path="res://systems/crafting/items/log.tres" id="2_ucxdr"]
-
-[sub_resource type="Gradient" id="Gradient_8g3y3"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.7470588)
-colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8g3y3"]
-gradient = SubResource("Gradient_8g3y3")
-width = 16
-height = 16
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+[ext_resource type="Texture2D" uid="uid://b6eowbucy5f4e" path="res://entities/buildings/tree/tree.png" id="3_ie7ro"]
 
 [node name="Tree" type="Node2D" unique_id=744563053]
 script = ExtResource("1_bafd8")
@@ -23,6 +11,6 @@ type_name = "Tree"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=873779887]
 position = Vector2(8, 16)
-texture = SubResource("GradientTexture2D_8g3y3")
+texture = ExtResource("3_ie7ro")
 centered = false
 offset = Vector2(-8, -16)

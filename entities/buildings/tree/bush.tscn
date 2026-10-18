@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://fohd4r7tj11x"]
+
+[ext_resource type="PackedScene" uid="uid://bayold7n6brg0" path="res://entities/buildings/tree/tree.tscn" id="1_vuvn6"]
+[ext_resource type="Texture2D" uid="uid://bola01764oi8c" path="res://entities/buildings/tree/bush.png" id="2_vnfd8"]
+[ext_resource type="Resource" uid="uid://bo28er4xv5xbo" path="res://systems/crafting/items/cuberry.tres" id="2_xw7s3"]
+
+[node name="Bush" unique_id=744563053 instance=ExtResource("1_vuvn6")]
+item = ExtResource("2_xw7s3")
+
+[node name="Sprite2D" parent="." index="0" unique_id=873779887]
+texture = ExtResource("2_vnfd8")

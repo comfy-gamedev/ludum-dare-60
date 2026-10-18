@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dnrw1g5j5q7b8"]
+
+[ext_resource type="ArrayMesh" uid="uid://u8trjcpmuc7l" path="res://assets/shid/girth_water.glb" id="1_ueose"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_rnucp"]
+
+[resource]
+script = ExtResource("2_rnucp")
+name = "Water"
+mesh = ExtResource("1_ueose")
+kind = 3
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"
