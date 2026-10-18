@@ -7,4 +7,5 @@
 script = ExtResource("1_8h5b0")
 name = "Log"
 mesh = ExtResource("1_t10kp")
+kind = 1
 metadata/_custom_type_script = "uid://b78nb8u3yrl54"

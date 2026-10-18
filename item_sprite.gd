@@ -18,7 +18,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_t += delta
 	var st = snappedf(_t, 1.0 / FRAMERATE)
-	mesh.rotation.z = sin(st) * 25.0
+	#mesh.rotation.z = sin(st) * 25.0
 	mesh.rotation.y = cos(st * 0.9) * 4.0
 
 

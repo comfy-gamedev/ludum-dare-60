@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cj4ngilbbjgpn"]
+
+[ext_resource type="ArrayMesh" uid="uid://bgxqk8njp5oxa" path="res://assets/shid/girth_coal.glb" id="1_r27nk"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_g6muc"]
+
+[resource]
+script = ExtResource("2_g6muc")
+name = "Coal"
+mesh = ExtResource("1_r27nk")
+kind = 2
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

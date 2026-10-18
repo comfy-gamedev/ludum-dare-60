@@ -2,12 +2,20 @@
 extends RefCounted
 class_name Cookbook
 
+const ITEM_DIR = "res://systems/crafting/items/"
 const RECIPE_DIR = "res://systems/crafting/recipes/"
+
+static var items: Array[Item]
 
 static var recipes: Array[Recipe]
 
 
 static func _static_init() -> void:
+	for f in DirAccess.get_files_at(ITEM_DIR):
+		if f.ends_with(".tres"):
+			var fname = ITEM_DIR.path_join(f)
+			items.append(load(fname))
+	
 	for f in DirAccess.get_files_at(RECIPE_DIR):
 		if f.ends_with(".tres"):
 			var fname = RECIPE_DIR.path_join(f)
@@ -15,19 +23,53 @@ static func _static_init() -> void:
 
 
 static func cook(ingredients: Array[ItemInstance]) -> ItemInstance:
-	var ing = ingredients.map(func (x): return x.item).duplicate()
-	ing.sort()
-	for r in recipes:
-		var ring = r.ingredients.duplicate()
-		ring.sort()
-		if ing == ring:
-			var result = ItemInstance.new()
-			result.item = r.result
-			result.value = ingredients.reduce(func (v, x): return v + x.value, 0)
-			return result
+	# maximum bipartite matching
+	# kuhn's algorithm
+	# network flow! thank you dr plank
 	
-	## TODO: junk recipe
-	var result = ItemInstance.new()
-	result.item = ingredients[0].result
-	result.value = ingredients[0].value
-	return result
+	var n := ingredients.size()
+	var valid: Array[Recipe] = []
+	
+	var ingredient_to_recipe_slot: PackedInt32Array
+	ingredient_to_recipe_slot.resize(n)
+	
+	var ingredients_used: Array[bool]
+	ingredients_used.resize(n)
+	
+	var try_assign := func (recipe: Recipe, slot_i: int, recurse: Callable) -> bool:
+		for ing_i in n:
+			if ingredients_used[ing_i] or not recipe.ingredients[slot_i].matches(ingredients[ing_i].item):
+				continue
+			ingredients_used[ing_i] = true
+			if ingredient_to_recipe_slot[ing_i] == -1 or recurse.call(recipe, ingredient_to_recipe_slot[ing_i], recurse):
+				ingredient_to_recipe_slot[ing_i] = slot_i
+				return true
+		return false
+	
+	for recipe in recipes:
+		if recipe.ingredients.size() != n:
+			continue
+		
+		ingredient_to_recipe_slot.fill(-1)
+		
+		var complete := true
+		for recipe_slot_i in n:
+			ingredients_used.fill(false)
+			if not try_assign.call(recipe, recipe_slot_i, try_assign):
+				complete = false
+				break
+		if complete:
+			valid.append(recipe)
+	
+	if valid.is_empty():
+		return null
+	
+	var item = valid.pick_random().result # idk this could probably be improved
+	
+	var item_inst := ItemInstance.new()
+	item_inst.item = item
+	item_inst.value = ingredients.reduce(func (v, i): return v + i.value, 0)
+	@warning_ignore("integer_division")
+	item_inst.value += maxi(item_inst.value / 3, 1)
+	
+	return item_inst
