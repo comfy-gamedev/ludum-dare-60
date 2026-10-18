@@ -61,6 +61,7 @@ var day_count: int = 0
 
 var _tool_preview: Node2D
 
+
 func _ready() -> void:
 	current = self
 	
@@ -145,7 +146,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_tool_preview.position = Vector2(gp) * GridMetric.GRID_PX
 		if hotbar.get_data(hotbar.selected)[0] != ToolKind.BUILDING and event.button_mask & MOUSE_BUTTON_MASK_LEFT:
 			_do_tool(gp, hotbar.get_data(hotbar.selected))
-	
+
 
 func _start_tickin() -> void:
 	_ticking = true
@@ -195,7 +196,6 @@ func building_remove_part(building: BaseBuilding, grid_pos: Vector2i, part: int)
 
 
 func building_teardown(building: BaseBuilding) -> void:
-	print("teardown ", building)
 	for parts in building.get_meta(META_REGISTERED_PARTS):
 		building_remove_part(building, parts[0], parts[1])
 	Utils.ensure_disconnected(building.tree_exiting, building_teardown)
@@ -254,11 +254,13 @@ func connect_paths(a: Vector2i, b: Vector2i) -> void:
 	f.call(a, b-a)
 	f.call(b, a-b)
 
+
 func _do_tool(grid_pos: Vector2i, tool: Array) -> void:
 	match tool:
 		[ToolKind.SURFACE, var cell]:
 			if get_tile_type(grid_pos) == TileType.NOTHING:
 				surface_tile_map_layer.set_cell(grid_pos, cell[0], cell[1])
+		
 		[ToolKind.BUILDING, var bld]:
 			if get_tile_type(grid_pos) == TileType.NOTHING:
 				var b : BaseBuilding = bld[0].instantiate()
@@ -283,6 +285,7 @@ func _do_tool(grid_pos: Vector2i, tool: Array) -> void:
 				b.placement_reason = BaseBuilding.PlacementReason.PLAYER
 				b.grid_pos = grid_pos
 				entity_root.add_child(b)
+		
 		[ToolKind.ERASE, _]:
 			var bp = get_building_part(grid_pos)
 			if bp:

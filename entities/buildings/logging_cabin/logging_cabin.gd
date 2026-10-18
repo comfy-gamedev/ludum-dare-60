@@ -6,6 +6,7 @@ const ENTRANCE_OFFSET := Vector2i(0, 1)
 const LOGGING_GUY_SCENE: PackedScene = preload("uid://b4hl887uugbdp")
 const TREE_WORK: float = 5.0
 const GATHER_RADIUS: float = 5.0
+const START_DELAY: float = 1.0
 
 @onready var animated_sprite: AnimatedSprite2D = $CabinAnimatedSprite2D
 
@@ -28,6 +29,8 @@ func _ready() -> void:
 		return
 	
 	Main.current.register_tick_entity(self)
+	Main.current.building_add_part(self, grid_pos, 0)
+	Main.current.building_add_part(self, grid_pos + Vector2i(-1, 0), 0)
 
 
 func tick(t: int) -> void:
@@ -42,11 +45,11 @@ func tick(t: int) -> void:
 					set_active(true)
 					ent.grid_facing = Vector2i.UP
 					ent.grid_pos = grid_pos
-					ent.animation_player.play(LittleGuy.dir_animations[ent.grid_facing], -1, Main.TICK_RATE * 2)
+					ent.animation_player.play("enter_up", -1, Main.TICK_RATE * 2)
 					ent.animation_player.advance(0)
 					await ent.animation_player.animation_finished
 					ent.queue_free()
-					_delay_timer = get_tree().create_timer(2.0)
+					_delay_timer = get_tree().create_timer(START_DELAY)
 					_delay_timer.timeout.connect(_start_logger)
 					break
 
