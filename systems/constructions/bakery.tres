@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ConstructionInfo" format=3 uid="uid://c7sjwdmihoy6j"]
+
+[ext_resource type="PackedScene" uid="uid://be61nfei8ixu8" path="res://entities/buildings/mill_and_bakery/bakery.tscn" id="1_ulqnb"]
+[ext_resource type="Texture2D" uid="uid://nmx1xogsfjb1" path="res://entities/buildings/house/house_orig.png" id="2_uonsx"]
+[ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="4_yhtox"]
+
+[resource]
+script = ExtResource("4_yhtox")
+icon = ExtResource("2_uonsx")
+building_scene = ExtResource("1_ulqnb")
+building_can_rotate = true
+tileset_source_id = 2
+gold_cost = 1
+placement_size = Rect2i(-2, 0, 3, 1)
+metadata/_custom_type_script = "uid://b4frqj5l57l6l"

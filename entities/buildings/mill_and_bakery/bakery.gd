@@ -1,0 +1,84 @@
+extends BaseBuilding
+
+const ITEM_SPRITE = preload("uid://b6ueuaycfmiyo")
+const SLOT_OPEN = 2
+const SLOT_CLOSED = 0
+
+var items: Array[ItemInstance] = [null, null, null, null]
+
+
+func _init() -> void:
+	grid_transform_changed.connect(_grid_transform_changed)
+
+
+func _ready() -> void:
+	if is_preview:
+		_update()
+		return
+	
+	Main.current.building_add_part(self, grid_pos + Vector2i(-2, 0), 0)
+	Main.current.building_add_part(self, grid_pos + Vector2i(-1, 0), 0)
+	Main.current.building_add_part(self, grid_pos + Vector2i(0, 0), 1)
+	
+	_update()
+
+
+func _pos_to_part(pos: Vector2i) -> int:
+	match pos - grid_pos:
+		Vector2i(0, 0): return 1
+		_: return 0
+
+
+func _grid_transform_changed() -> void:
+	_update.call_deferred()
+
+
+func can_place_item(pos: Vector2i, _item_type: Item) -> bool:
+	var part = _pos_to_part(pos)
+	return part == 0 and items[part] == null and items[3] == null
+
+
+func can_take_item(pos: Vector2i) -> bool:
+	var part = _pos_to_part(pos)
+	return part == 1 and items[part] != null
+
+
+func place_item(pos: Vector2i, item_inst: ItemInstance) -> void:
+	var part = _pos_to_part(pos)
+	print("place_item(%s, %s), part = %s" % [pos, item_inst, part])
+	assert(part < 3)
+	assert(items[part] == null)
+	items[part] = item_inst
+	
+	if items[0]:
+		items[3] = Cookbook.cook([items[0]])
+		for i in 3:
+			if items[i] and items[i].sprite:
+				items[i].sprite.queue_free()
+			items[i] = null
+	
+	_update.call_deferred()
+
+
+func get_item(pos: Vector2i) -> ItemInstance:
+	var part = _pos_to_part(pos)
+	return items[part]
+
+
+func take_item(pos: Vector2i) -> ItemInstance:
+	var part = _pos_to_part(pos)
+	assert(part == 1)
+	assert(items[part] != null)
+	var item_inst = items[part]
+	items[part] = null
+	_update.call_deferred()
+	return item_inst
+
+
+func _update() -> void:
+	if not is_node_ready() or not is_inside_tree():
+		return
+	
+	for part in 4:
+		if items[part]:
+			items[part].require_sprite().position = Vector2(grid_pos) * GridMetric.GRID_PX

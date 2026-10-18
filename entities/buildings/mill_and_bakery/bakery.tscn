@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://be61nfei8ixu8"]
+
+[ext_resource type="Script" uid="uid://b2i14iigj7tdx" path="res://entities/buildings/mill_and_bakery/bakery.gd" id="1_hvu3c"]
+[ext_resource type="Texture2D" uid="uid://dens6u188d8l5" path="res://entities/buildings/mill_and_bakery/mill_and_bakery_sheet.png" id="2_ppday"]
+
+[node name="Bakery" type="Node2D" unique_id=29687319]
+script = ExtResource("1_hvu3c")
+
+[node name="MillAndBakerySheet" type="Sprite2D" parent="." unique_id=1783586864]
+position = Vector2(-8, -16)
+texture = ExtResource("2_ppday")
+hframes = 4
