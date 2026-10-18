@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConstructionInfo" format=3 uid="uid://nmq3klwu0rtw"]
+
+[ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="1_8jg3c"]
+[ext_resource type="PackedScene" uid="uid://6gtvs4ggkcwd" path="res://entities/buildings/house/house.tscn" id="1_6280i"]
+[ext_resource type="Texture2D" uid="uid://ixjui85tt6wx" path="res://entities/buildings/house/house.png" id="2_v4vnp"]
+
+[resource]
+script = ExtResource("1_8jg3c")
+icon = ExtResource("2_v4vnp")
+building_scene = ExtResource("1_6280i")
+tileset_source_id = 2
+gold_cost = 1
+metadata/_custom_type_script = "uid://b4frqj5l57l6l"

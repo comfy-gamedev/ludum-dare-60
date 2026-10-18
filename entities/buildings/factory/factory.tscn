@@ -2,13 +2,9 @@
 
 [ext_resource type="Script" uid="uid://deyns8y8x6uq3" path="res://entities/buildings/factory/factory.gd" id="1_838ka"]
 [ext_resource type="Texture2D" uid="uid://d082pk6q21lbm" path="res://entities/buildings/factory/factory.png" id="1_s3d1n"]
-[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_4c0lw"]
-[ext_resource type="Resource" uid="uid://dr8h1qvukffh4" path="res://systems/crafting/items/log.tres" id="3_5dai4"]
 
 [node name="Factory" type="Node2D" unique_id=29687319]
 script = ExtResource("1_838ka")
-gold_cost = 1
-item_costs = Array[ExtResource("2_4c0lw")]([ExtResource("3_5dai4")])
 type_name = "Factory"
 
 [node name="SlotSprite0" type="Sprite2D" parent="." unique_id=454115154]

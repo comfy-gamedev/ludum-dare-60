@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConstructionInfo" format=3 uid="uid://c0rrybc5bgfno"]
+
+[ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="1_7x4sy"]
+[ext_resource type="Texture2D" uid="uid://ctrope6st2ckv" path="res://assets/ui/path_icon.png" id="1_sogra"]
+
+[resource]
+script = ExtResource("1_7x4sy")
+icon = ExtResource("1_sogra")
+mode = 1
+tileset_source_id = 2
+metadata/_custom_type_script = "uid://b4frqj5l57l6l"

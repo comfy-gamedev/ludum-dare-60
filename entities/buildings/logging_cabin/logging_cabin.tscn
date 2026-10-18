@@ -39,7 +39,6 @@ animations = [{
 
 [node name="LoggingCabin" type="Node2D" unique_id=2037559196]
 script = ExtResource("1_sho6s")
-gold_cost = 2
 type_name = "Logging Cabin"
 
 [node name="CabinAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1826907722]

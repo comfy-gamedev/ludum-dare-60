@@ -87,6 +87,14 @@ func take_item(pos: Vector2i) -> ItemInstance:
 
 
 func _update() -> void:
+	if not is_node_ready() or not is_inside_tree():
+		return
+	
+	if not is_preview:
+		Main.current.building_teardown(self)
+		for part in 4:
+			Main.current.building_add_part(self, _part_to_pos(part), part)
+	
 	var has_result = items[3] != null
 	for part in 4:
 		var spr = sprites[posmod(part + grid_rot, 4)]

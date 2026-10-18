@@ -19,13 +19,20 @@ func _button_group_pressed(button: BaseButton) -> void:
 	selection_changed.emit()
 
 
-func add_hotbar_item(icon: Texture2D, data: Variant) -> int:
+func add_hotbar_item(thing: Variant) -> int:
 	var btn = Button.new()
 	btn.toggle_mode = true
 	btn.button_group = button_group
-	btn.icon = icon
-	btn.set_meta(META_DATA, data)
 	add_child(btn)
+	
+	if thing is Texture2D:
+		btn.icon = thing
+		btn.set_meta(META_DATA, thing)
+	elif thing is ConstructionInfo:
+		btn.icon = thing.icon
+		btn.set_meta(META_DATA, thing)
+		thing.hotbar_index = btn.get_index()
+	
 	return btn.get_index()
 
 

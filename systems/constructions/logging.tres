@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConstructionInfo" format=3 uid="uid://bfkgt3wvanaqj"]
+
+[ext_resource type="PackedScene" uid="uid://c8pct81rwige" path="res://entities/buildings/logging_cabin/logging_cabin.tscn" id="1_4qbyg"]
+[ext_resource type="Texture2D" uid="uid://cormy5n4pqvl3" path="res://entities/buildings/logging_cabin/logging_cabin_button.png" id="2_0t501"]
+[ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="2_5fdma"]
+
+[resource]
+script = ExtResource("2_5fdma")
+icon = ExtResource("2_0t501")
+building_scene = ExtResource("1_4qbyg")
+tileset_source_id = 2
+gold_cost = 5
+metadata/_custom_type_script = "uid://b4frqj5l57l6l"

@@ -9,6 +9,8 @@ const OBJECTIVE_GOAL = 1
 
 const META_REGISTERED_PARTS = &"Main__registered_parts"
 
+const ERASE_ICON = preload("uid://r63jdvojly4a")
+
 const HOUSE = preload("uid://6gtvs4ggkcwd")
 const PIT = preload("uid://btc2onty6jr4i")
 const HOMEBASE = preload("uid://xgk4sw8nurj8")
@@ -22,6 +24,14 @@ const WATER = preload("uid://ceiw0p6112gmu")
 
 const RESOURCES = [BUSH, CRYSTAL, ROCK, TREE, WATER]
 
+const CONSTRUCTIONS = [
+	preload("uid://c0rrybc5bgfno"),
+	preload("uid://nmq3klwu0rtw"),
+	preload("uid://dihg3y5nmbf5i"),
+	preload("uid://cniaep2ikgsjy"),
+	preload("uid://bfkgt3wvanaqj"),
+]
+
 const BASE_TILE_SOURCE = 1
 const PATH_TILE_SOURCE = 2
 
@@ -32,12 +42,6 @@ enum TileType {
 	NOTHING,
 	PATH,
 	BUILDING,
-}
-
-enum ToolKind {
-	SURFACE,
-	BUILDING,
-	ERASE,
 }
 
 @onready var surface_tile_map_layer: TileMapLayer = $SurfaceTileMapLayer
@@ -67,7 +71,7 @@ var _tick_t: int = 0
 var day_count: int = 0
 
 var _tool_preview: Node2D
-
+var _tool_rot: int = 0
 
 func _ready() -> void:
 	current = self
@@ -101,13 +105,9 @@ func _ready() -> void:
 	camera_2d.limit_right = int(WORLD_SIZE.x * GridMetric.GRID_PX.x)
 	camera_2d.limit_bottom = int(WORLD_SIZE.y * GridMetric.GRID_PX.y)
 	
-	hotbar.add_hotbar_item(preload("uid://ctrope6st2ckv"), [ToolKind.SURFACE, [PATH_TILE_SOURCE, Vector2i(0, 0)]])
-	hotbar.add_hotbar_item(preload("uid://ixjui85tt6wx"), [ToolKind.BUILDING, [preload("uid://6gtvs4ggkcwd"), false]])
-	hotbar.add_hotbar_item(preload("uid://cormy5n4pqvl3"), [ToolKind.BUILDING, [preload("uid://c8pct81rwige"), false]])
-	hotbar.add_hotbar_item(preload("uid://bxo6h0qpw2tyl"), [ToolKind.BUILDING, [preload("uid://qwy22yet3em5"), true]])
-	hotbar.add_hotbar_item(preload("uid://bxo6h0qpw2tyl"), [ToolKind.BUILDING, [preload("uid://cy1ktd1fykiqy"), false]])
-	hotbar.add_hotbar_item(preload("uid://c66sjdv05xkx1"), [ToolKind.BUILDING, [preload("uid://bhidbucpi8uts"), false]])
-	hotbar.add_hotbar_item(preload("uid://r63jdvojly4a"), [ToolKind.ERASE, []])
+	hotbar.add_hotbar_item(ERASE_ICON)
+	for c in CONSTRUCTIONS:
+		hotbar.add_hotbar_item(c)
 
 
 func _process(delta: float) -> void:
@@ -147,13 +147,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			var gp: Vector2i = Vector2i((get_viewport().canvas_transform.affine_inverse() * event.position / GridMetric.GRID_PX).floor())
 			_do_tool(gp, hotbar.get_data(hotbar.selected))
+		elif event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+			_tool_rot = posmod(_tool_rot + 1, 4)
+			_refresh_preview()
 	
 	elif event is InputEventMouseMotion:
 		var gp: Vector2i = Vector2i((get_viewport().canvas_transform.affine_inverse() * event.position / GridMetric.GRID_PX).floor())
 		if _tool_preview:
 			_tool_preview.position = Vector2(gp) * GridMetric.GRID_PX
-		if hotbar.get_data(hotbar.selected)[0] != ToolKind.BUILDING and event.button_mask & MOUSE_BUTTON_MASK_LEFT:
-			_do_tool(gp, hotbar.get_data(hotbar.selected))
+		if event.button_mask & MOUSE_BUTTON_MASK_LEFT:
+			var data = hotbar.get_data(hotbar.selected)
+			if data is not ConstructionInfo or data.mode != ConstructionInfo.Mode.BUILDING:
+				_do_tool(gp, data)
 
 
 func _start_tickin() -> void:
@@ -190,7 +195,7 @@ func building_add_part(building: BaseBuilding, grid_pos: Vector2i, part: int) ->
 	bp.grid_pos = grid_pos
 	bp.part = part
 	building_parts[grid_pos] = bp
-	var meta = building.get_meta(META_REGISTERED_PARTS, [])
+	var meta: Array = building.get_meta(META_REGISTERED_PARTS, [])
 	meta.append([grid_pos, part])
 	building.set_meta(META_REGISTERED_PARTS, meta)
 	Utils.ensure_connected(building.tree_exiting, building_teardown, CONNECT_APPEND_SOURCE_OBJECT)
@@ -201,12 +206,16 @@ func building_remove_part(building: BaseBuilding, grid_pos: Vector2i, part: int)
 	assert(building_parts[grid_pos].building == building)
 	assert(building_parts[grid_pos].part == part)
 	building_parts.erase(grid_pos)
+	var meta: Array = building.get_meta(META_REGISTERED_PARTS, [])
+	meta.erase([grid_pos, part])
+	building.set_meta(META_REGISTERED_PARTS, meta)
+	if meta.is_empty():
+		Utils.ensure_disconnected(building.tree_exiting, building_teardown)
 
 
 func building_teardown(building: BaseBuilding) -> void:
-	for parts in building.get_meta(META_REGISTERED_PARTS):
+	for parts in building.get_meta(META_REGISTERED_PARTS).duplicate():
 		building_remove_part(building, parts[0], parts[1])
-	Utils.ensure_disconnected(building.tree_exiting, building_teardown)
 
 
 func get_building_part(grid_pos: Vector2i) -> BuildingPart:
@@ -263,60 +272,78 @@ func connect_paths(a: Vector2i, b: Vector2i) -> void:
 	f.call(b, a-b)
 
 
-func _do_tool(grid_pos: Vector2i, tool: Array) -> void:
-	match tool:
-		[ToolKind.SURFACE, var cell]:
-			if get_tile_type(grid_pos) == TileType.NOTHING:
-				surface_tile_map_layer.set_cell(grid_pos, cell[0], cell[1])
+func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
+	if tool == ERASE_ICON:
+		var bp = get_building_part(grid_pos)
+		if bp:
+			if bp.building.placement_reason == BaseBuilding.PlacementReason.PLAYER:
+				if bp.building.type_name == "Pedestal":
+					pedestals.erase(bp.building)
+				bp.building.get_parent().remove_child(bp.building)
+				bp.building.queue_free()
+		else:
+			if get_world_rect().has_point(grid_pos) and get_tile_type(grid_pos) != TileType.NOTHING:
+				surface_tile_map_layer.set_cell(grid_pos, BASE_TILE_SOURCE, Vector2i(0, 0))
 		
-		[ToolKind.BUILDING, var bld]:
-			if get_tile_type(grid_pos) == TileType.NOTHING:
-				var b : BaseBuilding = bld[0].instantiate()
-				
-				if gold < b.gold_cost:
-					b.queue_free()
-					return
-				if b.item_costs.size() > 0:
-					if pedestals.size() < 1:
+		# TODO: fixup neighbor tiles (make paths become unfinished again)
+	
+	elif tool is ConstructionInfo:
+		match tool.mode:
+			ConstructionInfo.Mode.TILE:
+				if get_tile_type(grid_pos) == TileType.NOTHING:
+					surface_tile_map_layer.set_cell(grid_pos, tool.tileset_source_id, tool.tileset_atlas_coord)
+			
+			ConstructionInfo.Mode.BUILDING:
+				if get_tile_type(grid_pos) == TileType.NOTHING:
+					if gold < tool.gold_cost:
 						return
-					for i in b.item_costs:
-						if not pedestals.any(func(p): return p.item and p.item.item == i):
+					
+					var paid_item: bool = true
+					
+					if tool.item_req:
+						paid_item = false
+						if pedestals.is_empty():
 							return
-					for i in b.item_costs:
-						var ped = pedestals[pedestals.find(func(p): return p.item.item == i)]
+						var ped = pedestals[pedestals.find(func(p): return p.item.item == tool.item_req)]
 						ped.item.sprite.queue_free()
 						ped.item = null
-				gold -= b.gold_cost
-				
-				if b.type_name == "Pedestal":
-					pedestals.append(b)
-				b.placement_reason = BaseBuilding.PlacementReason.PLAYER
-				b.grid_pos = grid_pos
-				entity_root.add_child(b)
-		
-		[ToolKind.ERASE, _]:
-			var bp = get_building_part(grid_pos)
-			if bp:
-				if bp.building.placement_reason == BaseBuilding.PlacementReason.PLAYER:
-					if bp.building.type_name == "Pedestal":
-						pedestals.erase(bp.building)
-					bp.building.get_parent().remove_child(bp.building)
-					bp.building.queue_free()
-			else:
-				if get_world_rect().has_point(grid_pos) and get_tile_type(grid_pos) != TileType.NOTHING:
-					surface_tile_map_layer.set_cell(grid_pos, BASE_TILE_SOURCE, Vector2i(0, 0))
+						paid_item = true
+					
+					if not paid_item:
+						return
+					
+					var b : BaseBuilding = tool.building_scene.instantiate()
+					
+					gold -= tool.gold_cost
+					
+					if b is PedestalBuilding:
+						pedestals.append(b)
+					b.placement_reason = BaseBuilding.PlacementReason.PLAYER
+					b.grid_pos = grid_pos
+					if tool.building_can_rotate:
+						b.grid_rot = _tool_rot
+					entity_root.add_child(b)
+					
+					# TODO: update hotbar based on payable costs
 
 
-func _on_hotbar_selection_changed() -> void:
+func _refresh_preview() -> void:
 	if _tool_preview:
 		_tool_preview.queue_free()
 		_tool_preview = null
 	var data = hotbar.get_data(hotbar.selected)
-	if data[0] == ToolKind.BUILDING:
-		_tool_preview = data[1][0].instantiate()
+	if data is ConstructionInfo and data.mode == ConstructionInfo.Mode.BUILDING:
+		_tool_preview = data.building_scene.instantiate()
 		_tool_preview.is_preview = true
+		_tool_preview.position = Vector2((get_global_mouse_position() / GridMetric.GRID_PX).floor()) * GridMetric.GRID_PX
+		if data.building_can_rotate:
+			_tool_preview.grid_rot = _tool_rot
 		_tool_preview.modulate.a = 0.5
 		preview_root.add_child(_tool_preview)
+
+
+func _on_hotbar_selection_changed() -> void:
+	_refresh_preview()
 
 
 class BuildingPart:
