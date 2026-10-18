@@ -1,3 +1,4 @@
+class_name TreeEntity
 extends BaseBuilding
 
 @export var item: Item

@@ -95,6 +95,7 @@ func _ready() -> void:
 	
 	hotbar.add_hotbar_item(preload("uid://ctrope6st2ckv"), [ToolKind.SURFACE, [PATH_TILE_SOURCE, Vector2i(0, 0)]])
 	hotbar.add_hotbar_item(preload("uid://ixjui85tt6wx"), [ToolKind.BUILDING, [preload("uid://6gtvs4ggkcwd"), false]])
+	hotbar.add_hotbar_item(preload("uid://cormy5n4pqvl3"), [ToolKind.BUILDING, [preload("uid://c8pct81rwige"), false]])
 	hotbar.add_hotbar_item(preload("uid://bxo6h0qpw2tyl"), [ToolKind.BUILDING, [preload("uid://qwy22yet3em5"), true]])
 	hotbar.add_hotbar_item(preload("uid://bxo6h0qpw2tyl"), [ToolKind.BUILDING, [preload("uid://cy1ktd1fykiqy"), false]])
 	hotbar.add_hotbar_item(preload("uid://r63jdvojly4a"), [ToolKind.ERASE, []])
@@ -223,10 +224,10 @@ func connect_paths(a: Vector2i, b: Vector2i) -> void:
 	
 	var nbor_map: Dictionary[int, Vector2i] = {
 		0b0000: Vector2i(0, 0),
-		0b0001: Vector2i(3, 1),
+		0b0001: Vector2i(3, 0),
 		0b0010: Vector2i(2, 1),
 		0b0011: Vector2i(1, 3),
-		0b0100: Vector2i(3, 0),
+		0b0100: Vector2i(3, 1),
 		0b0101: Vector2i(1, 1),
 		0b0110: Vector2i(0, 3),
 		0b0111: Vector2i(3, 3),

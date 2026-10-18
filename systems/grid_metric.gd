@@ -30,3 +30,11 @@ static func rot_to_quad(rot: int) -> Vector2i:
 static func quad_to_rot(quad: Vector2i) -> int:
 	assert(quad in QUADS)
 	return QUADS.find(quad)
+
+
+static func grid_to_world(grid_pos: Vector2i) -> Vector2:
+	return Vector2(grid_pos) * GRID_PX
+
+
+static func world_to_grid(world_pos: Vector2) -> Vector2i:
+	return Vector2i((world_pos / GRID_PX).round())

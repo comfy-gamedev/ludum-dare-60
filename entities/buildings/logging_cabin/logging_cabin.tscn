@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c8pct81rwige"]
+
+[ext_resource type="Script" uid="uid://but5l1gkuiv3p" path="res://entities/buildings/logging_cabin/logging_cabin.gd" id="1_sho6s"]
+[ext_resource type="Texture2D" uid="uid://dykbe5m5wvoih" path="res://entities/buildings/logging_cabin/logging_cabin_sheet.png" id="2_wjdpa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkvte"]
+atlas = ExtResource("2_wjdpa")
+region = Rect2(32, 0, 32, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sho6s"]
+atlas = ExtResource("2_wjdpa")
+region = Rect2(64, 0, 32, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjdpa"]
+atlas = ExtResource("2_wjdpa")
+region = Rect2(0, 0, 32, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7b4ty"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkvte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sho6s")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjdpa")
+}],
+"loop": 0,
+"name": &"inactive",
+"speed": 5.0
+}]
+
+[node name="LoggingCabin" type="Node2D" unique_id=2037559196]
+script = ExtResource("1_sho6s")
+gold_cost = 2
+type_name = "Logging Cabin"
+
+[node name="CabinAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1826907722]
+position = Vector2(0, 13)
+sprite_frames = SubResource("SpriteFrames_7b4ty")
+animation = &"inactive"
+offset = Vector2(0, -28.5)
