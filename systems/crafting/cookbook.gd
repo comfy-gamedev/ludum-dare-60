@@ -2,12 +2,20 @@
 extends RefCounted
 class_name Cookbook
 
+const ITEM_DIR = "res://systems/crafting/items/"
 const RECIPE_DIR = "res://systems/crafting/recipes/"
+
+static var items: Array[Item]
 
 static var recipes: Array[Recipe]
 
 
 static func _static_init() -> void:
+	for f in DirAccess.get_files_at(ITEM_DIR):
+		if f.ends_with(".tres"):
+			var fname = ITEM_DIR.path_join(f)
+			items.append(load(fname))
+	
 	for f in DirAccess.get_files_at(RECIPE_DIR):
 		if f.ends_with(".tres"):
 			var fname = RECIPE_DIR.path_join(f)

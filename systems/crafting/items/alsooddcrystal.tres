@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://crb2edjnelowo"]
+
+[ext_resource type="ArrayMesh" uid="uid://haa0we6ll3hl" path="res://assets/shid/girth_alsooddcrystal.glb" id="1_2wmy2"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_na03b"]
+
+[resource]
+script = ExtResource("2_na03b")
+name = "Odd Crystal"
+mesh = ExtResource("1_2wmy2")
+kind = 5
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

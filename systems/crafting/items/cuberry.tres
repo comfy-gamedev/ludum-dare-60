@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bo28er4xv5xbo"]
+
+[ext_resource type="ArrayMesh" uid="uid://dih85d8nb1xvd" path="res://assets/shid/girth_cuberry.glb" id="1_y0gie"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_qoswo"]
+
+[resource]
+script = ExtResource("2_qoswo")
+name = "Cuberry"
+mesh = ExtResource("1_y0gie")
+kind = 4
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

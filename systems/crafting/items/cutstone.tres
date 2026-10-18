@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bo0tbwigifglj"]
+
+[ext_resource type="ArrayMesh" uid="uid://b3movqtbe0by5" path="res://assets/shid/girth_cutstone.glb" id="1_yxtab"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_8vklr"]
+
+[resource]
+script = ExtResource("2_8vklr")
+name = "Cut Stone"
+mesh = ExtResource("1_yxtab")
+kind = 2
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://byepbsnwnp70w"]
+
+[ext_resource type="ArrayMesh" uid="uid://yoaissvnhbru" path="res://assets/shid/girth_stick.glb" id="1_j23oa"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_h62lj"]
+
+[resource]
+script = ExtResource("2_h62lj")
+name = "Stick"
+mesh = ExtResource("1_j23oa")
+kind = 1
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

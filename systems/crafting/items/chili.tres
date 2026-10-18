@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cdt7it6scg62g"]
+
+[ext_resource type="ArrayMesh" uid="uid://dfbf7bwl3fn03" path="res://assets/shid/girth_chili.glb" id="1_4vgns"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_6uj3b"]
+
+[resource]
+script = ExtResource("2_6uj3b")
+name = "Chili"
+mesh = ExtResource("1_4vgns")
+kind = 4
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

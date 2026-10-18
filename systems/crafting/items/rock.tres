@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://pyc3op2eww5v"]
+
+[ext_resource type="ArrayMesh" uid="uid://567omhk2jfen" path="res://assets/shid/girth_rock.glb" id="1_moxu6"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_k3ncc"]
+
+[resource]
+script = ExtResource("2_k3ncc")
+name = "Rock"
+mesh = ExtResource("1_moxu6")
+kind = 2
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"
