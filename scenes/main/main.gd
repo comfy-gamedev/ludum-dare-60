@@ -137,7 +137,6 @@ func _tick() -> void:
 	for ent: Node in tick_entities.keys():
 		if is_instance_valid(ent) and not ent.is_queued_for_deletion():
 			ent.tick(_tick_t)
-# testing for push
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_toggle"):
