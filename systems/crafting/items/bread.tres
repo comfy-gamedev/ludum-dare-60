@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://d0nrky4wbersl"]
+
+[ext_resource type="ArrayMesh" uid="uid://b2l4p3p2bfjlx" path="res://assets/shid/girth_bread.glb" id="1_8xm3x"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_jb6r7"]
+
+[resource]
+script = ExtResource("2_jb6r7")
+name = "Bread"
+mesh = ExtResource("1_8xm3x")
+kind = 4
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

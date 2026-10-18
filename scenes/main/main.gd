@@ -278,7 +278,7 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 		var bp = get_building_part(grid_pos)
 		if bp:
 			if bp.building.placement_reason == BaseBuilding.PlacementReason.PLAYER:
-				if bp.building.type_name == "Pedestal":
+				if bp.building is PedestalBuilding:
 					pedestals.erase(bp.building)
 				bp.building.get_parent().remove_child(bp.building)
 				bp.building.queue_free()
@@ -295,6 +295,9 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 					surface_tile_map_layer.set_cell(grid_pos, tool.tileset_source_id, tool.tileset_atlas_coord)
 			
 			ConstructionInfo.Mode.BUILDING:
+				
+				# check placement
+				
 				var placement_rect = tool.placement_size
 				placement_rect.position += grid_pos
 				for y in placement_rect.size.y:
@@ -302,38 +305,41 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 						if get_tile_type(placement_rect.position + Vector2i(x, y)) != TileType.NOTHING:
 							return
 				
-				if get_tile_type(grid_pos) == TileType.NOTHING:
-					if gold < tool.gold_cost:
+				# check costs
+				
+				if gold < tool.gold_cost:
+					return
+				
+				var paid_item: bool = true
+				
+				if tool.item_req:
+					paid_item = false
+					if pedestals.is_empty():
 						return
-					
-					var paid_item: bool = true
-					
-					if tool.item_req:
-						paid_item = false
-						if pedestals.is_empty():
-							return
-						var ped = pedestals[pedestals.find(func(p): return p.item and p.item.item == tool.item_req)]
-						if ped.item.sprite:
-							ped.item.sprite.queue_free()
-						ped.item = null
-						paid_item = true
-					
-					if not paid_item:
-						return
-					
-					var b : BaseBuilding = tool.building_scene.instantiate()
-					
-					gold -= tool.gold_cost
-					
-					if b is PedestalBuilding:
-						pedestals.append(b)
-					b.placement_reason = BaseBuilding.PlacementReason.PLAYER
-					b.grid_pos = grid_pos
-					if tool.building_can_rotate:
-						b.grid_rot = _tool_rot
-					entity_root.add_child(b)
-					
-					# TODO: update hotbar based on payable costs
+					var ped = pedestals[pedestals.find(func(p): return p.item and p.item.item == tool.item_req)]
+					if ped.item.sprite:
+						ped.item.sprite.queue_free()
+					ped.item = null
+					paid_item = true
+				
+				if not paid_item:
+					return
+				
+				# execute build
+				
+				var b : BaseBuilding = tool.building_scene.instantiate()
+				
+				gold -= tool.gold_cost
+				
+				if b is PedestalBuilding:
+					pedestals.append(b)
+				b.placement_reason = BaseBuilding.PlacementReason.PLAYER
+				b.grid_pos = grid_pos
+				if tool.building_can_rotate:
+					b.grid_rot = _tool_rot
+				entity_root.add_child(b)
+				
+				# TODO: update hotbar based on payable costs
 
 
 func _refresh_preview() -> void:
