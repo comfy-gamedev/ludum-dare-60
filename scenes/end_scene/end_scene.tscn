@@ -56,6 +56,33 @@ offset_bottom = 159.0
 theme = ExtResource("2_eoerb")
 text = "Main Menu"
 
+[node name="Tutor1" type="Button" parent="." unique_id=814339744]
+z_index = 2
+offset_left = 160.0
+offset_top = 59.0
+offset_right = 239.0
+offset_bottom = 80.0
+theme = ExtResource("2_eoerb")
+text = "Tutorial 1"
+
+[node name="Tutor2" type="Button" parent="." unique_id=440905258]
+z_index = 2
+offset_left = 160.0
+offset_top = 82.0
+offset_right = 239.0
+offset_bottom = 103.0
+theme = ExtResource("2_eoerb")
+text = "Tutorial 2"
+
+[node name="Tutor3" type="Button" parent="." unique_id=827685045]
+z_index = 2
+offset_left = 160.0
+offset_top = 105.0
+offset_right = 239.0
+offset_bottom = 126.0
+theme = ExtResource("2_eoerb")
+text = "Tutorial 3"
+
 [node name="logs" type="Node2D" parent="." unique_id=1340864861]
 
 [node name="Timer" type="Timer" parent="." unique_id=1636534742]
@@ -63,4 +90,7 @@ wait_time = 0.1
 autostart = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Tutor1" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Tutor2" to="." method="_on_tutor_2_pressed"]
+[connection signal="pressed" from="Tutor3" to="." method="_on_tutor_3_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

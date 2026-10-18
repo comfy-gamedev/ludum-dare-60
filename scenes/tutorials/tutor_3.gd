@@ -5,6 +5,7 @@ const TUTORCONSTRUCTIONS = [
 	preload("uid://nmq3klwu0rtw"),
 	preload("uid://c7sjwdmihoy6j")
 	
+	
 ]
 
 func _ready() -> void:
@@ -23,17 +24,17 @@ func _ready() -> void:
 			var p := Vector2i(x, y)
 			surface_tile_map_layer.set_cell(p, 1, Vector2i(0, 0))
 	
-	var tree = TREE.instantiate()
-	tree.grid_pos = (WORLD_SIZE / 2) + Vector2i(-4, -1)
-	entity_root.add_child(tree)
-	
 	var bush = BUSH.instantiate()
-	bush.grid_pos = (WORLD_SIZE / 2) + Vector2i(-1, -3)
+	bush.grid_pos = (WORLD_SIZE / 2) + Vector2i(-4, -1)
 	entity_root.add_child(bush)
 	
-	var crystal = CRYSTAL.instantiate()
-	crystal.grid_pos = (WORLD_SIZE / 2) + Vector2i(5, 3)
-	entity_root.add_child(crystal)
+	var bush2 = BUSH.instantiate()
+	bush2.grid_pos = (WORLD_SIZE / 2) + Vector2i(-1, -3)
+	entity_root.add_child(bush2)
+	
+	var bush3 = BUSH.instantiate()
+	bush3.grid_pos = (WORLD_SIZE / 2) + Vector2i(5, 3)
+	entity_root.add_child(bush3)
 
 	camera_2d.position = Vector2(WORLD_SIZE) * GridMetric.GRID_PX * 0.5
 	camera_2d.limit_left = 0

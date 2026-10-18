@@ -40,3 +40,12 @@ func _on_timer_timeout() -> void:
 
 func _on_button_pressed() -> void:
 	SceneGirl.change_scene("res://scenes/main/main.tscn")
+
+func _on_button_2_pressed() -> void:
+	SceneGirl.change_scene("res://scenes/tutorials/tutor_1.tscn")
+
+func _on_tutor_2_pressed() -> void:
+	SceneGirl.change_scene("res://scenes/tutorials/tutor_2.tscn")
+	
+func _on_tutor_3_pressed() -> void:
+	SceneGirl.change_scene("res://scenes/tutorials/tutor_3.tscn")
