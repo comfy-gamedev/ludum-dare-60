@@ -76,6 +76,8 @@ var _tool_rot: int = 0
 func _ready() -> void:
 	current = self
 	
+	gold_label.text = "Gold: " + str(gold)
+	
 	var hb = HOMEBASE.instantiate()
 	@warning_ignore("integer_division")
 	hb.grid_pos = WORLD_SIZE / 2
