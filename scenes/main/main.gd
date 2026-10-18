@@ -82,6 +82,7 @@ func _ready() -> void:
 	
 	hotbar.add_hotbar_item(preload("uid://ctrope6st2ckv"), [ToolKind.SURFACE, [1, Vector2i(1, 0)]])
 	hotbar.add_hotbar_item(preload("uid://ixjui85tt6wx"), [ToolKind.BUILDING, [preload("uid://6gtvs4ggkcwd"), false]])
+	hotbar.add_hotbar_item(preload("uid://cormy5n4pqvl3"), [ToolKind.BUILDING, [preload("uid://c8pct81rwige"), false]])
 	hotbar.add_hotbar_item(preload("uid://bxo6h0qpw2tyl"), [ToolKind.BUILDING, [preload("uid://qwy22yet3em5"), true]])
 	hotbar.add_hotbar_item(preload("uid://bxo6h0qpw2tyl"), [ToolKind.BUILDING, [preload("uid://cy1ktd1fykiqy"), false]])
 	hotbar.add_hotbar_item(preload("uid://r63jdvojly4a"), [ToolKind.ERASE, []])
