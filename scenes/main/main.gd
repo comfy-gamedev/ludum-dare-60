@@ -137,11 +137,11 @@ func _tick() -> void:
 	for ent: Node in tick_entities.keys():
 		if is_instance_valid(ent) and not ent.is_queued_for_deletion():
 			ent.tick(_tick_t)
-
+# testing for push
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_toggle"):
-		camera_2d.zoom = Vector2(0.25, 0.25) if camera_2d.zoom == Vector2.ONE else Vector2.ONE
+		camera_2d.zoom = Vector2(0.5, 0.5) if camera_2d.zoom == Vector2.ONE else Vector2.ONE
 	
 	elif event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
