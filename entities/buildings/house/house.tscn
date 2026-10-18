@@ -9,7 +9,7 @@ gold_cost = 1
 type_name = "House"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1430240970]
-position = Vector2(8, 16)
+position = Vector2(8, 14)
 texture = ExtResource("2_vupst")
 centered = false
-offset = Vector2(-8, -16)
+offset = Vector2(-8, -30)
