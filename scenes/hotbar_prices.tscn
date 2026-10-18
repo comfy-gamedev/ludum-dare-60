@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dk2pp4jk3jriu"]
+
+[ext_resource type="PackedScene" uid="uid://b6ueuaycfmiyo" path="res://item_sprite.tscn" id="1_coevc"]
+[ext_resource type="Script" uid="uid://ddtph444do724" path="res://scenes/hotbar_prices.gd" id="1_ynrh8"]
+[ext_resource type="Resource" uid="uid://cniaep2ikgsjy" path="res://systems/constructions/factory.tres" id="2_hwvw8"]
+[ext_resource type="Resource" uid="uid://dnrw1g5j5q7b8" path="res://systems/crafting/items/water.tres" id="2_yb0ro"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynrh8"]
+bg_color = Color(0.54509807, 0.7764706, 0.8156863, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yb0ro"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Panel" type="Panel" unique_id=1395505682]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ynrh8")
+script = ExtResource("1_ynrh8")
+info = ExtResource("2_hwvw8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1944351778]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 9.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.9490196, 0.8, 0.3372549, 1)
+text = "X"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="ItemSprite" parent="." unique_id=637216572 instance=ExtResource("1_coevc")]
+visible = true
+position = Vector2(3, 18)
+texture = SubResource("ViewportTexture_yb0ro")
+item = ExtResource("2_yb0ro")

@@ -6,7 +6,7 @@ const FRAMERATE = 500.0
 
 @onready var mesh: MeshInstance3D = $SubViewport/Mesh
 
-var item: Item: set = set_item
+@export var item: Item: set = set_item
 
 var _t: float = 0.0
 
