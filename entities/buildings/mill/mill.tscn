@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bhidbucpi8uts"]
+
+[ext_resource type="Script" uid="uid://bq2nspmf72obm" path="res://entities/buildings/mill/mill.gd" id="1_tm3yl"]
+[ext_resource type="Texture2D" uid="uid://0eonld0cow8h" path="res://entities/buildings/mill/mill_sheet.png" id="2_em1ol"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fft10"]
+atlas = ExtResource("2_em1ol")
+region = Rect2(30, 0, 30, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ttao"]
+atlas = ExtResource("2_em1ol")
+region = Rect2(60, 0, 30, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfvdv"]
+atlas = ExtResource("2_em1ol")
+region = Rect2(90, 0, 30, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aixmg"]
+atlas = ExtResource("2_em1ol")
+region = Rect2(0, 0, 30, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_em1ol"]
+atlas = ExtResource("2_em1ol")
+region = Rect2(0, 0, 30, 66)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_io6xe"]
+animations = [{
+"frames": [{
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_fft10")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_7ttao")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_nfvdv")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_aixmg")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_em1ol")
+}],
+"loop": 0,
+"name": &"inactive",
+"speed": 5.0
+}]
+
+[node name="Mill" type="Node2D" unique_id=1499756953]
+script = ExtResource("1_tm3yl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=287225285]
+position = Vector2(-2, 30)
+sprite_frames = SubResource("SpriteFrames_io6xe")
+animation = &"inactive"
+offset = Vector2(2, -49)

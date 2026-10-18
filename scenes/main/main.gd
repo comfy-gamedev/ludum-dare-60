@@ -99,6 +99,7 @@ func _ready() -> void:
 	hotbar.add_hotbar_item(preload("uid://cormy5n4pqvl3"), [ToolKind.BUILDING, [preload("uid://c8pct81rwige"), false]])
 	hotbar.add_hotbar_item(preload("uid://bxo6h0qpw2tyl"), [ToolKind.BUILDING, [preload("uid://qwy22yet3em5"), true]])
 	hotbar.add_hotbar_item(preload("uid://bxo6h0qpw2tyl"), [ToolKind.BUILDING, [preload("uid://cy1ktd1fykiqy"), false]])
+	hotbar.add_hotbar_item(preload("uid://c66sjdv05xkx1"), [ToolKind.BUILDING, [preload("uid://bhidbucpi8uts"), false]])
 	hotbar.add_hotbar_item(preload("uid://r63jdvojly4a"), [ToolKind.ERASE, []])
 
 
