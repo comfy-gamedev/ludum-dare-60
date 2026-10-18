@@ -15,6 +15,7 @@ var grid_rot: int: set = set_grid_rot
 var placement_reason: PlacementReason = PlacementReason.WORLDGEN
 
 var is_preview: bool = false
+var info: ConstructionInfo
 
 @export var type_name := "Replace Me"
 

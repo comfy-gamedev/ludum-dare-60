@@ -283,6 +283,7 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 					pedestals.erase(bp.building)
 				bp.building.get_parent().remove_child(bp.building)
 				bp.building.queue_free()
+				gold += bp.building.info.gold_cost
 		else:
 			if get_world_rect().has_point(grid_pos) and get_tile_type(grid_pos) != TileType.NOTHING:
 				surface_tile_map_layer.set_cell(grid_pos, BASE_TILE_SOURCE, Vector2i(0, 0))
@@ -336,6 +337,7 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 					pedestals.append(b)
 				b.placement_reason = BaseBuilding.PlacementReason.PLAYER
 				b.grid_pos = grid_pos
+				b.info = tool
 				if tool.building_can_rotate:
 					b.grid_rot = _tool_rot
 				entity_root.add_child(b)
