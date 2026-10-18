@@ -293,6 +293,13 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 					surface_tile_map_layer.set_cell(grid_pos, tool.tileset_source_id, tool.tileset_atlas_coord)
 			
 			ConstructionInfo.Mode.BUILDING:
+				var placement_rect = tool.placement_size
+				placement_rect.position += grid_pos
+				for y in placement_rect.size.y:
+					for x in placement_rect.size.x:
+						if get_tile_type(placement_rect.position + Vector2i(x, y)) != TileType.NOTHING:
+							return
+				
 				if get_tile_type(grid_pos) == TileType.NOTHING:
 					if gold < tool.gold_cost:
 						return
@@ -303,8 +310,9 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 						paid_item = false
 						if pedestals.is_empty():
 							return
-						var ped = pedestals[pedestals.find(func(p): return p.item.item == tool.item_req)]
-						ped.item.sprite.queue_free()
+						var ped = pedestals[pedestals.find(func(p): return p.item and p.item.item == tool.item_req)]
+						if ped.item.sprite:
+							ped.item.sprite.queue_free()
 						ped.item = null
 						paid_item = true
 					

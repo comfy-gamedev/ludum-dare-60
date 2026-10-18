@@ -13,4 +13,5 @@ building_can_rotate = true
 tileset_source_id = 2
 gold_cost = 2
 item_req = ExtResource("1_vta34")
+placement_size = Rect2i(-1, -1, 2, 2)
 metadata/_custom_type_script = "uid://b4frqj5l57l6l"
