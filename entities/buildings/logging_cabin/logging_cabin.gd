@@ -29,6 +29,8 @@ func _ready() -> void:
 		return
 	
 	Main.current.register_tick_entity(self)
+	Main.current.building_add_part(self, grid_pos, 0)
+	Main.current.building_add_part(self, grid_pos + Vector2i(-1, 0), 0)
 
 
 func tick(t: int) -> void:
