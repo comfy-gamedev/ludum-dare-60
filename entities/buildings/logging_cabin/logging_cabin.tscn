@@ -43,7 +43,7 @@ gold_cost = 2
 type_name = "Logging Cabin"
 
 [node name="CabinAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1826907722]
-position = Vector2(0, -16)
+position = Vector2(0, 13)
 sprite_frames = SubResource("SpriteFrames_7b4ty")
 animation = &"inactive"
-offset = Vector2(0, 0.5)
+offset = Vector2(0, -28.5)

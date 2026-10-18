@@ -39,8 +39,13 @@ func tick(t: int) -> void:
 		for ent in Main.current.tick_entities:
 			if ent is LittleGuy:
 				if ent.grid_pos == grid_pos + ENTRANCE_OFFSET and not ent.is_holding_item():
-					ent.queue_free()
 					set_active(true)
+					ent.grid_facing = Vector2i.UP
+					ent.grid_pos = grid_pos
+					ent.animation_player.play(LittleGuy.dir_animations[ent.grid_facing], -1, Main.TICK_RATE * 2)
+					ent.animation_player.advance(0)
+					await ent.animation_player.animation_finished
+					ent.queue_free()
 					_delay_timer = get_tree().create_timer(2.0)
 					_delay_timer.timeout.connect(_start_logger)
 					break
