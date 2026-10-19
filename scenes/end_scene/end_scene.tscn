@@ -32,9 +32,9 @@ offset_right = 140.0
 offset_bottom = 158.0
 theme = ExtResource("2_eoerb")
 text = "Targets:
-Gold: <1000
-Silver: < 2000
-Bronze: < 4000"
+Gold: <= 20
+Silver: <= 40
+Bronze: <= 80"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2016504266]
 z_index = 2

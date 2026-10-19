@@ -164,9 +164,16 @@ color = Color(0, 0, 0, 0)
 metadata/_edit_lock_ = true
 
 [node name="GoldLabel" type="Label" parent="UICanvasLayer" unique_id=17194083]
-offset_right = 72.0
-offset_bottom = 23.0
+offset_left = 1.0
+offset_top = 10.0
+offset_right = 73.0
+offset_bottom = 19.0
 text = "Gold: 0"
+
+[node name="DayLabel" type="Label" parent="UICanvasLayer" unique_id=324481422]
+offset_right = 85.0
+offset_bottom = 9.0
+text = "0/20 days"
 
 [node name="RecipeMapPanel" parent="UICanvasLayer" unique_id=831180763 instance=ExtResource("6_ow5a4")]
 visible = false

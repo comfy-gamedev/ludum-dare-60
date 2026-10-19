@@ -55,6 +55,7 @@ enum TileType {
 @onready var preview_root: Node2D = $PreviewRoot
 
 @onready var gold_label: Label = $UICanvasLayer/GoldLabel
+@onready var day_label: Label = $UICanvasLayer/DayLabel
 
 @onready var recipe_map_panel: RecipeMap = $UICanvasLayer/RecipeMapPanel
 @onready var night_panel: VBoxContainer = $UICanvasLayer/NightPanel
@@ -76,7 +77,11 @@ var objective_count = 0
 var _ticking: bool = true
 var _t: float = 0.0
 var _tick_t: int = 0
-var day_count: int = 0
+var day_count: int = 0:
+	set(val):
+		day_count = val
+		var goal = 20 if day_count <= 20 else (40 if day_count <= 40 else 80)
+		day_label.text = str(day_count) + "/" + str(goal) + " days"
 
 var _tool_preview: Node2D
 var _tool_rot: int = 0

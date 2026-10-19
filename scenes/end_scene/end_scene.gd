@@ -9,11 +9,11 @@ const ITEM_SPRITE = preload("uid://b6ueuaycfmiyo")
 func _ready():
 	ticks = Globals.elapsed_days
 	var Rich_label = $RichTextLabel
-	if ticks < 1000:
+	if ticks <= 20:
 		Rich_label.text = "You completed the ritual\n with a [wave amp=50.0 freq=5.0 connected=1][color=GOLD]GOLD[/color][/wave] Score!"
-	elif ticks < 2000:
+	elif ticks <= 40:
 		Rich_label.text = "You completed the ritual\n with a [wave amp=50.0 freq=5.0 connected=1][color=SILVER]SILVER[/color][/wave] Score!"
-	elif ticks < 4000:
+	elif ticks <= 80:
 		Rich_label.text = "You completed the ritual\n with a [wave amp=50.0 freq=5.0 connected=1][color=PERU]BRONZE[/color][/wave] Score!"
 	else:
 		Rich_label.text = "You completed the ritual\n with just a [wave amp=50.0 freq=5.0 connected=1][color=BROWN]TERRIBLE[/color][/wave] Score!"
