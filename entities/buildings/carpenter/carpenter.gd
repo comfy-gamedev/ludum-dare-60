@@ -7,6 +7,7 @@ const SLOT_CLOSED = 0
 var items: Array[ItemInstance] = []
 var result: ItemInstance
 
+
 func _init() -> void:
 	grid_transform_changed.connect(_grid_transform_changed)
 
