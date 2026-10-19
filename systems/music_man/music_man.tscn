@@ -27,6 +27,7 @@ script = ExtResource("1_ibd3g")
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=383384117]
 stream = ExtResource("2_6cm1x")
 autoplay = true
+bus = &"Music"
 
 [node name="AudioEvents" parent="." unique_id=141387054 instance=ExtResource("2_0tjh3")]
 
