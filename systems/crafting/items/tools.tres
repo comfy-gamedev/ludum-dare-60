@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://d1o0462y3swpx"]
+
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_1q8bv"]
+
+[resource]
+script = ExtResource("2_1q8bv")
+name = "Tools"
+kind = 3
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

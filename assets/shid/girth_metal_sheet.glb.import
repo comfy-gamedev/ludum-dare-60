@@ -1,15 +1,15 @@
 [remap]
 
-importer="scene"
+importer="ArrayMesh"
 importer_version=1
-type="PackedScene"
+type="ArrayMesh"
 uid="uid://do3dqtbolej4n"
-path="res://.godot/imported/girth_metal_sheet.glb-d784a1f521d9b200d6a710113a38986b.scn"
+path="res://.godot/imported/girth_metal_sheet.glb-d784a1f521d9b200d6a710113a38986b.res"
 
 [deps]
 
 source_file="res://assets/shid/girth_metal_sheet.glb"
-dest_files=["res://.godot/imported/girth_metal_sheet.glb-d784a1f521d9b200d6a710113a38986b.scn"]
+dest_files=["res://.godot/imported/girth_metal_sheet.glb-d784a1f521d9b200d6a710113a38986b.res"]
 
 [params]
 

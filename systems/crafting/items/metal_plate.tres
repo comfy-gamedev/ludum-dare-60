@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bo7kjfrl8fhfi"]
+
+[ext_resource type="ArrayMesh" uid="uid://do3dqtbolej4n" path="res://assets/shid/girth_metal_sheet.glb" id="1_4iyij"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_bs674"]
+
+[resource]
+script = ExtResource("2_bs674")
+name = "Metal Plate"
+mesh = ExtResource("1_4iyij")
+kind = 2
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://dvjeyjesl2i7t"]
+
+[ext_resource type="Script" uid="uid://dpuopuvr10t3x" path="res://systems/crafting/recipe_item.gd" id="1_r6lwj"]
+[ext_resource type="Resource" uid="uid://dr8h1qvukffh4" path="res://systems/crafting/items/log.tres" id="2_uk76f"]
+[ext_resource type="Script" uid="uid://cxexxx4lluwrm" path="res://systems/crafting/recipe_item_single.gd" id="3_86s58"]
+[ext_resource type="Script" uid="uid://dleqpe3vohg2d" path="res://systems/crafting/recipe_item_anything.gd" id="4_hln5f"]
+[ext_resource type="Resource" uid="uid://bv00gf140byb0" path="res://systems/crafting/items/plank.tres" id="4_r6lwj"]
+[ext_resource type="Script" uid="uid://cfipoik8do1er" path="res://systems/crafting/recipe.gd" id="5_16w47"]
+
+[sub_resource type="Resource" id="Resource_6q06x"]
+script = ExtResource("3_86s58")
+item = ExtResource("2_uk76f")
+metadata/_custom_type_script = "uid://cxexxx4lluwrm"
+
+[sub_resource type="Resource" id="Resource_hln5f"]
+script = ExtResource("4_hln5f")
+metadata/_custom_type_script = "uid://dleqpe3vohg2d"
+
+[resource]
+script = ExtResource("5_16w47")
+ingredients = Array[ExtResource("1_r6lwj")]([SubResource("Resource_6q06x"), SubResource("Resource_6q06x"), SubResource("Resource_hln5f")])
+result = ExtResource("4_r6lwj")
+workshop = 2
+metadata/_custom_type_script = "uid://cfipoik8do1er"

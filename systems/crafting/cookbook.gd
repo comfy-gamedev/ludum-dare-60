@@ -5,6 +5,8 @@ class_name Cookbook
 const ITEM_DIR = "res://systems/crafting/items/"
 const RECIPE_DIR = "res://systems/crafting/recipes/"
 
+const JUNKU = preload("uid://dv1k55g0qm17d")
+
 static var items: Array[Item]
 
 static var recipes: Array[Recipe]
@@ -65,13 +67,13 @@ static func cook(workshop: Recipe.Workshop, ingredients: Array[ItemInstance]) ->
 		if complete:
 			valid.append(recipe)
 	
-	if valid.is_empty():
-		return null
+	var result_item: Item = JUNKU
 	
-	var item = valid.pick_random().result # idk this could probably be improved
+	if not valid.is_empty():
+		result_item = valid.pick_random().result # idk this could probably be improved
 	
 	var item_inst := ItemInstance.new()
-	item_inst.item = item
+	item_inst.item = result_item
 	item_inst.value = ingredients.reduce(func (v, i): return v + i.value, 0)
 	@warning_ignore("integer_division")
 	item_inst.value += maxi(item_inst.value / 3, 1)

@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://cxexxx4lluwrm"
 
 [resource]
 script = ExtResource("4_phqic")
-ingredients = Array[ExtResource("1_f8feb")]([SubResource("Resource_6q06x")])
+ingredients = Array[ExtResource("1_f8feb")]([SubResource("Resource_6q06x"), SubResource("Resource_6q06x"), SubResource("Resource_6q06x")])
 result = ExtResource("4_fm1qi")
 workshop = 1
 metadata/_custom_type_script = "uid://cfipoik8do1er"

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://duvhaw5l1ctn7"]
+
+[ext_resource type="Script" uid="uid://dpuopuvr10t3x" path="res://systems/crafting/recipe_item.gd" id="1_74u0h"]
+[ext_resource type="Resource" uid="uid://dr8h1qvukffh4" path="res://systems/crafting/items/log.tres" id="2_jt074"]
+[ext_resource type="Script" uid="uid://cxexxx4lluwrm" path="res://systems/crafting/recipe_item_single.gd" id="3_h7fi0"]
+[ext_resource type="Script" uid="uid://dleqpe3vohg2d" path="res://systems/crafting/recipe_item_anything.gd" id="4_sxvci"]
+[ext_resource type="Resource" uid="uid://cj4ngilbbjgpn" path="res://systems/crafting/items/coal.tres" id="5_1qqfc"]
+[ext_resource type="Script" uid="uid://cfipoik8do1er" path="res://systems/crafting/recipe.gd" id="7_y41db"]
+
+[sub_resource type="Resource" id="Resource_6q06x"]
+script = ExtResource("3_h7fi0")
+item = ExtResource("2_jt074")
+metadata/_custom_type_script = "uid://cxexxx4lluwrm"
+
+[sub_resource type="Resource" id="Resource_r6lwj"]
+script = ExtResource("4_sxvci")
+metadata/_custom_type_script = "uid://dleqpe3vohg2d"
+
+[resource]
+script = ExtResource("7_y41db")
+ingredients = Array[ExtResource("1_74u0h")]([SubResource("Resource_6q06x"), SubResource("Resource_6q06x"), SubResource("Resource_r6lwj")])
+result = ExtResource("5_1qqfc")
+workshop = 3
+metadata/_custom_type_script = "uid://cfipoik8do1er"

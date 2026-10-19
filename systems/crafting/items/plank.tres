@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bv00gf140byb0"]
+
+[ext_resource type="ArrayMesh" uid="uid://bkh1c46ppihno" path="res://assets/shid/girth_plank.glb" id="1_dx6ip"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_8vcuw"]
+
+[resource]
+script = ExtResource("2_8vcuw")
+name = "Plank"
+mesh = ExtResource("1_dx6ip")
+kind = 1
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

@@ -1,15 +1,15 @@
 [remap]
 
-importer="scene"
+importer="ArrayMesh"
 importer_version=1
-type="PackedScene"
+type="ArrayMesh"
 uid="uid://2y7r3eugcon3"
-path="res://.godot/imported/girth_ingot.glb-55f44945eb2862b930174117d01767b7.scn"
+path="res://.godot/imported/girth_ingot.glb-55f44945eb2862b930174117d01767b7.res"
 
 [deps]
 
 source_file="res://assets/shid/girth_ingot.glb"
-dest_files=["res://.godot/imported/girth_ingot.glb-55f44945eb2862b930174117d01767b7.scn"]
+dest_files=["res://.godot/imported/girth_ingot.glb-55f44945eb2862b930174117d01767b7.res"]
 
 [params]
 

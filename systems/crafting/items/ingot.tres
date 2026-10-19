@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bi8rf0oimqe0l"]
+
+[ext_resource type="ArrayMesh" uid="uid://2y7r3eugcon3" path="res://assets/shid/girth_ingot.glb" id="1_4xp2m"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_c4a51"]
+
+[resource]
+script = ExtResource("2_c4a51")
+name = "Ingot"
+mesh = ExtResource("1_4xp2m")
+kind = 2
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://dia1y0hreyj0r"]
+
+[ext_resource type="Script" uid="uid://dpuopuvr10t3x" path="res://systems/crafting/recipe_item.gd" id="1_tggp1"]
+[ext_resource type="Resource" uid="uid://b667oo3kfvimg" path="res://systems/crafting/items/cog.tres" id="2_dsra8"]
+[ext_resource type="Script" uid="uid://cxexxx4lluwrm" path="res://systems/crafting/recipe_item_single.gd" id="3_a0vf8"]
+[ext_resource type="Resource" uid="uid://cdits04xuhqoy" path="res://systems/crafting/items/wire.tres" id="5_eyjfe"]
+[ext_resource type="Resource" uid="uid://br2c67mw24vve" path="res://systems/crafting/items/mechanism.tres" id="6_upjm6"]
+[ext_resource type="Script" uid="uid://cfipoik8do1er" path="res://systems/crafting/recipe.gd" id="7_e2hwn"]
+
+[sub_resource type="Resource" id="Resource_6q06x"]
+resource_name = "Cog"
+script = ExtResource("3_a0vf8")
+item = ExtResource("2_dsra8")
+metadata/_custom_type_script = "uid://cxexxx4lluwrm"
+
+[sub_resource type="Resource" id="Resource_l8koc"]
+resource_name = "Mechanism"
+script = ExtResource("3_a0vf8")
+item = ExtResource("6_upjm6")
+metadata/_custom_type_script = "uid://cxexxx4lluwrm"
+
+[sub_resource type="Resource" id="Resource_agin2"]
+resource_name = "Wire"
+script = ExtResource("3_a0vf8")
+item = ExtResource("5_eyjfe")
+metadata/_custom_type_script = "uid://cxexxx4lluwrm"
+
+[resource]
+script = ExtResource("7_e2hwn")
+ingredients = Array[ExtResource("1_tggp1")]([SubResource("Resource_6q06x"), SubResource("Resource_l8koc"), SubResource("Resource_agin2")])
+result = ExtResource("6_upjm6")
+metadata/_custom_type_script = "uid://cfipoik8do1er"

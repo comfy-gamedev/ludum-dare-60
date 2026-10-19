@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dv1k55g0qm17d"]
+
+[ext_resource type="ArrayMesh" uid="uid://bmwox80866dwe" path="res://assets/shid/girth_junku.glb" id="1_mubp1"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_ui8fu"]
+
+[resource]
+script = ExtResource("2_ui8fu")
+name = "Junk"
+mesh = ExtResource("1_mubp1")
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"
