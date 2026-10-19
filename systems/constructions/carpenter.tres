@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dwh77wreals4b" path="res://entities/buildings/carpenter/carpenter.tscn" id="1_rhh1a"]
 [ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="1_w6bfh"]
-[ext_resource type="Texture2D" uid="uid://d4dfm515nnure" path="res://entities/buildings/carpenter/carpenter_icon.png" id="2_3gmdt"]
+[ext_resource type="Texture2D" uid="uid://d4dfm515nnure" path="res://entities/buildings/carpenter/hotbar_carpenter.png" id="2_3gmdt"]
 
 [resource]
 script = ExtResource("1_w6bfh")

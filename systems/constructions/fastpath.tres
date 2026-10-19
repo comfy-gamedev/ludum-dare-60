@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ConstructionInfo" format=3 uid="uid://dn7sbmuuobqsx"]
+
+[ext_resource type="Texture2D" uid="uid://1wh8ejdocm5g" path="res://assets/ui/fastpath_icon.png" id="1_ifxtp"]
+[ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="2_81vc5"]
+
+[resource]
+script = ExtResource("2_81vc5")
+icon = ExtResource("1_ifxtp")
+mode = 1
+tileset_source_id = 3
+gold_cost = 5
+metadata/_custom_type_script = "uid://b4frqj5l57l6l"

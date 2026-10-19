@@ -7,7 +7,7 @@ const SLOT_CLOSED = 0
 
 var items: Array[ItemInstance] = [null, null, null, null]
 
-@onready var sprites: Array[Sprite2D] = [
+@onready var sprites: Array[AnimatedSprite2D] = [
 	$SlotSprite0,
 	$SlotSprite1,
 	$SlotSprite2,
@@ -74,6 +74,12 @@ func place_item(pos: Vector2i, item_inst: ItemInstance) -> void:
 	items[part] = item_inst
 	
 	if items[0] and items[1] and items[2]:
+		for s in 3:
+			var spr = sprites[s]
+			spr.play("craft")
+		while sprites.front().is_playing():
+			await sprites.front().animation_finished
+		sprites.back().play("output")
 		items[3] = Cookbook.cook(Recipe.Workshop.FACTORY, [items[0], items[1], items[2]])
 		for i in 3:
 			if items[i].sprite:
@@ -107,9 +113,6 @@ func _update() -> void:
 		for part in 4:
 			Main.current.building_add_part(self, _part_to_pos(part), part)
 	
-	var has_result = items[3] != null
 	for part in 4:
-		var spr = sprites[posmod(part + grid_rot, 4)]
-		spr.frame = SLOT_OPEN if part < 3 and not has_result or part == 3 and has_result else SLOT_CLOSED
 		if items[part]:
 			items[part].require_sprite().position = Vector2(_part_to_pos(part)) * GridMetric.GRID_PX

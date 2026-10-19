@@ -27,6 +27,7 @@ const RESOURCES = [BUSH, ROCK, TREE, WATER, BUSH, ROCK, TREE, CRYSTAL]
 const CONSTRUCTIONS = [
 	preload("uid://c0rrybc5bgfno"),
 	preload("uid://nmq3klwu0rtw"),
+	preload("uid://dn7sbmuuobqsx"),
 	preload("uid://bv0d35xti4rip"),
 	#preload("uid://dihg3y5nmbf5i"),#pedestal :(
 	#preload("uid://bfkgt3wvanaqj"),
@@ -38,6 +39,7 @@ const CONSTRUCTIONS = [
 
 const BASE_TILE_SOURCE = 1
 const PATH_TILE_SOURCE = 2
+const FASTPATH_TILE_SOURCE = 3
 
 static var current: Main
 
@@ -138,8 +140,12 @@ func _process(delta: float) -> void:
 	var pan = Input.get_vector("pan_left", "pan_right", "pan_up", "pan_down")
 	if pan:
 		camera_2d.position += pan * PAN_SPEED * delta / camera_2d.zoom
+		if camera_2d.zoom != Vector2.ONE:
+			camera_2d.offset = camera_2d.position.snappedf(2.0) - camera_2d.position
 		# sync pos within limits
-		(func (): camera_2d.position = camera_2d.get_screen_center_position()).call_deferred()
+		(func ():
+			camera_2d.position = camera_2d.position.clamp(Vector2(camera_2d.limit_left, camera_2d.limit_top), Vector2(camera_2d.limit_right, camera_2d.limit_bottom))
+		).call_deferred()
 	
 	if _ticking:
 		_t += delta
@@ -243,6 +249,7 @@ func get_tile_type(grid_pos: Vector2i) -> TileType:
 	var coord = surface_tile_map_layer.get_cell_atlas_coords(grid_pos)
 	match [source, coord]:
 		[PATH_TILE_SOURCE, _]: return TileType.PATH
+		[FASTPATH_TILE_SOURCE, _]: return TileType.PATH
 	
 	return TileType.NOTHING
 
@@ -387,6 +394,9 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 				gold += bp.building.info.gold_cost
 		else:
 			if get_world_rect().has_point(grid_pos) and get_tile_type(grid_pos) != TileType.NOTHING:
+				match surface_tile_map_layer.get_cell_source_id(grid_pos):
+					2: gold += preload("uid://c0rrybc5bgfno").gold_cost
+					3: gold += preload("uid://dn7sbmuuobqsx").gold_cost
 				surface_tile_map_layer.set_cell(grid_pos, BASE_TILE_SOURCE, Vector2i(0, 0))
 				for d in GridMetric.DIRS:
 					if get_tile_type(grid_pos + d) == TileType.PATH:
@@ -397,8 +407,20 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 	elif tool is ConstructionInfo:
 		match tool.mode:
 			ConstructionInfo.Mode.TILE:
+				if gold < tool.gold_cost:
+					return
+				
 				if get_tile_type(grid_pos) == TileType.NOTHING:
 					surface_tile_map_layer.set_cell(grid_pos, tool.tileset_source_id, tool.tileset_atlas_coord)
+					gold -= tool.gold_cost
+				elif get_tile_type(grid_pos) == TileType.PATH:
+					var esid = surface_tile_map_layer.get_cell_source_id(grid_pos)
+					if esid != tool.tileset_source_id:
+						match esid:
+							2: gold += preload("uid://c0rrybc5bgfno").gold_cost
+							3: gold += preload("uid://dn7sbmuuobqsx").gold_cost
+						surface_tile_map_layer.set_cell(grid_pos, tool.tileset_source_id, surface_tile_map_layer.get_cell_atlas_coords(grid_pos))
+						gold -= tool.gold_cost
 			
 			ConstructionInfo.Mode.BUILDING:
 				

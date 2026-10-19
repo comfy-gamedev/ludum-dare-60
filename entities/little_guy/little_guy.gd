@@ -37,24 +37,27 @@ func _exit_tree() -> void:
 
 
 func tick(t: int) -> void:
-	if t == Main.CYCLE_END:
+	if t == Main.CYCLE_END or Main.current.get_tile_type(grid_pos) != Main.TileType.PATH:
 		queue_free()
 		return
 	
-	if t % step_ticks != 0:
+	var sid = Main.current.surface_tile_map_layer.get_cell_source_id(grid_pos)
+	
+	var st = (step_ticks / 2) if sid == 3 else step_ticks
+	
+	if t % st != 0:
 		return
 	
-	if Main.current.get_tile_type(grid_pos) == Main.TileType.PATH:
-		for turn in [0, 1, 3]:
-			var lookdir = GridMetric.rotate_dir(grid_facing, turn)
-			var look = grid_pos + lookdir
-			if Main.current.get_tile_type(look) == Main.TileType.PATH:
-				Main.current.connect_paths(grid_pos, look)
-				grid_pos = look
-				grid_facing = lookdir
-				animation_player.play(dir_animations[grid_facing], -1, Main.TICK_RATE * 2)
-				animation_player.advance(0)
-				break
+	for turn in [0, 1, 3]:
+		var lookdir = GridMetric.rotate_dir(grid_facing, turn)
+		var look = grid_pos + lookdir
+		if Main.current.get_tile_type(look) == Main.TileType.PATH:
+			Main.current.connect_paths(grid_pos, look)
+			grid_pos = look
+			grid_facing = lookdir
+			animation_player.play(dir_animations[grid_facing], -1, Main.TICK_RATE * 2)
+			animation_player.advance(0)
+			break
 	
 	for side in [0, 1, 3, 2]:
 		var lookdir = GridMetric.rotate_dir(grid_facing, side)

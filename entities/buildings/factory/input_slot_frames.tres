@@ -1,0 +1,92 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://d38csxte7sa77"]
+
+[ext_resource type="Texture2D" uid="uid://dofq364u17tsl" path="res://entities/buildings/factory/input_pillar.png" id="1_6qg04"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8vao"]
+atlas = ExtResource("1_6qg04")
+region = Rect2(0, 0, 16, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4wjn"]
+atlas = ExtResource("1_6qg04")
+region = Rect2(16, 0, 16, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1ata"]
+atlas = ExtResource("1_6qg04")
+region = Rect2(32, 0, 16, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qklp"]
+atlas = ExtResource("1_6qg04")
+region = Rect2(48, 0, 16, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boxe6"]
+atlas = ExtResource("1_6qg04")
+region = Rect2(64, 0, 16, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_picbm"]
+atlas = ExtResource("1_6qg04")
+region = Rect2(80, 0, 16, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsbie"]
+atlas = ExtResource("1_6qg04")
+region = Rect2(0, 0, 16, 28)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8vao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4wjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1ata")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qklp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boxe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_picbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boxe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_picbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boxe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_picbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boxe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qklp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1ata")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4wjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8vao")
+}],
+"loop": 0,
+"name": &"craft",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsbie")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]

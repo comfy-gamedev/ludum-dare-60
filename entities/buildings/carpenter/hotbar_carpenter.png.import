@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4dfm515nnure"
-path="res://.godot/imported/carpenter_icon.png-d9ca4e161b1c3981015cc95428a012d1.ctex"
+path="res://.godot/imported/hotbar_carpenter.png-11c781ebec4a0c997c52c6656d72da3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/buildings/carpenter/carpenter_icon.png"
-dest_files=["res://.godot/imported/carpenter_icon.png-d9ca4e161b1c3981015cc95428a012d1.ctex"]
+source_file="res://entities/buildings/carpenter/hotbar_carpenter.png"
+dest_files=["res://.godot/imported/hotbar_carpenter.png-11c781ebec4a0c997c52c6656d72da3d.ctex"]
 
 [params]
 
