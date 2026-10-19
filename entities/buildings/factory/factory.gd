@@ -26,8 +26,19 @@ func _ready() -> void:
 	for part in 4:
 		Main.current.building_add_part(self, _part_to_pos(part), part)
 		assert(_pos_to_part(_part_to_pos(part)) == part) # unit test
+	Main.current.register_tick_entity(self)
 	
 	_update()
+
+
+func tick(t: int) -> void:
+	if t == Main.CYCLE_END:
+		for i in 4:
+			if items[i]:
+				if items[i].sprite:
+					items[i].sprite.queue_free()
+			items[i] = null
+		_update()
 
 
 func _part_to_pos(part: int) -> Vector2i:
