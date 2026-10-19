@@ -54,7 +54,7 @@ func tick(t: int) -> void:
 		if Main.current.get_tile_type(look) == Main.TileType.BUILDING:
 			var bp = Main.current.get_building_part(look)
 			if bp and not _held_item:
-				if bp.building.can_take_item(look):
+				if bp.building.can_take_item(look) and bp.building.can_take_item_from(look, grid_pos):
 					_held_item = bp.building.take_item(look)
 					MusicMan.event_oneshot_2d("BushHit" + str(randi_range(1, 4)), get_viewport(), position)
 	
@@ -75,7 +75,7 @@ func tick(t: int) -> void:
 		if Main.current.get_tile_type(look) == Main.TileType.BUILDING:
 			var bp = Main.current.get_building_part(look)
 			if bp and _held_item:
-				if bp.building.can_place_item(look, _held_item.item):
+				if bp.building.can_place_item(look, _held_item.item) and bp.building.can_place_item_from(look, grid_pos):
 					bp.building.place_item(look, _held_item)
 					_held_item = null
 					MusicMan.event_oneshot_2d("Bonk" + str(randi_range(1, 4)), get_viewport(), position)
