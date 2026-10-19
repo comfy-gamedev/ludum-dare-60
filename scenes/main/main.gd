@@ -133,6 +133,7 @@ func _process(delta: float) -> void:
 				_t = 0.0
 				_ticking = false
 				animation_player.play("night")
+				MusicMan.event("Nightstart1")
 				day_count += 1
 				break
 

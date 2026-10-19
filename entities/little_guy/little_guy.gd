@@ -60,10 +60,12 @@ func tick(t: int) -> void:
 				if not _held_item:
 					if bp.building.can_take_item(look):
 						_held_item = bp.building.take_item(look)
+						MusicMan.event_oneshot_2d("BushHit" + str(randi_range(1, 4)), get_viewport(), position)
 				else:
 					if bp.building.can_place_item(look, _held_item.item):
 						bp.building.place_item(look, _held_item)
 						_held_item = null
+						MusicMan.event_oneshot_2d("Bonk" + str(randi_range(1, 4)), get_viewport(), position)
 
 
 func set_grid_pos(v: Vector2i) -> void:
