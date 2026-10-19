@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConstructionInfo" format=3 uid="uid://c85aj58cwtkhk"]
+
+[ext_resource type="PackedScene" uid="uid://dwh77wreals4b" path="res://entities/buildings/carpenter/carpenter.tscn" id="1_rhh1a"]
+[ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="1_w6bfh"]
+[ext_resource type="Texture2D" uid="uid://d4dfm515nnure" path="res://entities/buildings/carpenter/carpenter_icon.png" id="2_3gmdt"]
+
+[resource]
+script = ExtResource("1_w6bfh")
+icon = ExtResource("2_3gmdt")
+building_scene = ExtResource("1_rhh1a")
+gold_cost = 10
+placement_size = Rect2i(-1, -1, 4, 2)
+metadata/_custom_type_script = "uid://b4frqj5l57l6l"

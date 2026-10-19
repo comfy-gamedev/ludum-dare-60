@@ -31,6 +31,7 @@ const CONSTRUCTIONS = [
 	preload("uid://cniaep2ikgsjy"),
 	preload("uid://bfkgt3wvanaqj"),
 	preload("uid://c7sjwdmihoy6j"),
+	preload("uid://c85aj58cwtkhk"),
 ]
 
 const BASE_TILE_SOURCE = 1
