@@ -51,7 +51,7 @@ func place_item(pos: Vector2i, item_inst: ItemInstance) -> void:
 	items.append(item_inst)
 	
 	if not items.is_empty():
-		result = Cookbook.cook(items)
+		result = Cookbook.cook(Recipe.Workshop.BAKERY, items)
 		if result:
 			for item in items:
 				if item.sprite:
