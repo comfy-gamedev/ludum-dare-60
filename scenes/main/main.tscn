@@ -10,26 +10,28 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b1x3f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hujxm"]
-content_margin_left = 3.0
-content_margin_top = 3.0
-content_margin_right = 3.0
-content_margin_bottom = 3.0
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
 texture = ExtResource("5_yyfjg")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(1, 1, 14, 14)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6q06x"]
-content_margin_left = 3.0
-content_margin_top = 3.0
-content_margin_right = 3.0
-content_margin_bottom = 3.0
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
 texture = ExtResource("3_6q06x")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(1, 1, 14, 14)
 
 [sub_resource type="Theme" id="Theme_yyfjg"]
 Button/styles/focus = SubResource("StyleBoxEmpty_b1x3f")

@@ -4,3 +4,6 @@
 
 *.blend[0-9]
 *~
+
+build/*
+!build/.gdignore
