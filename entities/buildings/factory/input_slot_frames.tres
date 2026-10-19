@@ -80,7 +80,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"craft",
-"speed": 10.0
+"speed": 40.0
 }, {
 "frames": [{
 "duration": 1.0,

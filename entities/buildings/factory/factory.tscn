@@ -35,8 +35,5 @@ offset = Vector2(0, -13)
 [node name="SlotSprite3" type="AnimatedSprite2D" parent="." unique_id=217491624]
 position = Vector2(8, -14)
 sprite_frames = ExtResource("4_5dai4")
-animation = &"output"
 autoplay = "default"
-frame = 16
-frame_progress = 1.0
 offset = Vector2(0, 6.5)
