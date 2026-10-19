@@ -28,10 +28,11 @@ const CONSTRUCTIONS = [
 	preload("uid://c0rrybc5bgfno"),
 	preload("uid://nmq3klwu0rtw"),
 	preload("uid://dihg3y5nmbf5i"),
-	preload("uid://cniaep2ikgsjy"),
-	preload("uid://bfkgt3wvanaqj"),
+	#preload("uid://bfkgt3wvanaqj"),
 	preload("uid://c7sjwdmihoy6j"),
 	preload("uid://c85aj58cwtkhk"),
+	preload("uid://bsrvcnwyvw8pi"),
+	preload("uid://cniaep2ikgsjy"),
 ]
 
 const BASE_TILE_SOURCE = 1

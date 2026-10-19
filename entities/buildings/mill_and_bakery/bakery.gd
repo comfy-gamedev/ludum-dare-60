@@ -20,6 +20,9 @@ func _ready() -> void:
 	Main.current.building_add_part(self, grid_pos + Vector2i(-1, 0), 0)
 	Main.current.building_add_part(self, grid_pos + Vector2i(0, 0), 1)
 	
+	Main.current.building_add_part(self, grid_pos + Vector2i(-1, -1), 2)
+	Main.current.building_add_part(self, grid_pos + Vector2i(0, -1), 2)
+	
 	_update()
 
 

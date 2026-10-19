@@ -35,6 +35,7 @@ layer = 2
 
 [node name="TrackLabel" type="Control" parent="CanvasLayer" unique_id=1118015578]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0

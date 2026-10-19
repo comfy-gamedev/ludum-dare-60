@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConstructionInfo" format=3 uid="uid://bsrvcnwyvw8pi"]
+
+[ext_resource type="PackedScene" uid="uid://b3rsti74ag4iw" path="res://entities/buildings/forge/forge.tscn" id="1_i1b0h"]
+[ext_resource type="Texture2D" uid="uid://biyu0bcpw1ns4" path="res://icon.svg" id="2_f1lf4"]
+[ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="3_jsdd2"]
+
+[resource]
+script = ExtResource("3_jsdd2")
+icon = ExtResource("2_f1lf4")
+building_scene = ExtResource("1_i1b0h")
+gold_cost = 10
+placement_size = Rect2i(-1, -1, 4, 2)
+metadata/_custom_type_script = "uid://b4frqj5l57l6l"

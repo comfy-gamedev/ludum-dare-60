@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b3rsti74ag4iw"]
+
+[ext_resource type="Script" uid="uid://kd2trwfytohi" path="res://entities/buildings/forge/forge.gd" id="1_er386"]
+[ext_resource type="Texture2D" uid="uid://c1mesxuv5ulgn" path="res://entities/buildings/forge/forge_sheet.png" id="2_2vygn"]
+
+[node name="Forge" type="Node2D" unique_id=29687319]
+script = ExtResource("1_er386")
+
+[node name="MillAndBakerySheet" type="Sprite2D" parent="." unique_id=1783586864]
+position = Vector2(-8, 0)
+texture = ExtResource("2_2vygn")
+hframes = 4
