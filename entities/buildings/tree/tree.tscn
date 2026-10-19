@@ -12,13 +12,13 @@ item = ExtResource("2_ucxdr")
 type_name = "Tree"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=873779887]
-position = Vector2(8, 14)
+position = Vector2(7, 11)
 texture = ExtResource("3_cku2b")
 centered = false
 offset = Vector2(-7, -20)
 
 [node name="DepletedSprite2D" type="Sprite2D" parent="." unique_id=855206188]
-position = Vector2(8, 14)
+position = Vector2(7, 11)
 texture = ExtResource("4_cku2b")
 centered = false
 offset = Vector2(-7, -20)
