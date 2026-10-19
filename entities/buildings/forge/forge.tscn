@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kd2trwfytohi" path="res://entities/buildings/forge/forge.gd" id="1_er386"]
 [ext_resource type="Texture2D" uid="uid://c1mesxuv5ulgn" path="res://entities/buildings/forge/forge_sheet.png" id="2_2vygn"]
+[ext_resource type="Script" uid="uid://cchp5tq7wkj8" path="res://entities/buildings/mill_and_bakery/item_gimbal.gd" id="3_6w0ur"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfstc"]
 atlas = ExtResource("2_2vygn")
@@ -30,6 +31,14 @@ animations = [{
 "loop": 1,
 "name": &"active",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfstc")
+}],
+"loop": 1,
+"name": &"inactive",
+"speed": 5.0
 }]
 
 [node name="Forge" type="Node2D" unique_id=29687319]
@@ -39,6 +48,17 @@ script = ExtResource("1_er386")
 [node name="ForgeSheet" type="AnimatedSprite2D" parent="." unique_id=597571652]
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_105mk")
-animation = &"active"
-frame_progress = 0.53445834
+animation = &"inactive"
 offset = Vector2(0, -20)
+
+[node name="Gimbal" type="Node2D" parent="." unique_id=1762427344]
+script = ExtResource("3_6w0ur")
+
+[node name="ItemSlot" type="RemoteTransform2D" parent="Gimbal" unique_id=395737842]
+position = Vector2(-15, -12)
+
+[node name="ItemSlot2" type="RemoteTransform2D" parent="Gimbal" unique_id=403277181]
+position = Vector2(-1.1435933, -12)
+
+[node name="ItemSlot3" type="RemoteTransform2D" parent="Gimbal" unique_id=842241018]
+position = Vector2(-8.071796, 4.7683716e-07)

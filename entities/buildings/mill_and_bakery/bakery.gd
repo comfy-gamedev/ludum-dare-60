@@ -7,6 +7,10 @@ const SLOT_CLOSED = 0
 var items: Array[ItemInstance] = []
 var result: ItemInstance
 
+@onready var gimbal: Node2D = $Gimbal
+@onready var mill_and_bakery_sheet: AnimatedSprite2D = $MillAndBakerySheet
+
+
 func _init() -> void:
 	grid_transform_changed.connect(_grid_transform_changed)
 
@@ -84,7 +88,16 @@ func _update() -> void:
 	if not is_node_ready() or not is_inside_tree():
 		return
 	
-	for item in items:
-		item.require_sprite().position = Vector2(grid_pos + Vector2i(-1, 0)) * GridMetric.GRID_PX
+	for i in 3:
+		if i < items.size():
+			gimbal.get_child(i).remote_path = items[i].require_sprite().get_path()
+		else:
+			gimbal.get_child(i).remote_path = ^""
+	
 	if result:
 		result.require_sprite().position = Vector2(grid_pos + Vector2i(0, 0)) * GridMetric.GRID_PX
+	
+	if not items.is_empty():
+		mill_and_bakery_sheet.play("active")
+	else:
+		mill_and_bakery_sheet.play("inactive")

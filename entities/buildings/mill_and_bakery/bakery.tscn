@@ -2,13 +2,72 @@
 
 [ext_resource type="Script" uid="uid://b2i14iigj7tdx" path="res://entities/buildings/mill_and_bakery/bakery.gd" id="1_hvu3c"]
 [ext_resource type="Texture2D" uid="uid://dens6u188d8l5" path="res://entities/buildings/mill_and_bakery/mill_and_bakery_sheet.png" id="2_ppday"]
+[ext_resource type="Script" uid="uid://cchp5tq7wkj8" path="res://entities/buildings/mill_and_bakery/item_gimbal.gd" id="3_7j68v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j68v"]
+atlas = ExtResource("2_ppday")
+region = Rect2(0, 0, 48, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf1bf"]
+atlas = ExtResource("2_ppday")
+region = Rect2(48, 0, 48, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7oaj"]
+atlas = ExtResource("2_ppday")
+region = Rect2(96, 0, 48, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr2um"]
+atlas = ExtResource("2_ppday")
+region = Rect2(144, 0, 48, 66)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0mgs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j68v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf1bf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7oaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr2um")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j68v")
+}],
+"loop": 0,
+"name": &"inactive",
+"speed": 5.0
+}]
 
 [node name="Bakery" type="Node2D" unique_id=29687319]
 y_sort_enabled = true
 script = ExtResource("1_hvu3c")
 
-[node name="MillAndBakerySheet" type="Sprite2D" parent="." unique_id=1783586864]
+[node name="MillAndBakerySheet" type="AnimatedSprite2D" parent="." unique_id=1138772530]
 position = Vector2(-8, 16)
-texture = ExtResource("2_ppday")
+sprite_frames = SubResource("SpriteFrames_p0mgs")
+animation = &"inactive"
+autoplay = "inactive"
 offset = Vector2(0, -33)
-hframes = 4
+
+[node name="Gimbal" type="Node2D" parent="." unique_id=1039547996]
+position = Vector2(-16, 0)
+script = ExtResource("3_7j68v")
+
+[node name="ItemSlot" type="RemoteTransform2D" parent="Gimbal" unique_id=370764562]
+position = Vector2(-15, -12)
+
+[node name="ItemSlot2" type="RemoteTransform2D" parent="Gimbal" unique_id=438920062]
+position = Vector2(-1.1435933, -12)
+
+[node name="ItemSlot3" type="RemoteTransform2D" parent="Gimbal" unique_id=1368106298]
+position = Vector2(-8.071796, 4.7683716e-07)

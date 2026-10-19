@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bfj6pq81olnwd" path="res://entities/buildings/carpenter/carpenter.gd" id="1_fijm4"]
 [ext_resource type="Texture2D" uid="uid://catx87s1ogpdu" path="res://entities/buildings/carpenter/carpenter_sheet.png" id="2_bp0hb"]
+[ext_resource type="Script" uid="uid://cchp5tq7wkj8" path="res://entities/buildings/mill_and_bakery/item_gimbal.gd" id="3_wlnx6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wlnx6"]
 atlas = ExtResource("2_bp0hb")
@@ -60,4 +61,18 @@ type_name = "Carpenter"
 position = Vector2(16, 16)
 sprite_frames = SubResource("SpriteFrames_2adgm")
 animation = &"inactive"
+autoplay = "inactive"
 offset = Vector2(0, -20)
+
+[node name="Gimbal" type="Node2D" parent="." unique_id=1431331948]
+position = Vector2(0, -6)
+script = ExtResource("3_wlnx6")
+
+[node name="ItemSlot" type="RemoteTransform2D" parent="Gimbal" unique_id=1333541742]
+position = Vector2(-15, -12)
+
+[node name="ItemSlot2" type="RemoteTransform2D" parent="Gimbal" unique_id=2122571662]
+position = Vector2(-1.1435933, -12)
+
+[node name="ItemSlot3" type="RemoteTransform2D" parent="Gimbal" unique_id=102966512]
+position = Vector2(-8.071796, 4.7683716e-07)
