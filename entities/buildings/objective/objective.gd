@@ -10,8 +10,11 @@ func _ready() -> void:
 	Main.current.building_add_part(self, grid_pos, 0)
 	var sprite : Sprite2D= ITEM_SPRITE.instantiate()
 	sprite.item = need
-	sprite.modulate = Color(1, 1, 1, .5)
 	add_child(sprite)
+	
+	var t = create_tween().set_loops()
+	t.tween_property(sprite, "modulate:a", 0.0, 0.5)
+	t.tween_property(sprite, "modulate:a", 1.0, 0.5)
 
 
 func can_place_item(_pos: Vector2i, item_type: Item) -> bool:
