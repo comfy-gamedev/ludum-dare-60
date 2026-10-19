@@ -4,7 +4,7 @@ class_name Main
 const TICK_RATE = 8.0
 const PAN_SPEED = 16.0 * 10.0
 const WORLD_SIZE = Vector2i(128, 128)
-const CYCLE_END = 8*60
+const CYCLE_END = 8*40
 const OBJECTIVE_GOAL = 1
 
 const META_REGISTERED_PARTS = &"Main__registered_parts"

@@ -48,6 +48,16 @@ func tick(t: int) -> void:
 	if t % st != 0:
 		return
 	
+	for side in [0, 1, 3, 2]:
+		var lookdir = GridMetric.rotate_dir(grid_facing, side)
+		var look = grid_pos + lookdir
+		if Main.current.get_tile_type(look) == Main.TileType.BUILDING:
+			var bp = Main.current.get_building_part(look)
+			if bp and not _held_item:
+				if bp.building.can_take_item(look):
+					_held_item = bp.building.take_item(look)
+					MusicMan.event_oneshot_2d("BushHit" + str(randi_range(1, 4)), get_viewport(), position)
+	
 	for turn in [0, 1, 3]:
 		var lookdir = GridMetric.rotate_dir(grid_facing, turn)
 		var look = grid_pos + lookdir
@@ -64,16 +74,11 @@ func tick(t: int) -> void:
 		var look = grid_pos + lookdir
 		if Main.current.get_tile_type(look) == Main.TileType.BUILDING:
 			var bp = Main.current.get_building_part(look)
-			if bp:
-				if not _held_item:
-					if bp.building.can_take_item(look):
-						_held_item = bp.building.take_item(look)
-						MusicMan.event_oneshot_2d("BushHit" + str(randi_range(1, 4)), get_viewport(), position)
-				else:
-					if bp.building.can_place_item(look, _held_item.item):
-						bp.building.place_item(look, _held_item)
-						_held_item = null
-						MusicMan.event_oneshot_2d("Bonk" + str(randi_range(1, 4)), get_viewport(), position)
+			if bp and _held_item:
+				if bp.building.can_place_item(look, _held_item.item):
+					bp.building.place_item(look, _held_item)
+					_held_item = null
+					MusicMan.event_oneshot_2d("Bonk" + str(randi_range(1, 4)), get_viewport(), position)
 
 
 func set_grid_pos(v: Vector2i) -> void:
