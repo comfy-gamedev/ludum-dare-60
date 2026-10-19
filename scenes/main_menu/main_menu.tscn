@@ -3,6 +3,37 @@
 [ext_resource type="TileSet" uid="uid://ro17h0mixvc6" path="res://assets/tilesets/surface/surface_tile_set.tres" id="1_fsom3"]
 [ext_resource type="Script" uid="uid://dn7voyqeqf6wg" path="res://scenes/main_menu/main_menu.gd" id="1_ob46e"]
 [ext_resource type="Theme" uid="uid://cxg141t68uyj7" path="res://default_theme.tres" id="2_0ebjn"]
+[ext_resource type="Texture2D" uid="uid://rhkmon1eu4j8" path="res://entities/little_guy/profile_pic.png" id="4_uqeha"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ob46e"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1764706, 0.1764706, 0.23921569, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wem23"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.4392157, 0.42745098, 0.45882353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5seab"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.69803923, 0.6745098, 0.6745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xg86"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1764706, 0.1764706, 0.23921569, 1)
+corner_detail = 5
 
 [node name="MainMenu" type="Node2D" unique_id=1635549388]
 script = ExtResource("1_ob46e")
@@ -95,6 +126,11 @@ offset_left = 221.0
 offset_top = 3.0
 offset_right = 237.0
 offset_bottom = 75.0
+theme_override_icons/grabber = ExtResource("4_uqeha")
+theme_override_icons/grabber_highlight = ExtResource("4_uqeha")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ob46e")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_wem23")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_5seab")
 max_value = 1.0
 step = 0.01
 value = 0.5
@@ -104,6 +140,7 @@ offset_left = 195.0
 offset_top = 76.0
 offset_right = 238.0
 offset_bottom = 89.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4xg86")
 
 [node name="VolumeLabel" type="Label" parent="Panel" unique_id=402242926]
 layout_mode = 1
