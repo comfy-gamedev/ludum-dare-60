@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnjywanwt36gv"
-path="res://.godot/imported/rock2.png-104259c75ce13a2a03c4c4c506c3d083.ctex"
+uid="uid://dehbfo08koj1h"
+path="res://.godot/imported/bush_deplted.png-5ea88618940391c980eaf96d60217add.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/buildings/tree/rock2.png"
-dest_files=["res://.godot/imported/rock2.png-104259c75ce13a2a03c4c4c506c3d083.ctex"]
+source_file="res://entities/buildings/tree/bush_deplted.png"
+dest_files=["res://.godot/imported/bush_deplted.png-5ea88618940391c980eaf96d60217add.ctex"]
 
 [params]
 

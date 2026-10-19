@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjh3duyobv4ls"
-path="res://.godot/imported/tree2.png-753f65f8a926cac4b8f40a38ef79331a.ctex"
+uid="uid://c1mesxuv5ulgn"
+path="res://.godot/imported/forge_sheet.png-3a84650159686d8f75614483a714928a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/buildings/tree/tree2.png"
-dest_files=["res://.godot/imported/tree2.png-753f65f8a926cac4b8f40a38ef79331a.ctex"]
+source_file="res://entities/buildings/forge/forge_sheet.png"
+dest_files=["res://.godot/imported/forge_sheet.png-3a84650159686d8f75614483a714928a.ctex"]
 
 [params]
 
