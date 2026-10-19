@@ -9,6 +9,7 @@
 y_sort_enabled = true
 script = ExtResource("1_bafd8")
 item = ExtResource("2_ucxdr")
+is_resource = true
 type_name = "Tree"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=873779887]

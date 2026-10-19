@@ -17,6 +17,8 @@ var placement_reason: PlacementReason = PlacementReason.WORLDGEN
 var is_preview: bool = false
 var info: ConstructionInfo
 
+@export var is_resource: bool = false
+
 @export var type_name := "Replace Me"
 
 @abstract func can_place_item(pos: Vector2i, item: Item) -> bool

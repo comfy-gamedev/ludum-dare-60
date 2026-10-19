@@ -27,6 +27,7 @@ const RESOURCES = [BUSH, ROCK, TREE, WATER, BUSH, ROCK, TREE, CRYSTAL]
 const CONSTRUCTIONS = [
 	preload("uid://c0rrybc5bgfno"),
 	preload("uid://nmq3klwu0rtw"),
+	preload("uid://cdj1pydrhinj6"),
 	preload("uid://dn7sbmuuobqsx"),
 	preload("uid://bv0d35xti4rip"),
 	#preload("uid://dihg3y5nmbf5i"),#pedestal :(
@@ -35,6 +36,7 @@ const CONSTRUCTIONS = [
 	preload("uid://c85aj58cwtkhk"),
 	preload("uid://bsrvcnwyvw8pi"),
 	preload("uid://cniaep2ikgsjy"),
+	
 ]
 
 const BASE_TILE_SOURCE = 1
@@ -467,7 +469,13 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 				if tool.building_can_rotate:
 					b.grid_rot = _tool_rot
 				entity_root.add_child(b)
-				
+			
+			ConstructionInfo.Mode.DYNAMITE:
+				var bp = get_building_part(grid_pos)
+				if bp:
+					if bp.building.placement_reason != BaseBuilding.PlacementReason.PLAYER:
+						bp.building.queue_free()
+						gold -= tool.gold_cost
 				# TODO: update hotbar based on payable costs
 
 

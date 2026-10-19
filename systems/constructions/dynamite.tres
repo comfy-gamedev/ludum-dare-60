@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConstructionInfo" format=3 uid="uid://cdj1pydrhinj6"]
+
+[ext_resource type="PackedScene" uid="uid://cy1ktd1fykiqy" path="res://entities/buildings/pedestal/pedestal.tscn" id="1_a4jb8"]
+[ext_resource type="Texture2D" uid="uid://dieqx8lfl7wvl" path="res://entities/buildings/dynamite.png" id="2_a4jb8"]
+[ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="3_y1wcr"]
+
+[resource]
+script = ExtResource("3_y1wcr")
+icon = ExtResource("2_a4jb8")
+mode = 2
+building_scene = ExtResource("1_a4jb8")
+tileset_source_id = 2
+gold_cost = 5
+metadata/_custom_type_script = "uid://b4frqj5l57l6l"

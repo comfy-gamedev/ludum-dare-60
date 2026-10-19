@@ -5,6 +5,7 @@ class_name ConstructionInfo
 enum Mode {
 	BUILDING,
 	TILE,
+	DYNAMITE,
 }
 
 @export var icon: Texture2D

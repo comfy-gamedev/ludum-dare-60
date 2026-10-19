@@ -96,6 +96,7 @@ _data = {
 item = ExtResource("2_7uoe4")
 item_value = 3
 daily_limit = 1
+is_resource = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=873779887]
 position = Vector2(8, 16)
