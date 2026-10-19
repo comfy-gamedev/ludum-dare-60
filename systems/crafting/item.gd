@@ -13,3 +13,5 @@ enum Kind {
 @export var name: String
 @export var mesh: Mesh
 @export var kind: Kind = Kind.UNSPECIFIED
+
+var rank: int = -1

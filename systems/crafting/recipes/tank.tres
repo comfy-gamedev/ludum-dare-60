@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://b667oo3kfvimg" path="res://systems/crafting/items/cog.tres" id="2_dsra8"]
 [ext_resource type="Script" uid="uid://cxexxx4lluwrm" path="res://systems/crafting/recipe_item_single.gd" id="3_a0vf8"]
 [ext_resource type="Resource" uid="uid://cdits04xuhqoy" path="res://systems/crafting/items/wire.tres" id="5_eyjfe"]
+[ext_resource type="Resource" uid="uid://y1b2xhywjcbr" path="res://systems/crafting/items/tank.tres" id="6_tggp1"]
 [ext_resource type="Resource" uid="uid://br2c67mw24vve" path="res://systems/crafting/items/mechanism.tres" id="6_upjm6"]
 [ext_resource type="Script" uid="uid://cfipoik8do1er" path="res://systems/crafting/recipe.gd" id="7_e2hwn"]
 
@@ -28,5 +29,5 @@ metadata/_custom_type_script = "uid://cxexxx4lluwrm"
 [resource]
 script = ExtResource("7_e2hwn")
 ingredients = Array[ExtResource("1_tggp1")]([SubResource("Resource_6q06x"), SubResource("Resource_l8koc"), SubResource("Resource_agin2")])
-result = ExtResource("6_upjm6")
+result = ExtResource("6_tggp1")
 metadata/_custom_type_script = "uid://cfipoik8do1er"

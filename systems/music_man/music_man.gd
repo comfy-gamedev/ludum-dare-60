@@ -33,6 +33,9 @@ func event(event_name: String) -> void:
 	elif asp is AudioStreamPlayer3D:
 		push_error("Must use event_3d for 3D audio")
 		breakpoint
+	elif asp is AudioStreamPlayer2D:
+		push_error("Must use event_2d for 2D audio")
+		breakpoint
 
 
 ## Plays a sound effect. Does not support positional audio.
@@ -47,6 +50,9 @@ func event_oneshot(event_name: String, vp: Viewport) -> void:
 		nasp.play()
 	elif asp is AudioStreamPlayer3D:
 		push_error("Must use event_3d for 3D audio")
+		breakpoint
+	elif asp is AudioStreamPlayer2D:
+		push_error("Must use event_2d for 2D audio")
 		breakpoint
 
 

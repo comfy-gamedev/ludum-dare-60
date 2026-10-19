@@ -5,7 +5,14 @@
 [ext_resource type="Resource" uid="uid://dnrw1g5j5q7b8" path="res://systems/crafting/items/water.tres" id="2_p5v53"]
 
 [node name="Water" unique_id=744563053 instance=ExtResource("1_3xgim")]
+y_sort_enabled = false
 item = ExtResource("2_p5v53")
+daily_limit = 99999
 
 [node name="Sprite2D" parent="." index="0" unique_id=873779887]
+position = Vector2(8, 8)
 texture = ExtResource("2_2tixe")
+offset = Vector2(-8, -8)
+
+[node name="DepletedSprite2D" parent="." index="1" unique_id=855206188]
+visible = false

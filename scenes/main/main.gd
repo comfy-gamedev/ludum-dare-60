@@ -1,10 +1,10 @@
 extends Node2D
 class_name Main
 
-const TICK_RATE = 2.0
+const TICK_RATE = 8.0
 const PAN_SPEED = 16.0 * 10.0
 const WORLD_SIZE = Vector2i(128, 128)
-const CYCLE_END = 20
+const CYCLE_END = 8*60
 const OBJECTIVE_GOAL = 1
 
 const META_REGISTERED_PARTS = &"Main__registered_parts"
@@ -22,7 +22,7 @@ const ROCK = preload("uid://cpag0rr03s5qo")
 const TREE = preload("uid://bayold7n6brg0")
 const WATER = preload("uid://ceiw0p6112gmu")
 
-const RESOURCES = [BUSH, CRYSTAL, ROCK, TREE, WATER]
+const RESOURCES = [BUSH, ROCK, TREE, WATER, BUSH, ROCK, TREE, CRYSTAL]
 
 const CONSTRUCTIONS = [
 	preload("uid://c0rrybc5bgfno"),
@@ -54,6 +54,8 @@ enum TileType {
 @onready var preview_root: Node2D = $PreviewRoot
 
 @onready var gold_label: Label = $UICanvasLayer/GoldLabel
+
+@onready var recipe_map_panel: RecipeMap = $UICanvasLayer/RecipeMapPanel
 
 var building_parts: Dictionary[Vector2i, BuildingPart]
 
@@ -98,7 +100,14 @@ func _ready() -> void:
 	for y in WORLD_SIZE.y:
 		for x in WORLD_SIZE.x:
 			var p := Vector2i(x, y)
-			if randi_range(0, 10) == 0 and get_tile_type(p) == TileType.NOTHING:
+			if randi_range(0, 25) == 0 and get_tile_type(p) == TileType.NOTHING:
+				var skip = false
+				for d in GridMetric.DIRS:
+					if get_tile_type(p + d) != TileType.NOTHING:
+						if randi_range(0, 4) != 0:
+							skip = true
+				if skip:
+					continue
 				var tree = RESOURCES.pick_random().instantiate()
 				tree.grid_pos = p
 				entity_root.add_child(tree)
@@ -133,6 +142,7 @@ func _process(delta: float) -> void:
 				_t = 0.0
 				_ticking = false
 				animation_player.play("night")
+				MusicMan.event("Nightstart1")
 				day_count += 1
 				break
 
@@ -145,6 +155,9 @@ func _tick() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_toggle"):
 		camera_2d.zoom = Vector2(0.5, 0.5) if camera_2d.zoom == Vector2.ONE else Vector2.ONE
+	
+	elif event.is_action_pressed("toggle_compendium"):
+		recipe_map_panel.visible = not recipe_map_panel.visible
 	
 	elif event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -275,6 +288,42 @@ func connect_paths(a: Vector2i, b: Vector2i) -> void:
 	f.call(b, a-b)
 
 
+func disconnect_paths(a: Vector2i, b: Vector2i) -> void:
+	assert((a-b) in GridMetric.DIRS)
+	assert(get_tile_type(a) == TileType.PATH)
+	
+	var nbor_map: Dictionary[int, Vector2i] = {
+		0b0000: Vector2i(0, 0),
+		0b0001: Vector2i(3, 0),
+		0b0010: Vector2i(2, 1),
+		0b0011: Vector2i(1, 3),
+		0b0100: Vector2i(3, 1),
+		0b0101: Vector2i(1, 1),
+		0b0110: Vector2i(0, 3),
+		0b0111: Vector2i(3, 3),
+		0b1000: Vector2i(2, 0),
+		0b1001: Vector2i(1, 2),
+		0b1010: Vector2i(1, 0),
+		0b1011: Vector2i(3, 2),
+		0b1100: Vector2i(0, 2),
+		0b1101: Vector2i(2, 2),
+		0b1110: Vector2i(2, 3),
+		0b1111: Vector2i(0, 1),
+	}
+	
+	var p := a
+	var d := b-a
+	
+	var s = surface_tile_map_layer.get_cell_source_id(p)
+	var c = surface_tile_map_layer.get_cell_atlas_coords(p)
+	var n = nbor_map.find_key(c)
+	assert(n != null)
+	var r = GridMetric.dir_to_rot(d)
+	var nn = n & ~(1 << r)
+	var cc = nbor_map[nn]
+	surface_tile_map_layer.set_cell(p, s, cc)
+
+
 func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 	if tool == ERASE_ICON:
 		var bp = get_building_part(grid_pos)
@@ -288,6 +337,9 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 		else:
 			if get_world_rect().has_point(grid_pos) and get_tile_type(grid_pos) != TileType.NOTHING:
 				surface_tile_map_layer.set_cell(grid_pos, BASE_TILE_SOURCE, Vector2i(0, 0))
+				for d in GridMetric.DIRS:
+					if get_tile_type(grid_pos + d) == TileType.PATH:
+						disconnect_paths(grid_pos + d, grid_pos)
 		
 		# TODO: fixup neighbor tiles (make paths become unfinished again)
 	
@@ -363,6 +415,10 @@ func _refresh_preview() -> void:
 
 func _on_hotbar_selection_changed() -> void:
 	_refresh_preview()
+
+
+func _on_map_toggle_button_pressed() -> void:
+	recipe_map_panel.visible = not recipe_map_panel.visible
 
 
 class BuildingPart:

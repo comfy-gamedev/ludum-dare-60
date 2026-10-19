@@ -11,6 +11,7 @@ static var items: Array[Item]
 
 static var recipes: Array[Recipe]
 
+static var product_to_recipe: Dictionary[Item, Recipe]
 
 static func _static_init() -> void:
 	for f in DirAccess.get_files_at(ITEM_DIR):
@@ -21,7 +22,26 @@ static func _static_init() -> void:
 	for f in DirAccess.get_files_at(RECIPE_DIR):
 		if f.ends_with(".tres"):
 			var fname = RECIPE_DIR.path_join(f)
-			recipes.append(load(fname))
+			var rec: Recipe = load(fname)
+			recipes.append(rec)
+			assert(rec.result not in product_to_recipe) # each item gets only one recipe
+			product_to_recipe[rec.result] = rec
+	
+	for item in items:
+		_ensure_ranked(item)
+
+
+static func _ensure_ranked(item: Item) -> void:
+	if item.rank != -1:
+		return
+	var recipe: Recipe = product_to_recipe.get(item)
+	if not recipe:
+		item.rank = 0
+		return
+	for ing in recipe.ingredients:
+		if ing is RecipeItemSingle:
+			_ensure_ranked(ing.item)
+			item.rank = maxi(item.rank, ing.item.rank + 1)
 
 
 static func cook(workshop: Recipe.Workshop, ingredients: Array[ItemInstance]) -> ItemInstance:

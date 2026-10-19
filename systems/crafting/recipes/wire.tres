@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://bi8rf0oimqe0l" path="res://systems/crafting/items/ingot.tres" id="2_pd3wc"]
 [ext_resource type="Script" uid="uid://cxexxx4lluwrm" path="res://systems/crafting/recipe_item_single.gd" id="3_a10yg"]
 [ext_resource type="Resource" uid="uid://bv00gf140byb0" path="res://systems/crafting/items/plank.tres" id="4_q3jsf"]
-[ext_resource type="Resource" uid="uid://bo7kjfrl8fhfi" path="res://systems/crafting/items/metal_plate.tres" id="5_ak05p"]
+[ext_resource type="Resource" uid="uid://cdits04xuhqoy" path="res://systems/crafting/items/wire.tres" id="5_q3jsf"]
 [ext_resource type="Script" uid="uid://cfipoik8do1er" path="res://systems/crafting/recipe.gd" id="6_bb1b8"]
 
 [sub_resource type="Resource" id="Resource_6q06x"]
@@ -22,6 +22,6 @@ metadata/_custom_type_script = "uid://cxexxx4lluwrm"
 [resource]
 script = ExtResource("6_bb1b8")
 ingredients = Array[ExtResource("1_q3jsf")]([SubResource("Resource_6q06x"), SubResource("Resource_6q06x"), SubResource("Resource_agin2")])
-result = ExtResource("5_ak05p")
+result = ExtResource("5_q3jsf")
 workshop = 3
 metadata/_custom_type_script = "uid://cfipoik8do1er"
