@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cy1ktd1fykiqy" path="res://entities/buildings/pedestal/pedestal.tscn" id="1_vnixx"]
 [ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="2_5uot4"]
-[ext_resource type="Texture2D" uid="uid://biyu0bcpw1ns4" path="res://icon.svg" id="2_d4nmx"]
+[ext_resource type="Texture2D" uid="uid://dnbrrlnvbbpds" path="res://entities/buildings/pedestal/pedestal.png" id="2_d4nmx"]
 
 [resource]
 script = ExtResource("2_5uot4")

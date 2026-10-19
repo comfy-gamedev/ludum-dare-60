@@ -22,7 +22,7 @@ static func _static_init() -> void:
 			recipes.append(load(fname))
 
 
-static func cook(ingredients: Array[ItemInstance]) -> ItemInstance:
+static func cook(workshop: Recipe.Workshop, ingredients: Array[ItemInstance]) -> ItemInstance:
 	# maximum bipartite matching
 	# kuhn's algorithm
 	# network flow! thank you dr plank
@@ -46,7 +46,11 @@ static func cook(ingredients: Array[ItemInstance]) -> ItemInstance:
 				return true
 		return false
 	
-	for recipe in recipes:
+	var workshop_recipes: Array[Recipe] = recipes
+	if workshop != Recipe.Workshop.FACTORY:
+		workshop_recipes = workshop_recipes.filter(func (r): return r.workshop == workshop)
+	
+	for recipe in workshop_recipes:
 		if recipe.ingredients.size() != n:
 			continue
 		

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ddtph444do724" path="res://scenes/hotbar_prices.gd" id="1_ynrh8"]
 [ext_resource type="Resource" uid="uid://cniaep2ikgsjy" path="res://systems/constructions/factory.tres" id="2_hwvw8"]
 [ext_resource type="Resource" uid="uid://dnrw1g5j5q7b8" path="res://systems/crafting/items/water.tres" id="2_yb0ro"]
+[ext_resource type="Texture2D" uid="uid://dnbrrlnvbbpds" path="res://entities/buildings/pedestal/pedestal.png" id="5_hwvw8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwvw8"]
 bg_color = Color(0.54509807, 0.7764706, 0.8156863, 1)
@@ -17,7 +18,7 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yb0ro"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_hwvw8"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Panel" type="Panel" unique_id=1395505682]
@@ -45,8 +46,14 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemSprite" parent="." unique_id=637216572 instance=ExtResource("1_coevc")]
-visible = true
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=145356795]
 position = Vector2(3, 18)
-texture = SubResource("ViewportTexture_yb0ro")
+
+[node name="ItemSprite" parent="CanvasGroup" unique_id=637216572 instance=ExtResource("1_coevc")]
+visible = true
+texture = SubResource("ViewportTexture_hwvw8")
 item = ExtResource("2_yb0ro")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup" unique_id=1369164404]
+position = Vector2(8, 12)
+texture = ExtResource("5_hwvw8")

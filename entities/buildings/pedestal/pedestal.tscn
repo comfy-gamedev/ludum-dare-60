@@ -1,15 +1,14 @@
 [gd_scene format=3 uid="uid://cy1ktd1fykiqy"]
 
-[ext_resource type="Texture2D" uid="uid://biyu0bcpw1ns4" path="res://icon.svg" id="1_ndp4w"]
 [ext_resource type="Script" uid="uid://dh5phtwy8bj26" path="res://entities/buildings/pedestal/pedestal.gd" id="1_uil2h"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uil2h"]
+load_path = "res://.godot/imported/pedestal.png-c14c52eb165de76bb0ce3fff98162c32.ctex"
 
 [node name="Pedestal" type="Node2D" unique_id=943344368]
 script = ExtResource("1_uil2h")
-gold_cost = 1
 type_name = "Pedestal"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=808363458]
-modulate = Color(1, 0.19607843, 0, 1)
 position = Vector2(8, 12)
-scale = Vector2(1, 0.5)
-texture = ExtResource("1_ndp4w")
+texture = SubResource("CompressedTexture2D_uil2h")

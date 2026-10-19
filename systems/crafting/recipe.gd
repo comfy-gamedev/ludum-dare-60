@@ -2,7 +2,7 @@ extends Resource
 class_name Recipe
 
 enum Workshop {
-	FACTORY_ONLY,
+	FACTORY,
 	BAKERY,
 	CARPENTER,
 	FORGE,

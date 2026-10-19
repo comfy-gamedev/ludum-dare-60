@@ -63,7 +63,7 @@ func place_item(pos: Vector2i, item_inst: ItemInstance) -> void:
 	items[part] = item_inst
 	
 	if items[0] and items[1] and items[2]:
-		items[3] = Cookbook.cook([items[0], items[1], items[2]])
+		items[3] = Cookbook.cook(Recipe.Workshop.FACTORY, [items[0], items[1], items[2]])
 		for i in 3:
 			if items[i].sprite:
 				items[i].sprite.queue_free()

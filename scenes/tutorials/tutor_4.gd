@@ -12,12 +12,6 @@ func _ready() -> void:
 	
 	gold_label.text = "Gold: " + str(gold)
 	
-	var ob = OBJECTIVE.instantiate()
-	@warning_ignore("integer_division")
-	ob.grid_pos = (WORLD_SIZE / 2) + Vector2i(0, 0)
-	ob.need = preload("uid://dcbi7ka0kvgjf")
-	entity_root.add_child(ob)
-	
 	for y in WORLD_SIZE.y:
 		for x in WORLD_SIZE.x:
 			var p := Vector2i(x, y)
