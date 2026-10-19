@@ -104,7 +104,7 @@ func _ready() -> void:
 	
 	var ob = OBJECTIVE.instantiate()
 	@warning_ignore("integer_division")
-	ob.grid_pos = (WORLD_SIZE / 2) + Vector2i(4, 0)
+	ob.grid_pos = (WORLD_SIZE / 2) + Vector2i(6, 0)
 	entity_root.add_child(ob)
 	
 	for y in WORLD_SIZE.y:
