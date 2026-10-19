@@ -16,12 +16,10 @@ func _ready() -> void:
 		_update()
 		return
 	
-	Main.current.building_add_part(self, grid_pos + Vector2i(-2, 0), 1)
-	Main.current.building_add_part(self, grid_pos + Vector2i(-1, 0), 0)
-	Main.current.building_add_part(self, grid_pos + Vector2i(0, 0), 0)
-	
-	Main.current.building_add_part(self, grid_pos + Vector2i(-2, -1), 2)
 	Main.current.building_add_part(self, grid_pos + Vector2i(-1, -1), 2)
+	Main.current.building_add_part(self, grid_pos + Vector2i(-1, 0), 0)
+	Main.current.building_add_part(self, grid_pos, 1)
+	Main.current.building_add_part(self, grid_pos + Vector2i(0, -1), 2)
 	
 	_update()
 

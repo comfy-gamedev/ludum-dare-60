@@ -3,12 +3,42 @@
 [ext_resource type="Script" uid="uid://kd2trwfytohi" path="res://entities/buildings/forge/forge.gd" id="1_er386"]
 [ext_resource type="Texture2D" uid="uid://c1mesxuv5ulgn" path="res://entities/buildings/forge/forge_sheet.png" id="2_2vygn"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfstc"]
+atlas = ExtResource("2_2vygn")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w0ur"]
+atlas = ExtResource("2_2vygn")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seyk7"]
+atlas = ExtResource("2_2vygn")
+region = Rect2(64, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_105mk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfstc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w0ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seyk7")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 5.0
+}]
+
 [node name="Forge" type="Node2D" unique_id=29687319]
 y_sort_enabled = true
 script = ExtResource("1_er386")
 
-[node name="MillAndBakerySheet" type="Sprite2D" parent="." unique_id=1783586864]
-position = Vector2(-8, 16)
-texture = ExtResource("2_2vygn")
-offset = Vector2(0, -16)
-hframes = 4
+[node name="ForgeSheet" type="AnimatedSprite2D" parent="." unique_id=597571652]
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_105mk")
+animation = &"active"
+frame_progress = 0.53445834
+offset = Vector2(0, -20)
