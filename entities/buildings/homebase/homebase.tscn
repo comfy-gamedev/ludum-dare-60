@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://cms8nwbv42ij7" path="res://entities/buildings/homebase/homebase.gd" id="1_hfr5c"]
 [ext_resource type="Texture2D" uid="uid://d082pk6q21lbm" path="res://entities/buildings/factory/factory.png" id="2_hfr5c"]
 [ext_resource type="Texture2D" uid="uid://ew4u6aa52qgt" path="res://entities/buildings/storage/barn.png" id="3_hfr5c"]
+[ext_resource type="Texture2D" uid="uid://dxkmjtodf7d23" path="res://entities/buildings/storage/down_arrow.png" id="4_65iju"]
 
 [node name="Homebase" type="Node2D" unique_id=88169237]
 script = ExtResource("1_hfr5c")
 
 [node name="SlotSprite0" type="Sprite2D" parent="." unique_id=127167537]
+visible = false
 position = Vector2(24, 24)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hfr5c")
@@ -16,6 +18,7 @@ vframes = 2
 frame = 2
 
 [node name="SlotSprite1" type="Sprite2D" parent="." unique_id=1973210380]
+visible = false
 position = Vector2(8, 24)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hfr5c")
@@ -24,6 +27,7 @@ vframes = 2
 frame = 2
 
 [node name="SlotSprite2" type="Sprite2D" parent="." unique_id=1737064230]
+visible = false
 position = Vector2(-8, 24)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hfr5c")
@@ -32,6 +36,7 @@ vframes = 2
 frame = 2
 
 [node name="SlotSprite3" type="Sprite2D" parent="." unique_id=1068211097]
+visible = false
 position = Vector2(-8, 8)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hfr5c")
@@ -40,6 +45,7 @@ vframes = 2
 frame = 2
 
 [node name="SlotSprite4" type="Sprite2D" parent="." unique_id=76287342]
+visible = false
 position = Vector2(-8, -8)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hfr5c")
@@ -48,6 +54,7 @@ vframes = 2
 frame = 2
 
 [node name="SlotSprite5" type="Sprite2D" parent="." unique_id=1897695915]
+visible = false
 position = Vector2(8, -8)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hfr5c")
@@ -56,6 +63,7 @@ vframes = 2
 frame = 2
 
 [node name="SlotSprite6" type="Sprite2D" parent="." unique_id=2076674736]
+visible = false
 position = Vector2(24, -8)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hfr5c")
@@ -64,6 +72,7 @@ vframes = 2
 frame = 2
 
 [node name="SlotSprite7" type="Sprite2D" parent="." unique_id=862962370]
+visible = false
 position = Vector2(24, 8)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hfr5c")
@@ -72,6 +81,17 @@ vframes = 2
 frame = 2
 
 [node name="HomebaseCenter" type="Sprite2D" parent="." unique_id=2072700081]
-position = Vector2(8, 21)
+position = Vector2(8, 29)
 texture = ExtResource("3_hfr5c")
-offset = Vector2(0, -22)
+offset = Vector2(0, -24)
+
+[node name="Label" type="Label" parent="." unique_id=2020009046]
+offset_left = -13.0
+offset_top = -32.0
+offset_right = 29.0
+offset_bottom = -23.0
+text = "Deposit"
+
+[node name="DownArrow" type="Sprite2D" parent="." unique_id=1315677941]
+position = Vector2(8, -20)
+texture = ExtResource("4_65iju")
