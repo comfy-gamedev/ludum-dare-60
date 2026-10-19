@@ -90,6 +90,32 @@ offset_right = 166.0
 offset_bottom = 75.0
 text = "Easy Mode"
 
+[node name="VolumeVSlider" type="VSlider" parent="." unique_id=1852408716]
+offset_left = 221.0
+offset_top = 3.0
+offset_right = 237.0
+offset_bottom = 75.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Panel" type="Panel" parent="." unique_id=1906355306]
+offset_left = 195.0
+offset_top = 76.0
+offset_right = 238.0
+offset_bottom = 89.0
+
+[node name="VolumeLabel" type="Label" parent="Panel" unique_id=402242926]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Tutor1" to="." method="_on_tutor_1_pressed"]
 [connection signal="pressed" from="Tutor2" to="." method="_on_tutor_2_pressed"]
 [connection signal="pressed" from="Tutor3" to="." method="_on_tutor_3_pressed"]
@@ -97,3 +123,4 @@ text = "Easy Mode"
 [connection signal="pressed" from="Tutor5" to="." method="_on_tutor_5_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="value_changed" from="VolumeVSlider" to="." method="_on_volume_v_slider_value_changed"]
