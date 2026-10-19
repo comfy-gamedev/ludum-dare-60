@@ -20,17 +20,31 @@ func _ready() -> void:
 		_update()
 		return
 	
+	Main.current.building_add_part(self, grid_pos + Vector2i(-1, 0), 1)
+	Main.current.building_add_part(self, grid_pos + Vector2i(0, 0), 0)
 	Main.current.building_add_part(self, grid_pos + Vector2i(-1, -1), 2)
-	Main.current.building_add_part(self, grid_pos + Vector2i(-1, 0), 0)
-	Main.current.building_add_part(self, grid_pos, 1)
 	Main.current.building_add_part(self, grid_pos + Vector2i(0, -1), 2)
+	
+	Main.current.register_tick_entity(self)
 	
 	_update()
 
 
+func tick(t: int) -> void:
+	if t == Main.CYCLE_END:
+		for item in items:
+			if item.sprite:
+				item.sprite.queue_free()
+		items.clear()
+		if result and result.sprite:
+			result.sprite.queue_free()
+			result = null
+		_update()
+
+
 func _pos_to_part(pos: Vector2i) -> int:
 	match pos - grid_pos:
-		Vector2i(-2, 0): return 1
+		Vector2i(-1, 0): return 1
 		_: return 0
 
 

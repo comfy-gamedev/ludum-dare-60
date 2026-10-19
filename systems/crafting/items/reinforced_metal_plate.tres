@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://sbxmx8bv4muj"]
+
+[ext_resource type="ArrayMesh" uid="uid://bx8b6b7dveop4" path="res://assets/shid/Girth_metal_wedge.glb" id="1_xhwwa"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_wn54p"]
+
+[resource]
+script = ExtResource("2_wn54p")
+name = "R. Metal Plate"
+mesh = ExtResource("1_xhwwa")
+kind = 2
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

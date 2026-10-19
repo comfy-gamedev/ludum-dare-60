@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://b3ukwg12d5l8l"]
+
+[ext_resource type="Script" uid="uid://dpuopuvr10t3x" path="res://systems/crafting/recipe_item.gd" id="1_480r0"]
+[ext_resource type="Resource" uid="uid://bi8rf0oimqe0l" path="res://systems/crafting/items/ingot.tres" id="2_wo8hm"]
+[ext_resource type="Script" uid="uid://cxexxx4lluwrm" path="res://systems/crafting/recipe_item_single.gd" id="3_nb4ta"]
+[ext_resource type="Resource" uid="uid://d1o0462y3swpx" path="res://systems/crafting/items/tools.tres" id="4_wo8hm"]
+[ext_resource type="Resource" uid="uid://sbxmx8bv4muj" path="res://systems/crafting/items/reinforced_metal_plate.tres" id="5_480r0"]
+[ext_resource type="Resource" uid="uid://bo7kjfrl8fhfi" path="res://systems/crafting/items/metal_plate.tres" id="5_nm4qb"]
+[ext_resource type="Script" uid="uid://cfipoik8do1er" path="res://systems/crafting/recipe.gd" id="6_370tj"]
+
+[sub_resource type="Resource" id="Resource_wo8hm"]
+resource_name = "Metal Plate"
+script = ExtResource("3_nb4ta")
+item = ExtResource("5_nm4qb")
+metadata/_custom_type_script = "uid://cxexxx4lluwrm"
+
+[sub_resource type="Resource" id="Resource_nb4ta"]
+resource_name = "Tools"
+script = ExtResource("3_nb4ta")
+item = ExtResource("4_wo8hm")
+metadata/_custom_type_script = "uid://cxexxx4lluwrm"
+
+[sub_resource type="Resource" id="Resource_ag8x4"]
+resource_name = "Ingot"
+script = ExtResource("3_nb4ta")
+item = ExtResource("2_wo8hm")
+metadata/_custom_type_script = "uid://cxexxx4lluwrm"
+
+[resource]
+script = ExtResource("6_370tj")
+ingredients = Array[ExtResource("1_480r0")]([SubResource("Resource_wo8hm"), SubResource("Resource_nb4ta"), SubResource("Resource_ag8x4")])
+result = ExtResource("5_480r0")
+metadata/_custom_type_script = "uid://cfipoik8do1er"

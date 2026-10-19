@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dpuopuvr10t3x" path="res://systems/crafting/recipe_item.gd" id="1_ci4jk"]
 [ext_resource type="Resource" uid="uid://b667oo3kfvimg" path="res://systems/crafting/items/cog.tres" id="2_uviiv"]
 [ext_resource type="Script" uid="uid://cxexxx4lluwrm" path="res://systems/crafting/recipe_item_single.gd" id="3_l8koc"]
+[ext_resource type="Resource" uid="uid://d1o0462y3swpx" path="res://systems/crafting/items/tools.tres" id="4_uviiv"]
 [ext_resource type="Resource" uid="uid://br2c67mw24vve" path="res://systems/crafting/items/mechanism.tres" id="5_ci4jk"]
-[ext_resource type="Resource" uid="uid://bo7kjfrl8fhfi" path="res://systems/crafting/items/metal_plate.tres" id="5_dvixh"]
 [ext_resource type="Resource" uid="uid://cdits04xuhqoy" path="res://systems/crafting/items/wire.tres" id="5_uviiv"]
 [ext_resource type="Script" uid="uid://cfipoik8do1er" path="res://systems/crafting/recipe.gd" id="6_x0toi"]
 
@@ -15,9 +15,9 @@ item = ExtResource("2_uviiv")
 metadata/_custom_type_script = "uid://cxexxx4lluwrm"
 
 [sub_resource type="Resource" id="Resource_l8koc"]
-resource_name = "Metal Plate"
+resource_name = "Tools"
 script = ExtResource("3_l8koc")
-item = ExtResource("5_dvixh")
+item = ExtResource("4_uviiv")
 metadata/_custom_type_script = "uid://cxexxx4lluwrm"
 
 [sub_resource type="Resource" id="Resource_agin2"]

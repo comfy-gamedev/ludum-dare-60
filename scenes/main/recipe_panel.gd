@@ -3,6 +3,10 @@ class_name RecipePanel
 
 signal clicked()
 
+const BAKERY_ICON = preload("uid://boosn5ec8ct88")
+const CARPENTRY_ICON = preload("uid://dtu5asfcfejp6")
+const FORGE_ICON = preload("uid://btefl87joxkgr")
+
 @export var item: Item
 @export var highlighted: bool = false: set = set_highlighted
 @export var normal_style: StyleBox
@@ -25,6 +29,7 @@ var input_output_positions: Array[Vector2] = [Vector2.ZERO, Vector2.ZERO, Vector
 
 @onready var color_rect: ColorRect = $ColorRect
 @onready var item_sprite: ItemSprite = $ColorRect/ItemSprite
+@onready var workshop_icon: Sprite2D = $WorkshopIcon
 
 
 func _ready() -> void:
@@ -85,3 +90,13 @@ func _update() -> void:
 			rect = rect.expand(input_output_positions[i])
 	rect.position += position
 	queue_redraw()
+	
+	match recipe.workshop:
+		Recipe.Workshop.BAKERY:
+			workshop_icon.texture = BAKERY_ICON
+		Recipe.Workshop.CARPENTER:
+			workshop_icon.texture = CARPENTRY_ICON
+		Recipe.Workshop.FORGE:
+			workshop_icon.texture = FORGE_ICON
+		_:
+			workshop_icon.texture = null
