@@ -130,6 +130,7 @@ occlusion_enabled = false
 metadata/_edit_lock_ = true
 
 [node name="EntityRoot" type="Node2D" parent="." unique_id=625467341]
+y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="PreviewRoot" type="Node2D" parent="." unique_id=968687368]
