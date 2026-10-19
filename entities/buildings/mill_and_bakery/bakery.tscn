@@ -4,9 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dens6u188d8l5" path="res://entities/buildings/mill_and_bakery/mill_and_bakery_sheet.png" id="2_ppday"]
 
 [node name="Bakery" type="Node2D" unique_id=29687319]
+y_sort_enabled = true
 script = ExtResource("1_hvu3c")
 
 [node name="MillAndBakerySheet" type="Sprite2D" parent="." unique_id=1783586864]
-position = Vector2(-8, -16)
+position = Vector2(-8, 16)
 texture = ExtResource("2_ppday")
+offset = Vector2(0, -33)
 hframes = 4
