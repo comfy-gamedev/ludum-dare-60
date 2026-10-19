@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bflo1auxp4chy"]
+
+[ext_resource type="PackedScene" uid="uid://bj2io7eewnqlg" path="res://scenes/main/main.tscn" id="1_rqo37"]
+[ext_resource type="Script" uid="uid://dmdx676ybbnl3" path="res://scenes/tutorials/tutor_4.gd" id="2_rqo37"]
+
+[node name="tutor4" unique_id=331988997 instance=ExtResource("1_rqo37")]
+script = ExtResource("2_rqo37")

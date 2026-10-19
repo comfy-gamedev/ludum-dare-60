@@ -1,4 +1,5 @@
 extends BaseBuilding
+class_name FactoryBuilding
 
 const ITEM_SPRITE = preload("uid://b6ueuaycfmiyo")
 const SLOT_OPEN = 2

@@ -50,7 +50,7 @@ horizontal_alignment = 1
 [node name="Button" type="Button" parent="." unique_id=1239131946]
 z_index = 2
 offset_left = 143.0
-offset_top = 128.0
+offset_top = 142.0
 offset_right = 239.0
 offset_bottom = 159.0
 theme = ExtResource("2_eoerb")
@@ -58,30 +58,53 @@ text = "Main Menu"
 
 [node name="Tutor1" type="Button" parent="." unique_id=814339744]
 z_index = 2
-offset_left = 160.0
-offset_top = 59.0
+offset_left = 146.0
+offset_top = 60.0
 offset_right = 239.0
-offset_bottom = 80.0
+offset_bottom = 76.0
 theme = ExtResource("2_eoerb")
-text = "Tutorial 1"
+theme_override_font_sizes/font_size = 6
+text = "Tutorial (Get Wood)"
 
 [node name="Tutor2" type="Button" parent="." unique_id=440905258]
 z_index = 2
-offset_left = 160.0
-offset_top = 82.0
+offset_left = 144.0
+offset_top = 77.0
 offset_right = 239.0
-offset_bottom = 103.0
+offset_bottom = 93.0
 theme = ExtResource("2_eoerb")
-text = "Tutorial 2"
+theme_override_font_sizes/font_size = 6
+text = "Tutorial (Earn Gold)"
 
 [node name="Tutor3" type="Button" parent="." unique_id=827685045]
 z_index = 2
-offset_left = 160.0
-offset_top = 105.0
+offset_left = 139.0
+offset_top = 94.0
 offset_right = 239.0
-offset_bottom = 126.0
+offset_bottom = 109.0
 theme = ExtResource("2_eoerb")
-text = "Tutorial 3"
+theme_override_font_sizes/font_size = 6
+text = "Tutorial (Make Flour)"
+
+[node name="Tutor4" type="Button" parent="." unique_id=1108154672]
+z_index = 2
+offset_left = 130.0
+offset_top = 110.0
+offset_right = 239.0
+offset_bottom = 125.0
+theme = ExtResource("2_eoerb")
+theme_override_font_sizes/font_size = 6
+text = "Tutorial (Use Pedestal)"
+
+[node name="Tutor5" type="Button" parent="." unique_id=1351442762]
+z_index = 2
+offset_left = 140.0
+offset_top = 126.0
+offset_right = 239.0
+offset_bottom = 141.0
+theme = ExtResource("2_eoerb")
+theme_override_font_sizes/font_size = 6
+text = "Tutorial (Craft item)"
 
 [node name="logs" type="Node2D" parent="." unique_id=1340864861]
 
@@ -93,4 +116,6 @@ autostart = true
 [connection signal="pressed" from="Tutor1" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Tutor2" to="." method="_on_tutor_2_pressed"]
 [connection signal="pressed" from="Tutor3" to="." method="_on_tutor_3_pressed"]
+[connection signal="pressed" from="Tutor4" to="." method="_on_tutor_4_pressed"]
+[connection signal="pressed" from="Tutor5" to="." method="_on_tutor_5_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
