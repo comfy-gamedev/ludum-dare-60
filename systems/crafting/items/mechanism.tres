@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://br2c67mw24vve"]
+
+[ext_resource type="ArrayMesh" uid="uid://kkxug7eq1i8e" path="res://assets/shid/girth_mechanism.glb" id="1_1k4ek"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_y5rim"]
+
+[resource]
+script = ExtResource("2_y5rim")
+name = "Mechanism"
+mesh = ExtResource("1_1k4ek")
+kind = 2
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"
