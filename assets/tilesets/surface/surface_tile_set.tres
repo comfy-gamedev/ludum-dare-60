@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bi3wvyutuegk4" path="res://assets/tilesets/surface/surface_tiles.png" id="1_tgpv7"]
 [ext_resource type="Texture2D" uid="uid://bobscu7tvu7tg" path="res://assets/tilesets/surface/path_tiles.png" id="2_lq4wr"]
+[ext_resource type="Texture2D" uid="uid://dq7t62vw1c1ui" path="res://assets/tilesets/surface/fast_path_tiles.png" id="3_f334x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lq4wr"]
 texture = ExtResource("1_tgpv7")
@@ -29,6 +30,26 @@ texture = ExtResource("2_lq4wr")
 2:2/0 = 0
 2:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_keibh"]
+texture = ExtResource("3_f334x")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
 [resource]
 sources/1 = SubResource("TileSetAtlasSource_lq4wr")
 sources/2 = SubResource("TileSetAtlasSource_f334x")
+sources/3 = SubResource("TileSetAtlasSource_keibh")
