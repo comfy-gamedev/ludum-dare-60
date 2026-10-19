@@ -55,6 +55,8 @@ enum TileType {
 
 @onready var gold_label: Label = $UICanvasLayer/GoldLabel
 
+@onready var recipe_map_panel: RecipeMap = $UICanvasLayer/RecipeMapPanel
+
 var building_parts: Dictionary[Vector2i, BuildingPart]
 
 var tick_entities: Dictionary[Node, bool] # HashSet
@@ -145,6 +147,9 @@ func _tick() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_toggle"):
 		camera_2d.zoom = Vector2(0.5, 0.5) if camera_2d.zoom == Vector2.ONE else Vector2.ONE
+	
+	elif event.is_action_pressed("toggle_compendium"):
+		recipe_map_panel.visible = not recipe_map_panel.visible
 	
 	elif event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -363,6 +368,10 @@ func _refresh_preview() -> void:
 
 func _on_hotbar_selection_changed() -> void:
 	_refresh_preview()
+
+
+func _on_map_toggle_button_pressed() -> void:
+	recipe_map_panel.visible = not recipe_map_panel.visible
 
 
 class BuildingPart:
