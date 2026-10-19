@@ -22,7 +22,7 @@ const ROCK = preload("uid://cpag0rr03s5qo")
 const TREE = preload("uid://bayold7n6brg0")
 const WATER = preload("uid://ceiw0p6112gmu")
 
-const RESOURCES = [BUSH, CRYSTAL, ROCK, TREE, WATER]
+const RESOURCES = [BUSH, ROCK, TREE, WATER, BUSH, ROCK, TREE, CRYSTAL]
 
 const CONSTRUCTIONS = [
 	preload("uid://c0rrybc5bgfno"),
@@ -100,7 +100,14 @@ func _ready() -> void:
 	for y in WORLD_SIZE.y:
 		for x in WORLD_SIZE.x:
 			var p := Vector2i(x, y)
-			if randi_range(0, 10) == 0 and get_tile_type(p) == TileType.NOTHING:
+			if randi_range(0, 25) == 0 and get_tile_type(p) == TileType.NOTHING:
+				var skip = false
+				for d in GridMetric.DIRS:
+					if get_tile_type(p + d) != TileType.NOTHING:
+						if randi_range(0, 4) != 0:
+							skip = true
+				if skip:
+					continue
 				var tree = RESOURCES.pick_random().instantiate()
 				tree.grid_pos = p
 				entity_root.add_child(tree)

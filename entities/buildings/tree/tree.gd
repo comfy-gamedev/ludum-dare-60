@@ -13,6 +13,7 @@ var remaining: int = 0: set = set_remaining
 func _ready() -> void:
 	Main.current.building_add_part(self, grid_pos, 0)
 	Main.current.register_tick_entity(self)
+	remaining = daily_limit
 	sprite_2d.visible = remaining > 0
 	depleted_sprite_2d.visible = remaining == 0
 
