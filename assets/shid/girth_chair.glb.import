@@ -1,15 +1,15 @@
 [remap]
 
-importer="scene"
+importer="ArrayMesh"
 importer_version=1
-type="PackedScene"
+type="ArrayMesh"
 uid="uid://c7l37mc0vqa5"
-path="res://.godot/imported/girth_chair.glb-1ff22f3ad289536bd62e3bb08e855edd.scn"
+path="res://.godot/imported/girth_chair.glb-1ff22f3ad289536bd62e3bb08e855edd.res"
 
 [deps]
 
 source_file="res://assets/shid/girth_chair.glb"
-dest_files=["res://.godot/imported/girth_chair.glb-1ff22f3ad289536bd62e3bb08e855edd.scn"]
+dest_files=["res://.godot/imported/girth_chair.glb-1ff22f3ad289536bd62e3bb08e855edd.res"]
 
 [params]
 

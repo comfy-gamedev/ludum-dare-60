@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cdits04xuhqoy"]
+
+[ext_resource type="ArrayMesh" uid="uid://c5t0rnpkb5kri" path="res://assets/shid/girth_wire.glb" id="1_8it56"]
+[ext_resource type="Script" uid="uid://b78nb8u3yrl54" path="res://systems/crafting/item.gd" id="2_2jwmi"]
+
+[resource]
+script = ExtResource("2_2jwmi")
+name = "Wire"
+mesh = ExtResource("1_8it56")
+kind = 2
+metadata/_custom_type_script = "uid://b78nb8u3yrl54"

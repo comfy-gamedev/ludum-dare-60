@@ -52,12 +52,11 @@ func place_item(pos: Vector2i, item_inst: ItemInstance) -> void:
 	
 	if not items.is_empty():
 		result = Cookbook.cook(items)
-		if not result:
-			return
-		for item in items:
-			if item.sprite:
-				item.sprite.queue_free()
-		items.clear()
+		if result:
+			for item in items:
+				if item.sprite:
+					item.sprite.queue_free()
+			items.clear()
 	
 	_update.call_deferred()
 
