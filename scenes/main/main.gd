@@ -359,6 +359,13 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 			if bp.building.placement_reason == BaseBuilding.PlacementReason.PLAYER:
 				if bp.building is PedestalBuilding:
 					pedestals.erase(bp.building)
+				if bp.building.get("item"):
+					bp.building.item.sprite.queue_free()
+				if bp.building.get("items"):
+					for i in bp.building.items:
+						i.sprite.queue_free()
+				if bp.building.get("result"):
+					bp.building.result.sprite.queue_free()
 				bp.building.get_parent().remove_child(bp.building)
 				bp.building.queue_free()
 				gold += bp.building.info.gold_cost
