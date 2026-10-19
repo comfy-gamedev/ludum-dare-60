@@ -1,37 +1,42 @@
 [gd_scene format=3 uid="uid://qwy22yet3em5"]
 
 [ext_resource type="Script" uid="uid://deyns8y8x6uq3" path="res://entities/buildings/factory/factory.gd" id="1_838ka"]
-[ext_resource type="Texture2D" uid="uid://d082pk6q21lbm" path="res://entities/buildings/factory/factory.png" id="1_s3d1n"]
+[ext_resource type="SpriteFrames" uid="uid://d38csxte7sa77" path="res://entities/buildings/factory/input_slot_frames.tres" id="2_4c0lw"]
+[ext_resource type="Texture2D" uid="uid://datpgllnr7dxb" path="res://entities/buildings/factory/background.png" id="2_5dai4"]
+[ext_resource type="SpriteFrames" uid="uid://dary2jxuhhswh" path="res://entities/buildings/factory/output_slot_frames.tres" id="4_5dai4"]
 
 [node name="Factory" type="Node2D" unique_id=29687319]
 script = ExtResource("1_838ka")
 type_name = "Factory"
 
-[node name="SlotSprite0" type="Sprite2D" parent="." unique_id=454115154]
-position = Vector2(8, 8)
-scale = Vector2(2, 2)
-texture = ExtResource("1_s3d1n")
-hframes = 4
-vframes = 2
+[node name="BackgroundSprite2D" type="Sprite2D" parent="." unique_id=128320248]
+position = Vector2(0, -15)
+texture = ExtResource("2_5dai4")
+offset = Vector2(0, 16)
 
-[node name="SlotSprite1" type="Sprite2D" parent="." unique_id=835922612]
-position = Vector2(-8, 8)
-scale = Vector2(2, 2)
-texture = ExtResource("1_s3d1n")
-hframes = 4
-vframes = 2
+[node name="SlotSprite0" type="AnimatedSprite2D" parent="." unique_id=686979154]
+position = Vector2(8, 15)
+sprite_frames = ExtResource("2_4c0lw")
+autoplay = "default"
+offset = Vector2(0, -13)
 
-[node name="SlotSprite2" type="Sprite2D" parent="." unique_id=1929405179]
-position = Vector2(-8, -8)
-scale = Vector2(2, 2)
-texture = ExtResource("1_s3d1n")
-hframes = 4
-vframes = 2
+[node name="SlotSprite1" type="AnimatedSprite2D" parent="." unique_id=1985443160]
+position = Vector2(-8, 15)
+sprite_frames = ExtResource("2_4c0lw")
+autoplay = "default"
+offset = Vector2(0, -13)
 
-[node name="SlotSprite3" type="Sprite2D" parent="." unique_id=1534128979]
-position = Vector2(8, -8)
-scale = Vector2(2, 2)
-texture = ExtResource("1_s3d1n")
-hframes = 4
-vframes = 2
-frame = 2
+[node name="SlotSprite2" type="AnimatedSprite2D" parent="." unique_id=1538552590]
+position = Vector2(-8, -1)
+sprite_frames = ExtResource("2_4c0lw")
+autoplay = "default"
+offset = Vector2(0, -13)
+
+[node name="SlotSprite3" type="AnimatedSprite2D" parent="." unique_id=217491624]
+position = Vector2(8, -14)
+sprite_frames = ExtResource("4_5dai4")
+animation = &"output"
+autoplay = "default"
+frame = 16
+frame_progress = 1.0
+offset = Vector2(0, 6.5)
