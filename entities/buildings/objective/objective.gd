@@ -3,6 +3,7 @@ extends BaseBuilding
 var item: ItemInstance = null
 
 @export var need: Item
+@export var is_tutorial = false
 
 const ITEM_SPRITE = preload("uid://b6ueuaycfmiyo")
 
@@ -29,8 +30,11 @@ func place_item(_pos: Vector2i, item_inst: ItemInstance) -> void:
 	remove_child(get_child(0))
 	item = item_inst
 	item_inst.sprite.position = position
-	Main.current.objective_count += 1
-	if Main.current.objective_count >= Main.current.OBJECTIVE_GOAL:
+	#Main.current.objective_count += 1
+	#if Main.current.objective_count >= Main.current.OBJECTIVE_GOAL:
+	if is_tutorial:
+		SceneGirl.change_scene("res://scenes/tutorials/tutorial_win.tscn")
+	else:
 		Globals.elapsed_days = Main.current.day_count
 		SceneGirl.change_scene("res://scenes/end_scene/end_scene.tscn")
 

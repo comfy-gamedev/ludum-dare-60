@@ -44,5 +44,5 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:	
 	super(delta) 
-	if gold >= 9:
-		SceneGirl.change_scene("res://scenes/end_scene/end_scene.tscn")
+	if gold >= 20:
+		SceneGirl.change_scene("res://scenes/tutorials/tutorial_win.tscn")

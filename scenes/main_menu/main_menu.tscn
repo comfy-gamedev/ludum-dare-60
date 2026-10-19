@@ -46,6 +46,7 @@ theme = ExtResource("2_0ebjn")
 text = "Tutorial (Make Flour)"
 
 [node name="Tutor4" type="Button" parent="." unique_id=104706860]
+visible = false
 z_index = 2
 offset_left = 2.0
 offset_top = 127.0
@@ -55,6 +56,7 @@ theme = ExtResource("2_0ebjn")
 text = "Tutorial (Use Pedestal)"
 
 [node name="Tutor5" type="Button" parent="." unique_id=1899182353]
+visible = false
 z_index = 2
 offset_left = 2.0
 offset_top = 143.0

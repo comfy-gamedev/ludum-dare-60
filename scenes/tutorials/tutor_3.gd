@@ -17,6 +17,7 @@ func _ready() -> void:
 	@warning_ignore("integer_division")
 	ob.grid_pos = (WORLD_SIZE / 2) + Vector2i(0, 0)
 	ob.need = preload("uid://dcbi7ka0kvgjf")
+	ob.is_tutorial = true
 	entity_root.add_child(ob)
 	
 	for y in WORLD_SIZE.y:
