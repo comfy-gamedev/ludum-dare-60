@@ -161,7 +161,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("toggle_compendium"):
 		recipe_map_panel.visible = not recipe_map_panel.visible
 	
-	elif event.is_action_pressed("debug_goto_night"):
+	elif event.is_action_pressed("debug_goto_night") and _ticking:
 		_tick_t = CYCLE_END
 	
 	elif event is InputEventMouseButton:
