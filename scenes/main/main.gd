@@ -233,6 +233,7 @@ func _do_night() -> void:
 	MusicMan.cue_music("troubles")
 	night_panel.show()
 	go_button.hide()
+	auto_check_button.show()
 
 
 func _do_dawn() -> void:
@@ -240,6 +241,8 @@ func _do_dawn() -> void:
 	MusicMan.event("Nightstart1")
 	MusicMan.cue_music("hops")
 	go_button.hide()
+	if !auto_check_button.button_pressed:
+		auto_check_button.hide()
 
 
 func get_tick() -> int:

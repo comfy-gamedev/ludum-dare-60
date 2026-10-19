@@ -201,6 +201,7 @@ layout_mode = 2
 text = "GO ->"
 
 [node name="AutoCheckButton" type="CheckButton" parent="UICanvasLayer/NightPanel" unique_id=847894824]
+visible = false
 layout_mode = 2
 focus_mode = 0
 text = "Auto"
