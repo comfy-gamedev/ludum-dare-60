@@ -140,6 +140,16 @@ metadata/_edit_lock_ = true
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="." unique_id=553167334]
 
+[node name="ColorRect" type="ColorRect" parent="UICanvasLayer" unique_id=1324507170]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
+
 [node name="Hotbar" type="HBoxContainer" parent="UICanvasLayer" unique_id=1027206782]
 anchors_preset = 12
 anchor_top = 1.0
@@ -151,16 +161,6 @@ grow_vertical = 0
 theme = SubResource("Theme_yyfjg")
 theme_override_constants/separation = 1
 script = ExtResource("3_ow5a4")
-metadata/_edit_lock_ = true
-
-[node name="ColorRect" type="ColorRect" parent="UICanvasLayer" unique_id=1324507170]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
 metadata/_edit_lock_ = true
 
 [node name="GoldLabel" type="Label" parent="UICanvasLayer" unique_id=17194083]
