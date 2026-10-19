@@ -7,6 +7,7 @@
 
 [node name="Crystal" unique_id=744563053 instance=ExtResource("1_c2jsj")]
 item = ExtResource("2_7uoe4")
+item_value = 3
 daily_limit = 1
 
 [node name="Sprite2D" parent="." index="0" unique_id=873779887]

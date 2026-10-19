@@ -104,7 +104,7 @@ func _ready() -> void:
 	for y in WORLD_SIZE.y:
 		for x in WORLD_SIZE.x:
 			var p := Vector2i(x, y)
-			surface_tile_map_layer.set_cell(p, 1, Vector2i(0, 0))
+			surface_tile_map_layer.set_cell(p, 1, Vector2i(randi() % 2, randi() % 2))
 	
 	for y in WORLD_SIZE.y:
 		for x in WORLD_SIZE.x:

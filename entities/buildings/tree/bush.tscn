@@ -9,6 +9,7 @@
 item = ExtResource("2_xw7s3")
 
 [node name="Sprite2D" parent="." index="0" unique_id=873779887]
+position = Vector2(8, 14)
 texture = ExtResource("2_vnfd8")
 offset = Vector2(-9, -21)
 

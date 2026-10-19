@@ -2,6 +2,7 @@ class_name TreeEntity
 extends BaseBuilding
 
 @export var item: Item
+@export var item_value: int = 1
 @export var daily_limit: int = 3
 
 var remaining: int = 0: set = set_remaining
@@ -46,7 +47,7 @@ func take_item(pos: Vector2i) -> ItemInstance:
 	assert(remaining > 0)
 	var item_inst = ItemInstance.new()
 	item_inst.item = item
-	item_inst.value = 1
+	item_inst.value = item_value
 	remaining -= 1
 	return item_inst
 
