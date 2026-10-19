@@ -23,3 +23,17 @@ layout_mode = 2
 
 [node name="RecipeMapControl" type="Control" parent="ScrollContainer" unique_id=1661976644]
 layout_mode = 2
+
+[node name="Control" type="Control" parent="." unique_id=38397425]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Control" unique_id=467564300]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.9117647
+anchor_right = 1.0
+anchor_bottom = 0.97794116
+text = "? = any item"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true

@@ -176,15 +176,6 @@ offset_right = 85.0
 offset_bottom = 9.0
 text = "0/20 days"
 
-[node name="RecipeMapPanel" parent="UICanvasLayer" unique_id=831180763 instance=ExtResource("6_ow5a4")]
-visible = false
-
-[node name="MapToggleButton" type="Button" parent="UICanvasLayer" unique_id=755304943]
-offset_left = 192.0
-offset_right = 240.0
-offset_bottom = 11.0
-text = "Recipes"
-
 [node name="NightPanel" type="VBoxContainer" parent="UICanvasLayer" unique_id=1823003314]
 anchors_preset = 3
 anchor_left = 1.0
@@ -221,10 +212,19 @@ offset_bottom = 9.0
 grow_horizontal = 2
 text = "C"
 
+[node name="RecipeMapPanel" parent="UICanvasLayer" unique_id=831180763 instance=ExtResource("6_ow5a4")]
+visible = false
+
+[node name="MapToggleButton" type="Button" parent="UICanvasLayer" unique_id=755304943]
+offset_left = 192.0
+offset_right = 240.0
+offset_bottom = 11.0
+text = "Recipes"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1026538169]
 libraries/ = SubResource("AnimationLibrary_b1x3f")
 
 [connection signal="selection_changed" from="UICanvasLayer/Hotbar" to="." method="_on_hotbar_selection_changed"]
-[connection signal="pressed" from="UICanvasLayer/MapToggleButton" to="." method="_on_map_toggle_button_pressed"]
 [connection signal="pressed" from="UICanvasLayer/NightPanel/GoButton" to="." method="_on_go_button_pressed"]
 [connection signal="pressed" from="UICanvasLayer/CenterButton" to="." method="_on_center_button_pressed"]
+[connection signal="pressed" from="UICanvasLayer/MapToggleButton" to="." method="_on_map_toggle_button_pressed"]
