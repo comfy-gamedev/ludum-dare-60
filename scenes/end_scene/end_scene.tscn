@@ -2,12 +2,17 @@
 
 [ext_resource type="Script" uid="uid://djoygc0a7l8dq" path="res://scenes/end_scene/end_scene.gd" id="1_beabo"]
 [ext_resource type="Theme" uid="uid://cxg141t68uyj7" path="res://default_theme.tres" id="2_eoerb"]
-[ext_resource type="Resource" uid="uid://dr8h1qvukffh4" path="res://systems/crafting/items/log.tres" id="2_n06uv"]
 [ext_resource type="Texture2D" uid="uid://bi8s1murteij2" path="res://assets/tilesets/surface/grass_variants.png" id="4_6ef2h"]
+[ext_resource type="PackedScene" uid="uid://b6ueuaycfmiyo" path="res://item_sprite.tscn" id="5_dhv3n"]
+[ext_resource type="Resource" uid="uid://y1b2xhywjcbr" path="res://systems/crafting/items/tank.tres" id="6_5j1c8"]
+[ext_resource type="Texture2D" uid="uid://rhkmon1eu4j8" path="res://entities/little_guy/profile_pic.png" id="6_dhv3n"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vk4ao"]
+viewport_path = NodePath("SubViewport")
 
 [node name="EndScene" type="Node2D" unique_id=1162492104]
 script = ExtResource("1_beabo")
-item = ExtResource("2_n06uv")
+item = ExtResource("6_5j1c8")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1761207850]
 offset_right = 240.0
@@ -63,6 +68,29 @@ text = "Main Menu"
 [node name="Timer" type="Timer" parent="." unique_id=1636534742]
 wait_time = 0.1
 autostart = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=474739993]
+z_index = 2
+offset_left = 25.0
+offset_top = 66.0
+offset_right = 218.0
+offset_bottom = 105.0
+bbcode_enabled = true
+text = "What's the ritual?
+
+Building a tank for [color=red][shake]world domination[/shake][/color], of course!"
+horizontal_alignment = 1
+
+[node name="ItemSprite" parent="." unique_id=637216572 instance=ExtResource("5_dhv3n")]
+visible = true
+position = Vector2(154, 85)
+scale = Vector2(4, 4)
+texture = SubResource("ViewportTexture_vk4ao")
+item = ExtResource("6_5j1c8")
+
+[node name="Frog" type="Sprite2D" parent="." unique_id=244561476]
+position = Vector2(56, 71)
+texture = ExtResource("6_dhv3n")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
