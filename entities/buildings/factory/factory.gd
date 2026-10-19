@@ -2,8 +2,9 @@ extends BaseBuilding
 class_name FactoryBuilding
 
 const ITEM_SPRITE = preload("uid://b6ueuaycfmiyo")
-const SLOT_OPEN = 2
-const SLOT_CLOSED = 0
+
+@export var input_sprite_frames: SpriteFrames
+@export var output_sprite_frames: SpriteFrames
 
 var items: Array[ItemInstance] = [null, null, null, null]
 
@@ -13,6 +14,8 @@ var items: Array[ItemInstance] = [null, null, null, null]
 	$SlotSprite2,
 	$SlotSprite3,
 ]
+@onready var input_offset: Vector2 = $SlotSprite0.offset
+@onready var output_offset: Vector2 = $SlotSprite3.offset
 
 func _init() -> void:
 	grid_transform_changed.connect(_grid_transform_changed)
@@ -75,9 +78,9 @@ func place_item(pos: Vector2i, item_inst: ItemInstance) -> void:
 	
 	if items[0] and items[1] and items[2]:
 		for s in 3:
-			var spr = sprites[s]
+			var spr = sprites[posmod(s + grid_rot, 4)]
 			spr.play("craft")
-		sprites.back().play("output")
+		sprites[posmod(3 + grid_rot, 4)].play("output")
 		items[3] = Cookbook.cook(Recipe.Workshop.FACTORY, [items[0], items[1], items[2]])
 		for i in 3:
 			if items[i].sprite:
@@ -112,5 +115,7 @@ func _update() -> void:
 			Main.current.building_add_part(self, _part_to_pos(part), part)
 	
 	for part in 4:
+		sprites[posmod(part + grid_rot, 4)].sprite_frames = output_sprite_frames if part == 3 else input_sprite_frames
+		sprites[posmod(part + grid_rot, 4)].offset = output_offset if part == 3 else input_offset
 		if items[part]:
 			items[part].require_sprite().position = Vector2(_part_to_pos(part)) * GridMetric.GRID_PX

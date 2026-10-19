@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://qwy22yet3em5"]
+[gd_scene format=3 uid="uid://benecs05dkhl6"]
 
 [ext_resource type="Script" uid="uid://deyns8y8x6uq3" path="res://entities/buildings/factory/factory.gd" id="1_838ka"]
 [ext_resource type="SpriteFrames" uid="uid://d38csxte7sa77" path="res://entities/buildings/factory/input_slot_frames.tres" id="2_4c0lw"]
@@ -6,7 +6,10 @@
 [ext_resource type="SpriteFrames" uid="uid://dary2jxuhhswh" path="res://entities/buildings/factory/output_slot_frames.tres" id="4_5dai4"]
 
 [node name="Factory" type="Node2D" unique_id=29687319]
+y_sort_enabled = true
 script = ExtResource("1_838ka")
+input_sprite_frames = ExtResource("2_4c0lw")
+output_sprite_frames = ExtResource("4_5dai4")
 type_name = "Factory"
 
 [node name="BackgroundSprite2D" type="Sprite2D" parent="." unique_id=128320248]
@@ -30,10 +33,11 @@ offset = Vector2(0, -13)
 position = Vector2(-8, -1)
 sprite_frames = ExtResource("2_4c0lw")
 autoplay = "default"
+frame_progress = 1.0
 offset = Vector2(0, -13)
 
 [node name="SlotSprite3" type="AnimatedSprite2D" parent="." unique_id=217491624]
-position = Vector2(8, -14)
+position = Vector2(8, -1)
 sprite_frames = ExtResource("4_5dai4")
 autoplay = "default"
-offset = Vector2(0, 6.5)
+offset = Vector2(0, -6.5)
