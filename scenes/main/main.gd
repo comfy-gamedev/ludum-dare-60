@@ -239,7 +239,10 @@ func _do_night() -> void:
 func _do_dawn() -> void:
 	animation_player.play("dawn")
 	MusicMan.event("Nightstart1")
-	MusicMan.cue_music("hops")
+	if (day_count + 1) % 4 == 0:
+		MusicMan.cue_music("dragon")
+	else:
+		MusicMan.cue_music("hops")
 	go_button.hide()
 	if !auto_check_button.button_pressed:
 		auto_check_button.hide()
