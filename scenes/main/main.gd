@@ -288,6 +288,42 @@ func connect_paths(a: Vector2i, b: Vector2i) -> void:
 	f.call(b, a-b)
 
 
+func disconnect_paths(a: Vector2i, b: Vector2i) -> void:
+	assert((a-b) in GridMetric.DIRS)
+	assert(get_tile_type(a) == TileType.PATH)
+	
+	var nbor_map: Dictionary[int, Vector2i] = {
+		0b0000: Vector2i(0, 0),
+		0b0001: Vector2i(3, 0),
+		0b0010: Vector2i(2, 1),
+		0b0011: Vector2i(1, 3),
+		0b0100: Vector2i(3, 1),
+		0b0101: Vector2i(1, 1),
+		0b0110: Vector2i(0, 3),
+		0b0111: Vector2i(3, 3),
+		0b1000: Vector2i(2, 0),
+		0b1001: Vector2i(1, 2),
+		0b1010: Vector2i(1, 0),
+		0b1011: Vector2i(3, 2),
+		0b1100: Vector2i(0, 2),
+		0b1101: Vector2i(2, 2),
+		0b1110: Vector2i(2, 3),
+		0b1111: Vector2i(0, 1),
+	}
+	
+	var p := a
+	var d := b-a
+	
+	var s = surface_tile_map_layer.get_cell_source_id(p)
+	var c = surface_tile_map_layer.get_cell_atlas_coords(p)
+	var n = nbor_map.find_key(c)
+	assert(n != null)
+	var r = GridMetric.dir_to_rot(d)
+	var nn = n & ~(1 << r)
+	var cc = nbor_map[nn]
+	surface_tile_map_layer.set_cell(p, s, cc)
+
+
 func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 	if tool == ERASE_ICON:
 		var bp = get_building_part(grid_pos)
@@ -301,6 +337,9 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 		else:
 			if get_world_rect().has_point(grid_pos) and get_tile_type(grid_pos) != TileType.NOTHING:
 				surface_tile_map_layer.set_cell(grid_pos, BASE_TILE_SOURCE, Vector2i(0, 0))
+				for d in GridMetric.DIRS:
+					if get_tile_type(grid_pos + d) == TileType.PATH:
+						disconnect_paths(grid_pos + d, grid_pos)
 		
 		# TODO: fixup neighbor tiles (make paths become unfinished again)
 	
