@@ -18,7 +18,7 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_kcqhy"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_hwvw8"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Panel" type="Panel" unique_id=1395505682]
@@ -51,9 +51,9 @@ position = Vector2(3, 18)
 
 [node name="ItemSprite" parent="CanvasGroup" unique_id=637216572 instance=ExtResource("1_coevc")]
 visible = true
-texture = SubResource("ViewportTexture_kcqhy")
+texture = SubResource("ViewportTexture_hwvw8")
 item = ExtResource("2_yb0ro")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasGroup" unique_id=1369164404]
-position = Vector2(8, 3)
+position = Vector2(8, 12)
 texture = ExtResource("5_hwvw8")
