@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Ludum Dare 60"
-run/main_scene="uid://bj2io7eewnqlg"
+run/main_scene="uid://ddwuhjl6eldel"
 config/features=PackedStringArray("4.8", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://dlhdv2fgslbxb"
 
 [autoload]
 
