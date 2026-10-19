@@ -154,6 +154,7 @@ func _tick() -> void:
 		if is_instance_valid(ent) and not ent.is_queued_for_deletion():
 			ent.tick(_tick_t)
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_toggle"):
 		camera_2d.zoom = Vector2(0.5, 0.5) if camera_2d.zoom == Vector2.ONE else Vector2.ONE
@@ -161,8 +162,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("toggle_compendium"):
 		recipe_map_panel.visible = not recipe_map_panel.visible
 	
-	elif event.is_action_pressed("debug_goto_night") and _ticking:
+	elif event.is_action_pressed("recenter") and _ticking:
+		camera_2d.position = Vector2(WORLD_SIZE) * GridMetric.GRID_PX * 0.5
+	
+	elif OS.is_debug_build() and event.is_action_pressed("debug_goto_night") and _ticking:
 		_tick_t = CYCLE_END
+	
+	elif OS.is_debug_build() and event.is_action_pressed("debug_give_gold"):
+		gold += 500
 	
 	elif event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -449,11 +456,15 @@ func _on_map_toggle_button_pressed() -> void:
 	recipe_map_panel.visible = not recipe_map_panel.visible
 
 
+func _on_go_button_pressed() -> void:
+	_do_dawn()
+
+
+func _on_center_button_pressed() -> void:
+	camera_2d.position = Vector2(WORLD_SIZE) * GridMetric.GRID_PX * 0.5
+
+
 class BuildingPart:
 	var building: BaseBuilding
 	var grid_pos: Vector2i
 	var part: int
-
-
-func _on_go_button_pressed() -> void:
-	_do_dawn()

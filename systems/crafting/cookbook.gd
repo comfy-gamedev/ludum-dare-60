@@ -87,10 +87,10 @@ static func cook(workshop: Recipe.Workshop, ingredients: Array[ItemInstance]) ->
 		if complete:
 			valid.append(recipe)
 	
-	var result_item: Item = JUNKU
+	if valid.size() != 1 and ingredients.size() < 3:
+		return null
 	
-	if not valid.is_empty():
-		result_item = valid.pick_random().result # idk this could probably be improved
+	var result_item: Item = valid[0].result if valid.size() == 1 else JUNKU
 	
 	var item_inst := ItemInstance.new()
 	item_inst.item = result_item
