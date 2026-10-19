@@ -27,7 +27,8 @@ const RESOURCES = [BUSH, ROCK, TREE, WATER, BUSH, ROCK, TREE, CRYSTAL]
 const CONSTRUCTIONS = [
 	preload("uid://c0rrybc5bgfno"),
 	preload("uid://nmq3klwu0rtw"),
-	preload("uid://dihg3y5nmbf5i"),
+	preload("uid://bv0d35xti4rip"),
+	#preload("uid://dihg3y5nmbf5i"),#pedestal :(
 	#preload("uid://bfkgt3wvanaqj"),
 	preload("uid://c7sjwdmihoy6j"),
 	preload("uid://c85aj58cwtkhk"),
@@ -67,7 +68,7 @@ var building_parts: Dictionary[Vector2i, BuildingPart]
 var tick_entities: Dictionary[Node, bool] # HashSet
 var pedestals: Array[BaseBuilding] = []
 
-var gold: int = 5:
+var gold: int = 15:
 	set(val):
 		gold = val
 		gold_label.text = "Gold: " + str(val)

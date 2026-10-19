@@ -13,7 +13,8 @@ func can_take_item(_pos: Vector2i) -> bool:
 
 
 func place_item(_pos: Vector2i, item_inst: ItemInstance) -> void:
-	Main.current.gold += item_inst.value
+	@warning_ignore("integer_division")
+	Main.current.gold += item_inst.value / 2
 	item_inst.sprite.queue_free()
 
 

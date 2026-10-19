@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="ConstructionInfo" format=3 uid="uid://cniaep2ikgsjy"]
 
-[ext_resource type="Resource" uid="uid://dr8h1qvukffh4" path="res://systems/crafting/items/log.tres" id="1_vta34"]
 [ext_resource type="Texture2D" uid="uid://bxo6h0qpw2tyl" path="res://assets/ui/factory_icon.png" id="2_5o46a"]
 [ext_resource type="PackedScene" uid="uid://qwy22yet3em5" path="res://entities/buildings/factory/factory.tscn" id="2_jrkvn"]
 [ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="2_vta34"]
@@ -11,7 +10,6 @@ icon = ExtResource("2_5o46a")
 building_scene = ExtResource("2_jrkvn")
 building_can_rotate = true
 tileset_source_id = 2
-gold_cost = 2
-item_req = ExtResource("1_vta34")
+gold_cost = 25
 placement_size = Rect2i(-1, -1, 2, 2)
 metadata/_custom_type_script = "uid://b4frqj5l57l6l"

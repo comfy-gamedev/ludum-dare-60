@@ -9,5 +9,5 @@ script = ExtResource("1_8jg3c")
 icon = ExtResource("2_v4vnp")
 building_scene = ExtResource("1_6280i")
 tileset_source_id = 2
-gold_cost = 1
+gold_cost = 3
 metadata/_custom_type_script = "uid://b4frqj5l57l6l"
