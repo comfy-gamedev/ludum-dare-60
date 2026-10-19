@@ -203,9 +203,20 @@ layout_mode = 2
 focus_mode = 0
 text = "Auto"
 
+[node name="CenterButton" type="Button" parent="UICanvasLayer" unique_id=1874557632]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -5.0
+offset_right = 5.0
+offset_bottom = 9.0
+grow_horizontal = 2
+text = "C"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1026538169]
 libraries/ = SubResource("AnimationLibrary_b1x3f")
 
 [connection signal="selection_changed" from="UICanvasLayer/Hotbar" to="." method="_on_hotbar_selection_changed"]
 [connection signal="pressed" from="UICanvasLayer/MapToggleButton" to="." method="_on_map_toggle_button_pressed"]
 [connection signal="pressed" from="UICanvasLayer/NightPanel/GoButton" to="." method="_on_go_button_pressed"]
+[connection signal="pressed" from="UICanvasLayer/CenterButton" to="." method="_on_center_button_pressed"]

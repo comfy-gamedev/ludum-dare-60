@@ -9,5 +9,5 @@ script = ExtResource("3_jsdd2")
 icon = ExtResource("2_f1lf4")
 building_scene = ExtResource("1_i1b0h")
 gold_cost = 10
-placement_size = Rect2i(-1, -1, 4, 2)
+placement_size = Rect2i(-1, -1, 2, 2)
 metadata/_custom_type_script = "uid://b4frqj5l57l6l"

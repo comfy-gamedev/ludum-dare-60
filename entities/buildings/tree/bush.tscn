@@ -9,11 +9,10 @@
 item = ExtResource("2_xw7s3")
 
 [node name="Sprite2D" parent="." index="0" unique_id=873779887]
-position = Vector2(9, 16)
 texture = ExtResource("2_vnfd8")
-offset = Vector2(-9, -16)
+offset = Vector2(-9, -21)
 
 [node name="DepletedSprite2D" parent="." index="1" unique_id=855206188]
-position = Vector2(9, 16)
+position = Vector2(8, 13)
 texture = ExtResource("4_1fr0s")
-offset = Vector2(-9, -16)
+offset = Vector2(-9, -20)
