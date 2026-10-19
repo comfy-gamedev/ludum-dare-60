@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dd0b7d87b2r6f"]
+
+[ext_resource type="Script" uid="uid://cjb6roqeev2l3" path="res://entities/buildings/crane/crane.gd" id="1_d282b"]
+[ext_resource type="Texture2D" uid="uid://c6fg3vb4jtp1n" path="res://entities/buildings/crane/crane.png" id="2_d282b"]
+
+[node name="Crane" type="Node2D" unique_id=29687319]
+y_sort_enabled = true
+script = ExtResource("1_d282b")
+
+[node name="Crane" type="Sprite2D" parent="." unique_id=2019076546]
+position = Vector2(8, 14)
+texture = ExtResource("2_d282b")
+offset = Vector2(0, -19)
+hframes = 3
+
+[node name="ItemSlot" type="RemoteTransform2D" parent="." unique_id=370764562]
+position = Vector2(-16, -11)

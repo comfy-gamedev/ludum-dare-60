@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConstructionInfo" format=3 uid="uid://b16w8jlme64hc"]
+
+[ext_resource type="PackedScene" uid="uid://dd0b7d87b2r6f" path="res://entities/buildings/crane/crane.tscn" id="1_e6msp"]
+[ext_resource type="Texture2D" uid="uid://cfm84fbuy52n1" path="res://assets/ui/hotbar_crane.png" id="2_5bbn3"]
+[ext_resource type="Script" uid="uid://b4frqj5l57l6l" path="res://systems/constructions/construction_info.gd" id="3_v4ilx"]
+
+[resource]
+script = ExtResource("3_v4ilx")
+icon = ExtResource("2_5bbn3")
+building_scene = ExtResource("1_e6msp")
+building_can_rotate = true
+gold_cost = 10
+metadata/_custom_type_script = "uid://b4frqj5l57l6l"

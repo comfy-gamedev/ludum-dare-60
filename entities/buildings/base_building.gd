@@ -32,6 +32,14 @@ var info: ConstructionInfo
 @abstract func take_item(pos: Vector2i) -> ItemInstance
 
 
+func can_place_item_from(_pos: Vector2i, _from_pos: Vector2i) -> bool:
+	return true
+
+
+func can_take_item_from(_pos: Vector2i, _from_pos: Vector2i) -> bool:
+	return true
+
+
 func set_grid_pos(v: Vector2i) -> void:
 	if grid_pos == v: return
 	grid_pos = v
