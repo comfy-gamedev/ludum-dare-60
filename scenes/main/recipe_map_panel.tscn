@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cup6cnote5dyy"]
+
+[ext_resource type="Script" uid="uid://bmopo5wc6dbo4" path="res://scenes/main/recipe_map_panel.gd" id="1_32nam"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65iju"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1764706, 0.1764706, 0.23921569, 1)
+corner_detail = 5
+
+[node name="RecipeMapPanel" type="PanelContainer" unique_id=831180763]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 232.0
+offset_bottom = 144.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_65iju")
+script = ExtResource("1_32nam")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=406982807]
+layout_mode = 2
+
+[node name="RecipeMapControl" type="Control" parent="ScrollContainer" unique_id=1661976644]
+layout_mode = 2

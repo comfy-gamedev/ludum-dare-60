@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cfipoik8do1er" path="res://systems/crafting/recipe.gd" id="5_16w47"]
 
 [sub_resource type="Resource" id="Resource_6q06x"]
+resource_name = "Log"
 script = ExtResource("3_86s58")
 item = ExtResource("2_uk76f")
 metadata/_custom_type_script = "uid://cxexxx4lluwrm"

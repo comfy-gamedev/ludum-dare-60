@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://sd2nxy7pm5gd"]
+
+[ext_resource type="PackedScene" uid="uid://b6ueuaycfmiyo" path="res://item_sprite.tscn" id="1_bdkgj"]
+[ext_resource type="Script" uid="uid://bylnlug8g7cs0" path="res://scenes/main/recipe_panel.gd" id="1_eqhk8"]
+[ext_resource type="Resource" uid="uid://d2v2nm6egya45" path="res://systems/crafting/items/chair.tres" id="2_eqhk8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfr5c"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.3137255, 0.23529412, 0.19607843, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqhk8"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 0.70980394, 0.2784314, 1)
+corner_detail = 5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5ke6q"]
+viewport_path = NodePath("SubViewport")
+
+[node name="RecipePanel" type="Panel" unique_id=258943481]
+offset_right = 18.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hfr5c")
+script = ExtResource("1_eqhk8")
+normal_style = SubResource("StyleBoxFlat_hfr5c")
+highlighted_style = SubResource("StyleBoxFlat_eqhk8")
+line_color_dim = Color(0.4392157, 0.42745098, 0.45882353, 1)
+line_color_bright = Color(1, 1, 1, 1)
+
+[node name="InputMarker2D1" type="Marker2D" parent="." unique_id=182714321]
+position = Vector2(0, 4)
+metadata/_edit_lock_ = true
+
+[node name="InputMarker2D2" type="Marker2D" parent="." unique_id=845879292]
+position = Vector2(0, 9)
+metadata/_edit_lock_ = true
+
+[node name="InputMarker2D3" type="Marker2D" parent="." unique_id=1642248134]
+position = Vector2(0, 14)
+metadata/_edit_lock_ = true
+
+[node name="OutputMarker2D" type="Marker2D" parent="." unique_id=759662000]
+position = Vector2(18, 9)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1384951359]
+custom_minimum_size = Vector2(16, 16)
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+mouse_filter = 1
+color = Color(0.22745098, 0.35686275, 0.30588236, 1)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="ItemSprite" parent="ColorRect" unique_id=637216572 instance=ExtResource("1_bdkgj")]
+visible = true
+texture = SubResource("ViewportTexture_5ke6q")
+item = ExtResource("2_eqhk8")
