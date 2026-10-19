@@ -77,8 +77,6 @@ func place_item(pos: Vector2i, item_inst: ItemInstance) -> void:
 		for s in 3:
 			var spr = sprites[s]
 			spr.play("craft")
-		while sprites.front().is_playing():
-			await sprites.front().animation_finished
 		sprites.back().play("output")
 		items[3] = Cookbook.cook(Recipe.Workshop.FACTORY, [items[0], items[1], items[2]])
 		for i in 3:
