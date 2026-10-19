@@ -48,6 +48,7 @@ func tick(t: int) -> void:
 func _pos_to_part(pos: Vector2i) -> int:
 	match pos - grid_pos:
 		Vector2i(2, 0): return 1
+		var a when a.y != 0: return 2
 		_: return 0
 
 
