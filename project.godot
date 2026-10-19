@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneGirl="*uid://c6dqp4kex16cl"
 Globals="*uid://deboqqs1s1564"
+MusicMan="*uid://bx1260lxdtgwn"
 
 [display]
 

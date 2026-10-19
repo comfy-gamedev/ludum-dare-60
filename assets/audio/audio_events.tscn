@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://cu2kennneixbr"]
+
+[ext_resource type="AudioStream" uid="uid://cnxtkm20r6am5" path="res://assets/audio/Bonk.wav" id="1_2goc6"]
+[ext_resource type="AudioStream" uid="uid://cdo7ttuhulctm" path="res://assets/audio/Bonk1.wav" id="1_rxk2q"]
+[ext_resource type="AudioStream" uid="uid://v5ekpgf1vtoc" path="res://assets/audio/Bonk2.wav" id="2_ovl1h"]
+[ext_resource type="AudioStream" uid="uid://dpnrtj0plrf2d" path="res://assets/audio/Bonk3.wav" id="3_p5t5e"]
+[ext_resource type="AudioStream" uid="uid://c1oifienuhvhp" path="res://assets/audio/bush_hit1.wav" id="5_eeee8"]
+[ext_resource type="AudioStream" uid="uid://4b0xc40g5bl4" path="res://assets/audio/bush_hit2.wav" id="6_n1xut"]
+[ext_resource type="AudioStream" uid="uid://mjntgwhnx0c0" path="res://assets/audio/bush_hit3.wav" id="7_aed4t"]
+[ext_resource type="AudioStream" uid="uid://ci1ybb5c258g2" path="res://assets/audio/bush_hit4.wav" id="8_xpgpc"]
+[ext_resource type="AudioStream" uid="uid://brhy67dp7d605" path="res://assets/audio/bush_hit.wav" id="9_gixg0"]
+[ext_resource type="AudioStream" uid="uid://beasj8mrfsndo" path="res://assets/audio/crafting_ping.wav" id="10_b4x87"]
+[ext_resource type="AudioStream" uid="uid://dwnuxfyxtqjid" path="res://assets/audio/fail.wav" id="11_ewal1"]
+[ext_resource type="AudioStream" uid="uid://bva863jd53nqp" path="res://assets/audio/frog1.wav" id="12_31lhk"]
+[ext_resource type="AudioStream" uid="uid://btsaftlts5tx5" path="res://assets/audio/frog2.wav" id="13_vpisy"]
+[ext_resource type="AudioStream" uid="uid://cex2r4hgarmmj" path="res://assets/audio/frog3.wav" id="14_2jj84"]
+[ext_resource type="AudioStream" uid="uid://8ki1u1cbvj8n" path="res://assets/audio/frog4.wav" id="15_b4ssm"]
+[ext_resource type="AudioStream" uid="uid://b11ggy2qubkup" path="res://assets/audio/frog_alt1.wav" id="16_mltyy"]
+[ext_resource type="AudioStream" uid="uid://dfu7qumbu86hu" path="res://assets/audio/frog_alt2.wav" id="17_4m0s6"]
+[ext_resource type="AudioStream" uid="uid://brgom4yt1fstt" path="res://assets/audio/frog_alt.wav" id="18_oh8xj"]
+[ext_resource type="AudioStream" uid="uid://bobb8ua0fjbny" path="res://assets/audio/frog_hop1.wav" id="19_jhaae"]
+[ext_resource type="AudioStream" uid="uid://6wddduqysami" path="res://assets/audio/frog_hop2.wav" id="20_wq88y"]
+[ext_resource type="AudioStream" uid="uid://dc11vgdosrbbh" path="res://assets/audio/frog_hop3.wav" id="21_ymcqw"]
+[ext_resource type="AudioStream" uid="uid://d1xavyywle4s0" path="res://assets/audio/frog_hop4.wav" id="22_6q2ak"]
+[ext_resource type="AudioStream" uid="uid://1514r7elpg3i" path="res://assets/audio/frog_hurt1.wav" id="23_ebtfd"]
+[ext_resource type="AudioStream" uid="uid://cdg875slo3fcj" path="res://assets/audio/frog_hurt2.wav" id="24_u8s7g"]
+[ext_resource type="AudioStream" uid="uid://oj05rpe7juwm" path="res://assets/audio/frog_hurt.wav" id="25_rc71s"]
+[ext_resource type="AudioStream" uid="uid://b32itq7t6kbhr" path="res://assets/audio/frog_ok1.wav" id="26_abrru"]
+[ext_resource type="AudioStream" uid="uid://c2baqc0rbf30d" path="res://assets/audio/frog_ok2.wav" id="27_e5b5g"]
+[ext_resource type="AudioStream" uid="uid://wkwd2agsbiit" path="res://assets/audio/frog_ok.wav" id="28_xylek"]
+[ext_resource type="AudioStream" uid="uid://dxkm1dbci2u7q" path="res://assets/audio/ghost.wav" id="29_tpfo1"]
+[ext_resource type="AudioStream" uid="uid://cgvskg46awsx8" path="res://assets/audio/alert.wav" id="30_3u6ue"]
+
+[node name="AudioEvents" type="Node" unique_id=636825853]
+
+[node name="Bonk1" type="AudioStreamPlayer2D" parent="." unique_id=1322628515]
+stream = ExtResource("1_rxk2q")
+
+[node name="Bonk2" type="AudioStreamPlayer2D" parent="." unique_id=922737885]
+stream = ExtResource("2_ovl1h")
+
+[node name="Bonk3" type="AudioStreamPlayer2D" parent="." unique_id=1527727963]
+stream = ExtResource("3_p5t5e")
+
+[node name="Bonk4" type="AudioStreamPlayer2D" parent="." unique_id=430451394]
+stream = ExtResource("1_2goc6")
+
+[node name="BushHit1" type="AudioStreamPlayer2D" parent="." unique_id=1520855057]
+stream = ExtResource("5_eeee8")
+
+[node name="BushHit2" type="AudioStreamPlayer2D" parent="." unique_id=151831523]
+stream = ExtResource("6_n1xut")
+
+[node name="BushHit3" type="AudioStreamPlayer2D" parent="." unique_id=1299196807]
+stream = ExtResource("7_aed4t")
+
+[node name="BushHit4" type="AudioStreamPlayer2D" parent="." unique_id=1725783101]
+stream = ExtResource("8_xpgpc")
+
+[node name="BushHit" type="AudioStreamPlayer2D" parent="." unique_id=512009816]
+stream = ExtResource("9_gixg0")
+
+[node name="CraftingPing" type="AudioStreamPlayer2D" parent="." unique_id=1509981924]
+stream = ExtResource("10_b4x87")
+
+[node name="Fail" type="AudioStreamPlayer2D" parent="." unique_id=808188102]
+stream = ExtResource("11_ewal1")
+
+[node name="Frog1" type="AudioStreamPlayer2D" parent="." unique_id=767500007]
+stream = ExtResource("12_31lhk")
+
+[node name="Frog2" type="AudioStreamPlayer2D" parent="." unique_id=988968410]
+stream = ExtResource("13_vpisy")
+
+[node name="Frog3" type="AudioStreamPlayer2D" parent="." unique_id=2096532955]
+stream = ExtResource("14_2jj84")
+
+[node name="Frog4" type="AudioStreamPlayer2D" parent="." unique_id=1566928665]
+stream = ExtResource("15_b4ssm")
+
+[node name="FrogAlt1" type="AudioStreamPlayer2D" parent="." unique_id=1560796849]
+stream = ExtResource("16_mltyy")
+
+[node name="FrogAlt2" type="AudioStreamPlayer2D" parent="." unique_id=281886301]
+stream = ExtResource("17_4m0s6")
+
+[node name="FrogAlt" type="AudioStreamPlayer2D" parent="." unique_id=127947042]
+stream = ExtResource("18_oh8xj")
+
+[node name="FrogHop1" type="AudioStreamPlayer2D" parent="." unique_id=1755381190]
+stream = ExtResource("19_jhaae")
+
+[node name="FrogHop2" type="AudioStreamPlayer2D" parent="." unique_id=1655344869]
+stream = ExtResource("20_wq88y")
+
+[node name="FrogHop3" type="AudioStreamPlayer2D" parent="." unique_id=1926268760]
+stream = ExtResource("21_ymcqw")
+
+[node name="FrogHop4" type="AudioStreamPlayer2D" parent="." unique_id=432805833]
+stream = ExtResource("22_6q2ak")
+
+[node name="FrogHurt1" type="AudioStreamPlayer2D" parent="." unique_id=725763163]
+stream = ExtResource("23_ebtfd")
+
+[node name="FrogHurt2" type="AudioStreamPlayer2D" parent="." unique_id=1006869281]
+stream = ExtResource("24_u8s7g")
+
+[node name="FrogHurt" type="AudioStreamPlayer2D" parent="." unique_id=722348532]
+stream = ExtResource("25_rc71s")
+
+[node name="FrogOk1" type="AudioStreamPlayer2D" parent="." unique_id=913557963]
+stream = ExtResource("26_abrru")
+
+[node name="FrogOk2" type="AudioStreamPlayer2D" parent="." unique_id=439248041]
+stream = ExtResource("27_e5b5g")
+
+[node name="FrogOk" type="AudioStreamPlayer2D" parent="." unique_id=145573780]
+stream = ExtResource("28_xylek")
+
+[node name="Ghost" type="AudioStreamPlayer2D" parent="." unique_id=535217914]
+stream = ExtResource("29_tpfo1")
+
+[node name="Bonk" type="AudioStreamPlayer2D" parent="." unique_id=58997623]
+stream = ExtResource("1_2goc6")
+
+[node name="Alert" type="AudioStreamPlayer2D" parent="." unique_id=551787253]
+stream = ExtResource("30_3u6ue")

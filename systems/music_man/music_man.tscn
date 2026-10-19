@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bx1260lxdtgwn"]
 
 [ext_resource type="Script" uid="uid://b6eokevvlwsg1" path="res://systems/music_man/music_man.gd" id="1_ibd3g"]
-[ext_resource type="PackedScene" uid="uid://cnprojs5u883g" path="res://assets/audio/audio_events.tscn" id="2_0tjh3"]
-[ext_resource type="AudioStream" uid="uid://byll8aqb4xih3" path="res://assets/audio/interactive_music.tres" id="2_6cm1x"]
+[ext_resource type="PackedScene" uid="uid://cu2kennneixbr" path="res://assets/audio/audio_events.tscn" id="2_0tjh3"]
+[ext_resource type="AudioStream" uid="uid://cgbtjf1adhyce" path="res://assets/audio/interactive_music.tres" id="2_6cm1x"]
 [ext_resource type="Script" uid="uid://cmgjguq3qva0s" path="res://systems/music_man/track_label.gd" id="2_yj4pb"]
 
 [sub_resource type="Curve" id="Curve_b5hyx"]

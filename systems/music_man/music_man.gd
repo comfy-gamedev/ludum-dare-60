@@ -64,3 +64,18 @@ func event_oneshot_3d(event_name: String, vp: Viewport, position: Vector3) -> vo
 	else:
 		push_error("Event is not 3D")
 		breakpoint
+
+## Plays a sound effect in 2D space.
+## This function bypasses polyphony. Best used for small repeated sfx.
+## [param event_name]: the name of the node in audio_events.tscn.
+func event_oneshot_2d(event_name: String, vp: Viewport, position: Vector2) -> void:
+	var asp = audio_events.get_node(event_name)
+	if asp is AudioStreamPlayer2D:
+		var nasp = asp.duplicate()
+		nasp.position = position
+		vp.add_child(nasp)
+		nasp.finished.connect(nasp.queue_free)
+		nasp.play()
+	else:
+		push_error("Event is not 2D")
+		breakpoint
