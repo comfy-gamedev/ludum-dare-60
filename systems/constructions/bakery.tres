@@ -10,6 +10,6 @@ icon = ExtResource("2_uonsx")
 building_scene = ExtResource("1_ulqnb")
 building_can_rotate = true
 tileset_source_id = 2
-gold_cost = 1
+gold_cost = 10
 placement_size = Rect2i(-2, 0, 3, 1)
 metadata/_custom_type_script = "uid://b4frqj5l57l6l"
