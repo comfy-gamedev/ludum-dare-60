@@ -1,3 +1,13 @@
 [gd_resource type="AudioStreamInteractive" format=3 uid="uid://cgbtjf1adhyce"]
 
+[ext_resource type="AudioStream" uid="uid://dy16ll11ef02t" path="res://assets/audio/songs/Heaps o' Hops final1.ogg" id="1_bck21"]
+[ext_resource type="AudioStream" uid="uid://cqu1kw28qsm5l" path="res://assets/audio/songs/Tiny Troubles final1.ogg" id="2_c1ej4"]
+
 [resource]
+clip_count = 2
+clip_0/name = &"hops"
+clip_0/stream = ExtResource("1_bck21")
+clip_0/auto_advance = 0
+clip_1/name = &"troubles"
+clip_1/stream = ExtResource("2_c1ej4")
+clip_1/auto_advance = 0

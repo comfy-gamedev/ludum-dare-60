@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cqu1kw28qsm5l"
+path="res://.godot/imported/Tiny Troubles final1.ogg-1e844088f4cf7ad0cda1ea011a7afea6.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/songs/Tiny Troubles final1.ogg"
+dest_files=["res://.godot/imported/Tiny Troubles final1.ogg-1e844088f4cf7ad0cda1ea011a7afea6.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

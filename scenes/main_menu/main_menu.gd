@@ -1,5 +1,8 @@
 extends Node2D
 
+func _ready() -> void:
+	MusicMan.cue_music("troubles")
+
 func _on_tutor_1_pressed() -> void:
 	SceneGirl.change_scene("res://scenes/tutorials/tutor_1.tscn")
 

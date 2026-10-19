@@ -91,6 +91,7 @@ func _ready() -> void:
 	current = self
 	
 	gold_label.text = "Gold: " + str(gold)
+	MusicMan.cue_music("hops")
 	
 	var hb = HOMEBASE.instantiate()
 	@warning_ignore("integer_division")
@@ -211,6 +212,7 @@ func _do_night() -> void:
 	_ticking = false
 	animation_player.play("night")
 	MusicMan.event("Nightstart1")
+	MusicMan.cue_music("troubles")
 	night_panel.show()
 	go_button.hide()
 
@@ -218,6 +220,7 @@ func _do_night() -> void:
 func _do_dawn() -> void:
 	animation_player.play("dawn")
 	MusicMan.event("Nightstart1")
+	MusicMan.cue_music("hops")
 	go_button.hide()
 
 
