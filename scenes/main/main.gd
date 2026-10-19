@@ -274,7 +274,8 @@ func connect_paths(a: Vector2i, b: Vector2i) -> void:
 		0b1110: Vector2i(2, 3),
 		0b1111: Vector2i(0, 1),
 	}
-	
+	if surface_tile_map_layer.get_cell_atlas_coords(b) == Vector2i(0, 0):
+		MusicMan.event_oneshot_2d("FrogHop" + str(randi_range(1, 4)), get_viewport(), a * 16)
 	var f = func (p: Vector2i, d: Vector2i) -> void:
 		var s = surface_tile_map_layer.get_cell_source_id(p)
 		var c = surface_tile_map_layer.get_cell_atlas_coords(p)
