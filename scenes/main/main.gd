@@ -57,6 +57,9 @@ enum TileType {
 @onready var gold_label: Label = $UICanvasLayer/GoldLabel
 
 @onready var recipe_map_panel: RecipeMap = $UICanvasLayer/RecipeMapPanel
+@onready var night_panel: VBoxContainer = $UICanvasLayer/NightPanel
+@onready var auto_check_button: CheckButton = $UICanvasLayer/NightPanel/AutoCheckButton
+@onready var go_button: Button = $UICanvasLayer/NightPanel/GoButton
 
 var building_parts: Dictionary[Vector2i, BuildingPart]
 
@@ -141,9 +144,7 @@ func _process(delta: float) -> void:
 			if _tick_t > CYCLE_END:
 				_tick_t = 0
 				_t = 0.0
-				_ticking = false
-				animation_player.play("night")
-				MusicMan.event("Nightstart1")
+				_do_night()
 				day_count += 1
 				break
 
@@ -159,6 +160,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	elif event.is_action_pressed("toggle_compendium"):
 		recipe_map_panel.visible = not recipe_map_panel.visible
+	
+	elif event.is_action_pressed("debug_goto_night"):
+		_tick_t = CYCLE_END
 	
 	elif event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -180,6 +184,28 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _start_tickin() -> void:
 	_ticking = true
+	go_button.hide()
+
+
+func _check_auto_dawn() -> void:
+	if auto_check_button.button_pressed:
+		_do_dawn()
+	else:
+		go_button.show()
+
+
+func _do_night() -> void:
+	_ticking = false
+	animation_player.play("night")
+	MusicMan.event("Nightstart1")
+	night_panel.show()
+	go_button.hide()
+
+
+func _do_dawn() -> void:
+	animation_player.play("dawn")
+	MusicMan.event("Nightstart1")
+	go_button.hide()
 
 
 func get_tick() -> int:
@@ -426,3 +452,7 @@ class BuildingPart:
 	var building: BaseBuilding
 	var grid_pos: Vector2i
 	var part: int
+
+
+func _on_go_button_pressed() -> void:
+	_do_dawn()

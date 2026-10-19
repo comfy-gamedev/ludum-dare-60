@@ -52,9 +52,9 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_yyfjg"]
-resource_name = "night"
-length = 3.0000000000000004
+[sub_resource type="Animation" id="Animation_ow5a4"]
+resource_name = "dawn"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,10 +62,10 @@ tracks/0/path = NodePath("UICanvasLayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 2.5333333, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0.22745098, 0.5372549), Color(0, 0, 0.22745098, 0.5372549), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0.22745098, 0.5372549), Color(0, 0, 0, 0)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -74,7 +74,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3),
+"times": PackedFloat32Array(0.4666667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -82,9 +82,40 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_yyfjg"]
+resource_name = "night"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UICanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0.22745098, 0.5372549)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_check_auto_dawn"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b1x3f"]
 _data = {
 &"RESET": SubResource("Animation_hujxm"),
+&"dawn": SubResource("Animation_ow5a4"),
 &"night": SubResource("Animation_yyfjg")
 }
 
@@ -146,8 +177,35 @@ offset_right = 240.0
 offset_bottom = 11.0
 text = "Recipes"
 
+[node name="NightPanel" type="VBoxContainer" parent="UICanvasLayer" unique_id=1823003314]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -30.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 2
+alignment = 2
+
+[node name="GoButton" type="Button" parent="UICanvasLayer/NightPanel" unique_id=975128598]
+visible = false
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+text = "GO ->"
+
+[node name="AutoCheckButton" type="CheckButton" parent="UICanvasLayer/NightPanel" unique_id=847894824]
+layout_mode = 2
+focus_mode = 0
+text = "Auto"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1026538169]
 libraries/ = SubResource("AnimationLibrary_b1x3f")
 
 [connection signal="selection_changed" from="UICanvasLayer/Hotbar" to="." method="_on_hotbar_selection_changed"]
 [connection signal="pressed" from="UICanvasLayer/MapToggleButton" to="." method="_on_map_toggle_button_pressed"]
+[connection signal="pressed" from="UICanvasLayer/NightPanel/GoButton" to="." method="_on_go_button_pressed"]
