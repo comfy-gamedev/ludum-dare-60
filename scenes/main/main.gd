@@ -22,6 +22,8 @@ const ROCK = preload("uid://cpag0rr03s5qo")
 const TREE = preload("uid://bayold7n6brg0")
 const WATER = preload("uid://ceiw0p6112gmu")
 
+const BREAD = preload("uid://d0nrky4wbersl")
+
 const RESOURCES = [BUSH, ROCK, TREE, WATER, BUSH, ROCK, TREE, CRYSTAL]
 
 const CONSTRUCTIONS = [
@@ -105,6 +107,8 @@ func _ready() -> void:
 	var ob = OBJECTIVE.instantiate()
 	@warning_ignore("integer_division")
 	ob.grid_pos = (WORLD_SIZE / 2) + Vector2i(6, 0)
+	if Globals.is_easy:
+		ob.need = BREAD
 	entity_root.add_child(ob)
 	
 	for y in WORLD_SIZE.y:

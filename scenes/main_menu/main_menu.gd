@@ -21,3 +21,7 @@ func _on_tutor_5_pressed() -> void:
 
 func _on_button_pressed() -> void:
 	SceneGirl.change_scene("res://scenes/main/main.tscn")
+
+func _on_button_2_pressed() -> void:
+	Globals.is_easy = true
+	SceneGirl.change_scene("res://scenes/main/main.tscn")

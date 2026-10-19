@@ -73,10 +73,17 @@ text = "Tutorials
 
 [node name="Button" type="Button" parent="." unique_id=1180634598]
 offset_left = 168.0
+offset_top = 124.0
+offset_right = 238.0
+offset_bottom = 140.0
+text = "Start Game"
+
+[node name="Button2" type="Button" parent="." unique_id=1669236840]
+offset_left = 168.0
 offset_top = 142.0
 offset_right = 238.0
 offset_bottom = 158.0
-text = "Start Game"
+text = "Easy Mode"
 
 [connection signal="pressed" from="Tutor1" to="." method="_on_tutor_1_pressed"]
 [connection signal="pressed" from="Tutor2" to="." method="_on_tutor_2_pressed"]
@@ -84,3 +91,4 @@ text = "Start Game"
 [connection signal="pressed" from="Tutor4" to="." method="_on_tutor_4_pressed"]
 [connection signal="pressed" from="Tutor5" to="." method="_on_tutor_5_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
