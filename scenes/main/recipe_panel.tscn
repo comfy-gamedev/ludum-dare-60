@@ -20,7 +20,7 @@ content_margin_bottom = 0.0
 bg_color = Color(1, 0.70980394, 0.2784314, 1)
 corner_detail = 5
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5ke6q"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_eqhk8"]
 viewport_path = NodePath("SubViewport")
 
 [node name="RecipePanel" type="Panel" unique_id=258943481]
@@ -63,5 +63,8 @@ metadata/_edit_lock_ = true
 
 [node name="ItemSprite" parent="ColorRect" unique_id=637216572 instance=ExtResource("1_bdkgj")]
 visible = true
-texture = SubResource("ViewportTexture_5ke6q")
+texture = SubResource("ViewportTexture_eqhk8")
 item = ExtResource("2_eqhk8")
+
+[node name="WorkshopIcon" type="Sprite2D" parent="." unique_id=1039880494]
+position = Vector2(14, 21)
