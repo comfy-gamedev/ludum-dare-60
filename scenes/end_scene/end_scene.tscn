@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://y1b2xhywjcbr" path="res://systems/crafting/items/tank.tres" id="6_5j1c8"]
 [ext_resource type="Texture2D" uid="uid://rhkmon1eu4j8" path="res://entities/little_guy/profile_pic.png" id="6_dhv3n"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vk4ao"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dhv3n"]
 viewport_path = NodePath("SubViewport")
 
 [node name="EndScene" type="Node2D" unique_id=1162492104]
@@ -85,7 +85,7 @@ horizontal_alignment = 1
 visible = true
 position = Vector2(154, 85)
 scale = Vector2(4, 4)
-texture = SubResource("ViewportTexture_vk4ao")
+texture = SubResource("ViewportTexture_dhv3n")
 item = ExtResource("6_5j1c8")
 
 [node name="Frog" type="Sprite2D" parent="." unique_id=244561476]
