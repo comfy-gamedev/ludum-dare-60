@@ -8,6 +8,8 @@ static var dir_animations: Dictionary[Vector2i, StringName] = {
 	Vector2i.DOWN: &"move_down",
 }
 
+@export var step_ticks: int = 4
+
 var grid_pos: Vector2i: set = set_grid_pos
 var grid_facing: Vector2i = Vector2i.DOWN: set = set_grid_facing
 
@@ -37,6 +39,9 @@ func _exit_tree() -> void:
 func tick(t: int) -> void:
 	if t == Main.CYCLE_END:
 		queue_free()
+		return
+	
+	if t % step_ticks != 0:
 		return
 	
 	if Main.current.get_tile_type(grid_pos) == Main.TileType.PATH:

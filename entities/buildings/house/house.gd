@@ -18,7 +18,7 @@ func tick(t: int) -> void:
 	if t == 0:
 		can_spawn = true
 	
-	if can_spawn:
+	if can_spawn and Main.current.get_tile_type(grid_pos + Vector2i(0, 1)) == Main.TileType.PATH:
 		var lg = LITTLE_GUY.instantiate()
 		lg.grid_pos = grid_pos + Vector2i.DOWN
 		lg.grid_facing = Vector2i.DOWN
