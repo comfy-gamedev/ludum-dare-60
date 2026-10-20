@@ -15,11 +15,13 @@ static var product_to_recipe: Dictionary[Item, Recipe]
 
 static func _static_init() -> void:
 	for f in DirAccess.get_files_at(ITEM_DIR):
+		f = f.trim_suffix(".remap")
 		if f.ends_with(".tres"):
 			var fname = ITEM_DIR.path_join(f)
 			items.append(load(fname))
 	
 	for f in DirAccess.get_files_at(RECIPE_DIR):
+		f = f.trim_suffix(".remap")
 		if f.ends_with(".tres"):
 			var fname = RECIPE_DIR.path_join(f)
 			var rec: Recipe = load(fname)
