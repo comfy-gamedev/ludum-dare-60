@@ -498,6 +498,9 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 				entity_root.add_child(b)
 			
 			ConstructionInfo.Mode.DYNAMITE:
+				if gold < tool.gold_cost:
+					return
+				
 				var bp = get_building_part(grid_pos)
 				if bp:
 					if bp.building.placement_reason != BaseBuilding.PlacementReason.PLAYER:
