@@ -29,7 +29,7 @@ func can_take_item(_pos: Vector2i) -> bool:
 func place_item(_pos: Vector2i, item_inst: ItemInstance) -> void:
 	remove_child(get_child(0))
 	item = item_inst
-	item_inst.sprite.position = position
+	item_inst.require_sprite().position = position
 	#Main.current.objective_count += 1
 	#if Main.current.objective_count >= Main.current.OBJECTIVE_GOAL:
 	if is_tutorial:

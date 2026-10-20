@@ -99,6 +99,8 @@ var day_count: int = 0:
 var _tool_preview: Node2D
 var _tool_rot: int = 0
 
+var _objective: BaseBuilding
+
 func _ready() -> void:
 	current = self
 	
@@ -116,6 +118,7 @@ func _ready() -> void:
 	if Globals.is_easy:
 		ob.need = BREAD
 	entity_root.add_child(ob)
+	_objective = ob
 	
 	for y in WORLD_SIZE.y:
 		for x in WORLD_SIZE.x:
@@ -190,12 +193,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("recenter") and _ticking:
 		camera_2d.position = Vector2(WORLD_SIZE) * GridMetric.GRID_PX * 0.5
 	
-	elif OS.is_debug_build() and event.is_action_pressed("debug_goto_night") and _ticking:
-		_tick_t = CYCLE_END
-	
-	elif OS.is_debug_build() and event.is_action_pressed("debug_give_gold"):
-		gold += 500
-	
 	elif event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			var gp: Vector2i = Vector2i((get_viewport().canvas_transform.affine_inverse() * event.position / GridMetric.GRID_PX).floor())
@@ -212,7 +209,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			var data = hotbar.get_data(hotbar.selected)
 			if data is not ConstructionInfo or data.mode != ConstructionInfo.Mode.BUILDING:
 				_do_tool(gp, data)
-
+	
+	elif OS.is_debug_build() and event.is_action_pressed("debug_goto_night") and _ticking:
+		_tick_t = CYCLE_END
+	
+	elif OS.is_debug_build() and event.is_action_pressed("debug_give_gold"):
+		gold += 500
+	
+	elif OS.is_debug_build() and event.is_action_pressed("debug_win"):
+		var it = ItemInstance.new()
+		it.item = _objective.need
+		_objective.place_item(_objective.grid_pos, it)
+	
 
 func _start_tickin() -> void:
 	_ticking = true

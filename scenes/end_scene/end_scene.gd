@@ -1,13 +1,21 @@
 extends Node2D
 
+const ITEM_SPRITE = preload("uid://b6ueuaycfmiyo")
+
 var ticks = 9999
 var logs = []
 
 @export var item: Item
-const ITEM_SPRITE = preload("uid://b6ueuaycfmiyo")
+
+@onready var item_sprite: ItemSprite = $ItemSprite
+@onready var rich_text_label_2: RichTextLabel = $RichTextLabel2
 
 func _ready():
 	ticks = Globals.elapsed_days
+	if Globals.is_easy:
+		item = preload("res://systems/crafting/items/bread.tres")
+		item_sprite.item = item
+		rich_text_label_2.text = rich_text_label_2.text.replace("tank", "bread")
 	var Rich_label = $RichTextLabel
 	if ticks <= 20:
 		Rich_label.text = "You completed the ritual\n with a [wave amp=50.0 freq=5.0 connected=1][color=GOLD]GOLD[/color][/wave] Score!"
