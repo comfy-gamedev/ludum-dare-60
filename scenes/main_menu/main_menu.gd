@@ -1,12 +1,21 @@
 extends Node2D
 
-@onready var autosave_button: Button = $AutosaveButton
+@onready var autosave_button: Button = %AutosaveButton
+const ITEM_SPRITE = preload("uid://b6ueuaycfmiyo")
 
 func _ready() -> void:
 	MusicMan.cue_music("troubles")
 	$VolumeVSlider.value = AudioServer.get_bus_volume_linear(AudioServer.get_bus_index("Master"))
 	
 	autosave_button.visible = SaveManager.has_save(SaveManager.SlotKind.AUTOSAVE, 0)
+	
+	# Preload shaders
+	for i in Cookbook.items:
+		var x = ITEM_SPRITE.instantiate()
+		x.item = i
+		x.position = Vector2(0, 0)
+		x.scale = Vector2(0, 0)
+		add_child(x)
 
 func _on_tutor_1_pressed() -> void:
 	SceneGirl.change_scene("res://scenes/tutorials/tutor_1.tscn")

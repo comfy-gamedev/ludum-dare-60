@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://dn7voyqeqf6wg" path="res://scenes/main_menu/main_menu.gd" id="1_ob46e"]
 [ext_resource type="Theme" uid="uid://cxg141t68uyj7" path="res://default_theme.tres" id="2_0ebjn"]
 [ext_resource type="Texture2D" uid="uid://rhkmon1eu4j8" path="res://entities/little_guy/profile_pic.png" id="4_uqeha"]
+[ext_resource type="PackedScene" uid="uid://b6ueuaycfmiyo" path="res://item_sprite.tscn" id="5_3ovsr"]
+[ext_resource type="Resource" uid="uid://y1b2xhywjcbr" path="res://systems/crafting/items/tank.tres" id="6_5seab"]
+[ext_resource type="Resource" uid="uid://d0nrky4wbersl" path="res://systems/crafting/items/bread.tres" id="7_5seab"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ob46e"]
 content_margin_left = 4.0
@@ -34,6 +37,12 @@ content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.1764706, 0.1764706, 0.23921569, 1)
 corner_detail = 5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5seab"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4xg86"]
+viewport_path = NodePath("SubViewport")
 
 [node name="MainMenu" type="Node2D" unique_id=1635549388]
 script = ExtResource("1_ob46e")
@@ -107,26 +116,28 @@ offset_right = 148.0
 offset_bottom = 120.0
 text = "Tutorials"
 
-[node name="Button" type="Button" parent="." unique_id=1180634598]
-offset_left = 75.0
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=814578691]
+offset_left = 56.0
 offset_top = 41.0
-offset_right = 166.0
-offset_bottom = 57.0
+offset_right = 182.0
+offset_bottom = 93.0
+theme_override_constants/separation = 2
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1669236840]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+text = "Easy Mode"
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1180634598]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
 text = "Normal Mode"
 
-[node name="AutosaveButton" type="Button" parent="." unique_id=1014747152]
-offset_left = 75.0
-offset_top = 77.0
-offset_right = 166.0
-offset_bottom = 93.0
+[node name="AutosaveButton" type="Button" parent="VBoxContainer" unique_id=1014747152]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
 text = "Load Autosave"
-
-[node name="Button2" type="Button" parent="." unique_id=1669236840]
-offset_left = 75.0
-offset_top = 59.0
-offset_right = 166.0
-offset_bottom = 75.0
-text = "Easy Mode"
 
 [node name="VolumeVSlider" type="VSlider" parent="." unique_id=1852408716]
 offset_left = 221.0
@@ -160,12 +171,24 @@ text = "Volume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ItemSprite" parent="." unique_id=637216572 instance=ExtResource("5_3ovsr")]
+visible = true
+position = Vector2(166, 60)
+texture = SubResource("ViewportTexture_5seab")
+item = ExtResource("6_5seab")
+
+[node name="ItemSprite2" parent="." unique_id=83100828 instance=ExtResource("5_3ovsr")]
+visible = true
+position = Vector2(166, 42)
+texture = SubResource("ViewportTexture_4xg86")
+item = ExtResource("7_5seab")
+
 [connection signal="pressed" from="Tutor1" to="." method="_on_tutor_1_pressed"]
 [connection signal="pressed" from="Tutor2" to="." method="_on_tutor_2_pressed"]
 [connection signal="pressed" from="Tutor3" to="." method="_on_tutor_3_pressed"]
 [connection signal="pressed" from="Tutor4" to="." method="_on_tutor_4_pressed"]
 [connection signal="pressed" from="Tutor5" to="." method="_on_tutor_5_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="AutosaveButton" to="." method="_on_autosave_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/AutosaveButton" to="." method="_on_autosave_button_pressed"]
 [connection signal="value_changed" from="VolumeVSlider" to="." method="_on_volume_v_slider_value_changed"]
