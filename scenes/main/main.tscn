@@ -175,7 +175,7 @@ text = "Gold: 0"
 
 [node name="DayLabel" type="RichTextLabel" parent="UICanvasLayer" unique_id=833369376]
 offset_left = 1.0
-offset_right = 41.0
+offset_right = 73.0
 offset_bottom = 10.0
 bbcode_enabled = true
 text = "Day: [color=GOLD]0[/color]"
