@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Ludum Dare 60"
+config/name="Heaps of Hops"
+config/description="Ludum Dare 60"
 run/main_scene="uid://ddwuhjl6eldel"
 config/features=PackedStringArray("4.8", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -24,6 +25,7 @@ buses/default_bus_layout="uid://dlhdv2fgslbxb"
 SceneGirl="*uid://c6dqp4kex16cl"
 Globals="*uid://deboqqs1s1564"
 MusicMan="*uid://bx1260lxdtgwn"
+SaveManager="*uid://mqqlciypi8mr"
 
 [display]
 

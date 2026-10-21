@@ -114,6 +114,13 @@ offset_right = 166.0
 offset_bottom = 57.0
 text = "Normal Mode"
 
+[node name="AutosaveButton" type="Button" parent="." unique_id=1014747152]
+offset_left = 75.0
+offset_top = 77.0
+offset_right = 166.0
+offset_bottom = 93.0
+text = "Load Autosave"
+
 [node name="Button2" type="Button" parent="." unique_id=1669236840]
 offset_left = 75.0
 offset_top = 59.0
@@ -159,5 +166,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="Tutor4" to="." method="_on_tutor_4_pressed"]
 [connection signal="pressed" from="Tutor5" to="." method="_on_tutor_5_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="AutosaveButton" to="." method="_on_autosave_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="value_changed" from="VolumeVSlider" to="." method="_on_volume_v_slider_value_changed"]

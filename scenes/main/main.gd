@@ -77,13 +77,9 @@ var pedestals: Array[BaseBuilding] = []
 var gold: int = 15:
 	set(val):
 		gold = val
-		gold_label.text = "Gold: " + str(val)
+		if is_node_ready():
+			gold_label.text = "Gold: " + str(val)
 
-var objective_count = 0
-
-var _ticking: bool = true
-var _t: float = 0.0
-var _tick_t: int = 0
 var day_count: int = 0:
 	set(val):
 		day_count = val
@@ -96,16 +92,37 @@ var day_count: int = 0:
 		else:
 			day_label.text = "Day: [color=BROWN]" + str(day_count) + "[/color]"
 
+var _ticking: bool = true
+var _t: float = 0.0
+var _tick_t: int = 0
+
 var _tool_preview: Node2D
 var _tool_rot: int = 0
 
 var _objective: BaseBuilding
+
+var _queued_load_save_data: PackedByteArray
 
 func _ready() -> void:
 	current = self
 	
 	gold_label.text = "Gold: " + str(gold)
 	MusicMan.cue_music("hops")
+	
+	camera_2d.position = Vector2(WORLD_SIZE) * GridMetric.GRID_PX * 0.5
+	camera_2d.limit_left = 0
+	camera_2d.limit_top = 0
+	camera_2d.limit_right = int(WORLD_SIZE.x * GridMetric.GRID_PX.x)
+	camera_2d.limit_bottom = int(WORLD_SIZE.y * GridMetric.GRID_PX.y)
+	
+	hotbar.add_hotbar_item(ERASE_ICON)
+	for c in CONSTRUCTIONS:
+		hotbar.add_hotbar_item(c)
+	
+	if _queued_load_save_data:
+		_load_save()
+		_do_night()
+		return
 	
 	var hb = HOMEBASE.instantiate()
 	@warning_ignore("integer_division")
@@ -139,16 +156,6 @@ func _ready() -> void:
 				var tree = RESOURCES.pick_random().instantiate()
 				tree.grid_pos = p
 				entity_root.add_child(tree)
-	
-	camera_2d.position = Vector2(WORLD_SIZE) * GridMetric.GRID_PX * 0.5
-	camera_2d.limit_left = 0
-	camera_2d.limit_top = 0
-	camera_2d.limit_right = int(WORLD_SIZE.x * GridMetric.GRID_PX.x)
-	camera_2d.limit_bottom = int(WORLD_SIZE.y * GridMetric.GRID_PX.y)
-	
-	hotbar.add_hotbar_item(ERASE_ICON)
-	for c in CONSTRUCTIONS:
-		hotbar.add_hotbar_item(c)
 
 
 func _process(delta: float) -> void:
@@ -254,6 +261,102 @@ func _do_dawn() -> void:
 	go_button.hide()
 	if !auto_check_button.button_pressed:
 		auto_check_button.hide()
+	
+	if not _objective.is_tutorial:
+		print("== AUTOSAVE ==")
+		var save_data = _create_save()
+		SaveManager.write_save(SaveManager.SlotKind.AUTOSAVE, 0, save_data)
+
+
+func load_save(save_data: PackedByteArray) -> void:
+	_queued_load_save_data = save_data
+
+
+func _create_save() -> PackedByteArray:
+	var buf := StreamPeerBuffer.new()
+	buf.put_u8(int(Globals.is_easy))
+	buf.put_u32(day_count)
+	buf.put_u32(gold)
+	buf.put_u8(_objective.grid_pos.x)
+	buf.put_u8(_objective.grid_pos.y)
+	
+	for y in WORLD_SIZE.y:
+		for x in WORLD_SIZE.x:
+			var p := Vector2i(x, y)
+			var sid := surface_tile_map_layer.get_cell_source_id(p)
+			var coord := surface_tile_map_layer.get_cell_atlas_coords(p)
+			buf.put_u8(sid)
+			buf.put_u8(coord.x)
+			buf.put_u8(coord.y)
+	
+	var scenes: PackedInt64Array
+	
+	var ent_buf := StreamPeerBuffer.new()
+	
+	for e in entity_root.get_children():
+		if e == _objective:
+			continue
+		if e is BaseBuilding:
+			var sc_uid = ResourceUID.text_to_id(ResourceUID.path_to_uid(e.scene_file_path))
+			var sc_i = scenes.find(sc_uid)
+			if sc_i == -1:
+				sc_i = scenes.size()
+				scenes.append(sc_uid)
+			assert(sc_i >= 0 and sc_i <= 255)
+			ent_buf.put_u8(sc_i)
+			ent_buf.put_u8((e.placement_reason << 4) | posmod(e.grid_rot, 4))
+			ent_buf.put_u8(e.grid_pos.x)
+			ent_buf.put_u8(e.grid_pos.y)
+	
+	buf.put_var(scenes)
+	buf.put_data(ent_buf.data_array)
+	
+	return buf.data_array
+
+
+func _load_save() -> void:
+	var buf := StreamPeerBuffer.new()
+	buf.data_array = _queued_load_save_data
+	_queued_load_save_data = PackedByteArray()
+	
+	Globals.is_easy = bool(buf.get_u8())
+	day_count = buf.get_u32()
+	gold = buf.get_u32()
+	var ob_x: int = buf.get_u8()
+	var ob_y: int = buf.get_u8()
+	
+	var ob = OBJECTIVE.instantiate()
+	if Globals.is_easy:
+		ob.need = BREAD
+	ob.grid_pos = Vector2i(ob_x, ob_y)
+	entity_root.add_child(ob)
+	_objective = ob
+	
+	for y in WORLD_SIZE.y:
+		for x in WORLD_SIZE.x:
+			var p := Vector2i(x, y)
+			var sid = buf.get_u8()
+			var coord_x = buf.get_u8()
+			var coord_y = buf.get_u8()
+			surface_tile_map_layer.set_cell(p, sid, Vector2i(coord_x, coord_y))
+	
+	var scene_ids: PackedInt64Array = buf.get_var()
+	
+	while buf.get_position() < buf.get_size():
+		var sc_i = buf.get_u8()
+		var reason_and_rot: int = buf.get_u8()
+		var reason: BaseBuilding.PlacementReason = (reason_and_rot >> 4) as BaseBuilding.PlacementReason
+		var grid_rot: int = (reason_and_rot & 0b1111)
+		var grid_pos_x: int = buf.get_u8()
+		var grid_pos_y: int = buf.get_u8()
+		var scene_file_id: int = scene_ids[sc_i]
+		var scene_file: String = ResourceUID.get_id_path(scene_file_id)
+		var scene: PackedScene = load(scene_file)
+		var building: BaseBuilding = scene.instantiate()
+		building.placement_reason = reason
+		building.grid_pos = Vector2i(grid_pos_x, grid_pos_y)
+		building.grid_rot = grid_rot
+		entity_root.add_child(building)
 
 
 func get_tick() -> int:

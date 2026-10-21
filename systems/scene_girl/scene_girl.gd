@@ -15,7 +15,7 @@ signal load_progress(value: float)
 ## Minimum time to show the loading screen for.
 ## [signal load_progress] will be simulated with fake values.
 ## Automatically set to 0.0 when running in an exported build.
-var minimum_load_time: float = 1.0
+var minimum_load_time: float = 0.5
 
 var default_transition_scene: PackedScene = preload("res://systems/scene_girl/default_scene_transition.tscn")
 var default_loading_screen_scene: PackedScene = preload("res://systems/scene_girl/default_loading_screen.tscn")
@@ -23,6 +23,7 @@ var default_loading_screen_scene: PackedScene = preload("res://systems/scene_gir
 var _default_transition: AnimationPlayer = null
 var _current_transition: AnimationPlayer = null
 var _pending_change_scene_file: String = ""
+var _pending_change_scene_file_prepare_cb: Callable
 var _loading_screen: Node = null
 var _time_elapsed: float = 0.0
 
@@ -62,7 +63,11 @@ func _process(delta: float) -> void:
 			_finish_change_scene(null)
 		ResourceLoader.THREAD_LOAD_LOADED:
 			var next_scene = ResourceLoader.load_threaded_get(_pending_change_scene_file)
-			_finish_change_scene(next_scene.instantiate())
+			var scene_node: Node = next_scene.instantiate()
+			if _pending_change_scene_file_prepare_cb:
+				_pending_change_scene_file_prepare_cb.call(scene_node)
+				_pending_change_scene_file_prepare_cb = Callable()
+			_finish_change_scene(scene_node)
 
 ## Initiates a scene change.
 ##
@@ -82,12 +87,13 @@ func _process(delta: float) -> void:
 ## The "in" transition animation will be played using the same logic as the "out" animation.
 ##
 ## [param scene_file]: the file path to the PackedScene to be loaded.
-func change_scene(scene_file: String) -> void:
+func change_scene(scene_file: String, prepare_cb: Callable = Callable()) -> void:
 	if _pending_change_scene_file:
 		push_error("Cannot change scene while another is pending.")
 		return
 	
 	_pending_change_scene_file = scene_file
+	_pending_change_scene_file_prepare_cb = prepare_cb
 	
 	_current_transition = get_tree().current_scene.get_node_or_null("SceneTransition")
 	
