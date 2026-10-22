@@ -46,15 +46,15 @@ func _ready() -> void:
 	
 	Main.current.dawn.connect(_on_dawn)
 	Main.current.dusk.connect(_on_dusk)
-	folk_band.hide()
+	folk_band.modulate.a = 0.0
 
 
 func _on_dawn() -> void:
-	folk_band.hide()
+	create_tween().tween_property(folk_band, "modulate:a", 0.0, 0.5)
 
 
 func _on_dusk() -> void:
-	folk_band.show()
+	create_tween().tween_property(folk_band, "modulate:a", 1.0, 0.5)
 
 
 
