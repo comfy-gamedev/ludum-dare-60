@@ -28,6 +28,7 @@ var slot_pos: Array[Vector2i] = [
 	$SlotSprite7,
 ]
 
+@onready var folk_band: Node2D = $FolkBand
 
 func _init() -> void:
 	grid_transform_changed.connect(_grid_transform_changed)
@@ -42,6 +43,19 @@ func _ready() -> void:
 		Main.current.building_add_part(self, _part_to_pos(part), part)
 	
 	_update()
+	
+	Main.current.dawn.connect(_on_dawn)
+	Main.current.dusk.connect(_on_dusk)
+	folk_band.hide()
+
+
+func _on_dawn() -> void:
+	folk_band.hide()
+
+
+func _on_dusk() -> void:
+	folk_band.show()
+
 
 
 func _part_to_pos(part: int) -> Vector2i:

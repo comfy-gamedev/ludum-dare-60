@@ -1,6 +1,9 @@
 extends Node2D
 class_name Main
 
+signal dusk()
+signal dawn()
+
 const TICK_RATE = 8.0
 const PAN_SPEED = 16.0 * 10.0
 const WORLD_SIZE = Vector2i(128, 128)
@@ -15,7 +18,6 @@ const HOUSE = preload("uid://6gtvs4ggkcwd")
 const PIT = preload("uid://btc2onty6jr4i")
 const HOMEBASE = preload("uid://xgk4sw8nurj8")
 const OBJECTIVE = preload("uid://kc23kghe407a")
-const FOLK_BAND = preload("uid://crgdbin070bl3")
 
 
 const BUSH = preload("uid://fohd4r7tj11x")
@@ -132,11 +134,6 @@ func _ready() -> void:
 	@warning_ignore("integer_division")
 	hb.grid_pos = WORLD_SIZE / 2
 	entity_root.add_child(hb)
-	
-	var fb = FOLK_BAND.instantiate()
-	fb.grid_pos = WORLD_SIZE / 2
-	entity_root.add_child(fb)
-	Main.FOLK_BAND.hide()
 	
 	var ob = OBJECTIVE.instantiate()
 	@warning_ignore("integer_division")
@@ -258,13 +255,12 @@ func _do_night() -> void:
 	night_panel.show()
 	go_button.hide()
 	auto_check_button.show()
-	Main.FOLK_BAND.hide()
+	dusk.emit()
 
 
 func _do_dawn() -> void:
 	animation_player.play("dawn")
 	MusicMan.event("Nightstart1")
-	Main.FOLK_BAND.hide()
 	if (day_count + 1) % 4 == 0:
 		MusicMan.cue_music("dragon")
 	else:
@@ -272,6 +268,8 @@ func _do_dawn() -> void:
 	go_button.hide()
 	if !auto_check_button.button_pressed:
 		auto_check_button.hide()
+	
+	dawn.emit()
 	
 	if not _objective.is_tutorial:
 		print("== AUTOSAVE ==")

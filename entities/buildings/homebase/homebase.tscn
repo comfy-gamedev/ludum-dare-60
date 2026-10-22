@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d082pk6q21lbm" path="res://entities/buildings/factory/factory.png" id="2_hfr5c"]
 [ext_resource type="Texture2D" uid="uid://ew4u6aa52qgt" path="res://entities/buildings/storage/barn.png" id="3_hfr5c"]
 [ext_resource type="Texture2D" uid="uid://dxkmjtodf7d23" path="res://entities/buildings/storage/down_arrow.png" id="4_65iju"]
+[ext_resource type="PackedScene" uid="uid://crgdbin070bl3" path="res://entities/little_guy/folk_band.tscn" id="5_osjcv"]
 
 [node name="Homebase" type="Node2D" unique_id=88169237]
 script = ExtResource("1_hfr5c")
@@ -95,3 +96,6 @@ text = "Deposit"
 [node name="DownArrow" type="Sprite2D" parent="." unique_id=1315677941]
 position = Vector2(8, -20)
 texture = ExtResource("4_65iju")
+
+[node name="FolkBand" parent="." unique_id=1917063793 instance=ExtResource("5_osjcv")]
+position = Vector2(-16, 0)
