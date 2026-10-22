@@ -87,21 +87,21 @@ _data = {
 script = ExtResource("1_176vp")
 
 [node name="Singer" type="Sprite2D" parent="." unique_id=115117552]
-position = Vector2(8, 24)
+position = Vector2(10, 24)
 texture = ExtResource("3_176vp")
 centered = false
 offset = Vector2(-8, -25)
 hframes = 8
 
 [node name="BanjoFrog" type="Sprite2D" parent="." unique_id=990103957]
-position = Vector2(24, 24)
+position = Vector2(24, 29)
 texture = ExtResource("3_176vp")
 centered = false
 offset = Vector2(-8, -25)
 hframes = 8
 
 [node name="BassRibbit" type="Sprite2D" parent="." unique_id=909059630]
-position = Vector2(41, 24)
+position = Vector2(39, 24)
 texture = ExtResource("3_176vp")
 centered = false
 offset = Vector2(-8, -25)
