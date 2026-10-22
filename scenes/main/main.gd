@@ -15,6 +15,8 @@ const HOUSE = preload("uid://6gtvs4ggkcwd")
 const PIT = preload("uid://btc2onty6jr4i")
 const HOMEBASE = preload("uid://xgk4sw8nurj8")
 const OBJECTIVE = preload("uid://kc23kghe407a")
+const FOLK_BAND = preload("uid://crgdbin070bl3")
+
 
 const BUSH = preload("uid://fohd4r7tj11x")
 const CRYSTAL = preload("uid://bb3usincgqjfp")
@@ -63,6 +65,8 @@ enum TileType {
 
 @onready var gold_label: Label = $UICanvasLayer/GoldLabel
 @onready var day_label: RichTextLabel = $UICanvasLayer/DayLabel
+@onready var folk_band_player: AnimationPlayer = $FolkBandPlayer
+
 
 @onready var recipe_map_panel: RecipeMap = $UICanvasLayer/RecipeMapPanel
 @onready var night_panel: VBoxContainer = $UICanvasLayer/NightPanel
@@ -128,6 +132,11 @@ func _ready() -> void:
 	@warning_ignore("integer_division")
 	hb.grid_pos = WORLD_SIZE / 2
 	entity_root.add_child(hb)
+	
+	var fb = FOLK_BAND.instantiate()
+	fb.grid_pos = WORLD_SIZE / 2
+	entity_root.add_child(fb)
+	Main.FOLK_BAND.hide()
 	
 	var ob = OBJECTIVE.instantiate()
 	@warning_ignore("integer_division")
@@ -249,11 +258,13 @@ func _do_night() -> void:
 	night_panel.show()
 	go_button.hide()
 	auto_check_button.show()
+	Main.FOLK_BAND.hide()
 
 
 func _do_dawn() -> void:
 	animation_player.play("dawn")
 	MusicMan.event("Nightstart1")
+	Main.FOLK_BAND.hide()
 	if (day_count + 1) % 4 == 0:
 		MusicMan.cue_music("dragon")
 	else:

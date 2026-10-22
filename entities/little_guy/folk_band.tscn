@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://crgdbin070bl3"]
+
+[ext_resource type="Script" uid="uid://cvg2x5c3opbqh" path="res://entities/little_guy/folk_band.gd" id="1_176vp"]
+[ext_resource type="Texture2D" uid="uid://ccp05amf3jwd" path="res://entities/little_guy/folk_band_sheet.png" id="3_176vp"]
+
+[sub_resource type="Animation" id="Animation_blwr3"]
+resource_name = "FolkBandAnimation"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 2, -0.17222223, 0.33333334, 0, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.17222223, 0.33333334, 0, 0),
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1, 1.3333334, 1.66)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Singer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 4, -0.1777778, 0.6666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../BassRibbit:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0, 6, -0.0888889, 1.1666667, 0, 0, 5, -0.083333336, 1, 0, 0, 6, -0.09444445, 0, 0, 0, 7, -0.25, 0, 0.25, 0, 6, -0.0888889, 1.1666667, 0, 0, 5, -0.083333336, 1, 0, 0, 6, -0.09444445, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_176vp"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Singer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../BassRibbit:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xdpuu"]
+_data = {
+&"FolkBandAnimation": SubResource("Animation_blwr3"),
+&"RESET": SubResource("Animation_176vp")
+}
+
+[node name="FolkBand" type="Node2D" unique_id=1917063793]
+script = ExtResource("1_176vp")
+
+[node name="Singer" type="Sprite2D" parent="." unique_id=115117552]
+position = Vector2(8, 24)
+texture = ExtResource("3_176vp")
+centered = false
+offset = Vector2(-8, -25)
+hframes = 8
+
+[node name="BanjoFrog" type="Sprite2D" parent="." unique_id=990103957]
+position = Vector2(24, 24)
+texture = ExtResource("3_176vp")
+centered = false
+offset = Vector2(-8, -25)
+hframes = 8
+
+[node name="BassRibbit" type="Sprite2D" parent="." unique_id=909059630]
+position = Vector2(41, 24)
+texture = ExtResource("3_176vp")
+centered = false
+offset = Vector2(-8, -25)
+hframes = 8
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1660368291]
+visible = false
+position = Vector2(8, 8)
+points = PackedVector2Array(-7, 0, 0, 0)
+width = 1.0
+
+[node name="FolkBandPlayer" type="AnimationPlayer" parent="." unique_id=670091130]
+root_node = NodePath("../BanjoFrog")
+libraries/ = SubResource("AnimationLibrary_xdpuu")
