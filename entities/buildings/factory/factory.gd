@@ -59,22 +59,13 @@ func _grid_transform_changed() -> void:
 	_update.call_deferred()
 
 
-func can_place_item(pos: Vector2i, _item_type: Item) -> bool:
-	var part = _pos_to_part(pos)
-	return part < 3 and items[part] == null and items[3] == null
-
-
-func can_take_item(pos: Vector2i) -> bool:
-	var part = _pos_to_part(pos)
-	return part == 3 and items[part] != null
-
-
-func place_item(pos: Vector2i, item_inst: ItemInstance) -> void:
-	var part = _pos_to_part(pos)
-	print("place_item(%s, %s), part = %s" % [pos, item_inst, part])
-	assert(part < 3)
-	assert(items[part] == null)
-	items[part] = item_inst
+func _place_item(part: BuildingPart, item_inst: ItemInstance) -> bool:
+	var part_i = parts.find(part)
+	var item_i = posmod(part_i - grid_rot, 4)
+	if items[item_i]:
+		return false
+	
+	items[item_i] = item_inst
 	
 	if items[0] and items[1] and items[2]:
 		for s in 3:
@@ -83,23 +74,18 @@ func place_item(pos: Vector2i, item_inst: ItemInstance) -> void:
 		sprites[posmod(3 + grid_rot, 4)].play("output")
 		items[3] = Cookbook.cook(Recipe.Workshop.FACTORY, [items[0], items[1], items[2]])
 		for i in 3:
-			if items[i].sprite:
-				items[i].sprite.queue_free()
+			items[i].free_sprite()
 			items[i] = null
 	
 	_update.call_deferred()
+	return true
 
 
-func get_item(pos: Vector2i) -> ItemInstance:
-	var part = _pos_to_part(pos)
-	return items[part]
-
-
-func take_item(pos: Vector2i) -> ItemInstance:
-	var part = _pos_to_part(pos)
-	assert(part == 3)
-	assert(items[part] != null)
-	var item_inst = items[part]
+func _take_item(part: BuildingPart) -> ItemInstance:
+	var part_i = parts.find(part)
+	var item_i = posmod(part_i - grid_rot, 4)
+	assert(item_i == 3)
+	var item_inst = items[item_i]
 	items[part] = null
 	_update.call_deferred()
 	return item_inst
@@ -115,7 +101,10 @@ func _update() -> void:
 			Main.current.building_add_part(self, _part_to_pos(part), part)
 	
 	for part in 4:
-		sprites[posmod(part + grid_rot, 4)].sprite_frames = output_sprite_frames if part == 3 else input_sprite_frames
-		sprites[posmod(part + grid_rot, 4)].offset = output_offset if part == 3 else input_offset
+		var i = posmod(part + grid_rot, 4)
+		sprites[i].sprite_frames = output_sprite_frames if part == 3 else input_sprite_frames
+		sprites[i].offset = output_offset if part == 3 else input_offset
+		parts[i].is_input = part < 3
+		parts[i].is_output = not parts[i].is_input
 		if items[part]:
 			items[part].require_sprite().position = Vector2(_part_to_pos(part)) * GridMetric.GRID_PX

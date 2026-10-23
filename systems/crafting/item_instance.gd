@@ -15,3 +15,9 @@ func require_sprite() -> ItemSprite:
 		sprite.tree_exiting.connect(func (): sprite = null)
 		Main.current.entity_root.add_child(sprite)
 	return sprite
+
+
+func free_sprite() -> void:
+	if is_instance_valid(sprite) and not sprite.is_queued_for_deletion():
+		sprite.queue_free()
+	sprite = null

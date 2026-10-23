@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bvaufvo8li18e"]
+
+[ext_resource type="Texture2D" uid="uid://ct888di2shypl" path="res://entities/buildings/scarecrow/scarecrow.png" id="1_tlj4v"]
+
+[node name="Scarecrow" type="Node2D" unique_id=1374855060]
+
+[node name="Scarecrow" type="Sprite2D" parent="." unique_id=835956158]
+position = Vector2(7, 13)
+texture = ExtResource("1_tlj4v")
+offset = Vector2(0, -17)

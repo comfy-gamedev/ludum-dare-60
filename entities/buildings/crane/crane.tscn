@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cjb6roqeev2l3" path="res://entities/buildings/crane/crane.gd" id="1_d282b"]
 [ext_resource type="Texture2D" uid="uid://c6fg3vb4jtp1n" path="res://entities/buildings/crane/crane.png" id="2_d282b"]
+[ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="3_cl40c"]
+[ext_resource type="PackedScene" uid="uid://cjcknapjy4r3k" path="res://systems/building/input_indicator.tscn" id="4_3ib5h"]
 
 [node name="Crane" type="Node2D" unique_id=29687319]
 y_sort_enabled = true
@@ -15,3 +17,12 @@ hframes = 3
 
 [node name="ItemSlot" type="RemoteTransform2D" parent="." unique_id=370764562]
 position = Vector2(-16, -11)
+
+[node name="BuildingPart" type="Node2D" parent="." unique_id=724482529]
+script = ExtResource("3_cl40c")
+is_input = true
+accept_dirs = 1
+metadata/_custom_type_script = "uid://bhi7itw1wcrsg"
+
+[node name="InputIndicator" parent="." unique_id=1354068831 instance=ExtResource("4_3ib5h")]
+position = Vector2(-8, 8)

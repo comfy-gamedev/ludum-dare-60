@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://be61nfei8ixu8"]
 
-[ext_resource type="Script" uid="uid://b2i14iigj7tdx" path="res://entities/buildings/mill_and_bakery/bakery.gd" id="1_hvu3c"]
+[ext_resource type="Script" uid="uid://c57uiknf3fvin" path="res://systems/building/workshop_building.gd" id="1_fr2um"]
+[ext_resource type="PackedScene" uid="uid://cbvxti0totmfr" path="res://systems/building/gimbal.tscn" id="2_7j68v"]
 [ext_resource type="Texture2D" uid="uid://dens6u188d8l5" path="res://entities/buildings/mill_and_bakery/mill_and_bakery_sheet.png" id="2_ppday"]
-[ext_resource type="Script" uid="uid://cchp5tq7wkj8" path="res://entities/buildings/mill_and_bakery/item_gimbal.gd" id="3_7j68v"]
+[ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="4_fr2um"]
+[ext_resource type="PackedScene" uid="uid://cjcknapjy4r3k" path="res://systems/building/input_indicator.tscn" id="4_x7oaj"]
+[ext_resource type="PackedScene" uid="uid://dead73tpvv0yq" path="res://systems/building/output_indicator.tscn" id="5_fr2um"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7j68v"]
 atlas = ExtResource("2_ppday")
@@ -48,9 +51,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Bakery" type="Node2D" unique_id=29687319]
+[node name="Bakery" type="Node2D" unique_id=560059874 node_paths=PackedStringArray("gimbal", "building_sprite")]
 y_sort_enabled = true
-script = ExtResource("1_hvu3c")
+script = ExtResource("1_fr2um")
+kind = 1
+gimbal = NodePath("Gimbal")
+building_sprite = NodePath("MillAndBakerySheet")
+metadata/_custom_type_script = "uid://c57uiknf3fvin"
 
 [node name="MillAndBakerySheet" type="AnimatedSprite2D" parent="." unique_id=1138772530]
 position = Vector2(-8, 16)
@@ -59,15 +66,48 @@ animation = &"inactive"
 autoplay = "inactive"
 offset = Vector2(0, -33)
 
-[node name="Gimbal" type="Node2D" parent="." unique_id=1039547996]
+[node name="Gimbal" parent="." unique_id=1730563155 instance=ExtResource("2_7j68v")]
+
+[node name="BuildingPart" type="Node2D" parent="." unique_id=294142480]
+z_index = 1
+position = Vector2(-32, 0)
+script = ExtResource("4_fr2um")
+is_input = true
+
+[node name="BuildingPart2" type="Node2D" parent="." unique_id=2089954069]
+z_index = 1
+script = ExtResource("4_fr2um")
+is_output = true
+
+[node name="BuildingPart4" type="Node2D" parent="." unique_id=1429077954]
+z_index = 1
+position = Vector2(0, -16)
+script = ExtResource("4_fr2um")
+
+[node name="BuildingPart5" type="Node2D" parent="." unique_id=1538364281]
+z_index = 1
 position = Vector2(-16, 0)
-script = ExtResource("3_7j68v")
+script = ExtResource("4_fr2um")
 
-[node name="ItemSlot" type="RemoteTransform2D" parent="Gimbal" unique_id=370764562]
-position = Vector2(-15, -12)
+[node name="BuildingPart6" type="Node2D" parent="." unique_id=1260561832]
+z_index = 1
+position = Vector2(-16, -16)
+script = ExtResource("4_fr2um")
 
-[node name="ItemSlot2" type="RemoteTransform2D" parent="Gimbal" unique_id=438920062]
-position = Vector2(-1.1435933, -12)
+[node name="InputIndicator" parent="." unique_id=1354068831 instance=ExtResource("4_x7oaj")]
+position = Vector2(-40, 8)
 
-[node name="ItemSlot3" type="RemoteTransform2D" parent="Gimbal" unique_id=1368106298]
-position = Vector2(-8.071796, 4.7683716e-07)
+[node name="InputIndicator2" parent="." unique_id=1209180706 instance=ExtResource("4_x7oaj")]
+position = Vector2(-24, -8)
+rotation = 1.5707964
+
+[node name="InputIndicator3" parent="." unique_id=1143735047 instance=ExtResource("4_x7oaj")]
+position = Vector2(-24, 24)
+rotation = -1.5707964
+
+[node name="OutputIndicator" parent="." unique_id=1828139428 instance=ExtResource("5_fr2um")]
+position = Vector2(8, 24)
+rotation = 1.5707964
+
+[node name="OutputIndicator2" parent="." unique_id=1102161558 instance=ExtResource("5_fr2um")]
+position = Vector2(24, 8)

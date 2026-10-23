@@ -1,14 +1,10 @@
 extends BaseBuilding
 
-const ITEM_SPRITE = preload("uid://b6ueuaycfmiyo")
-const SLOT_OPEN = 2
-const SLOT_CLOSED = 0
-
 var item: ItemInstance
 
 @onready var crane: Sprite2D = $Crane
 @onready var item_slot: RemoteTransform2D = $ItemSlot
-
+@onready var part: BuildingPart = $BuildingPart
 
 func _init() -> void:
 	grid_transform_changed.connect(_grid_transform_changed)
@@ -18,8 +14,6 @@ func _ready() -> void:
 	if is_preview:
 		_update()
 		return
-	
-	Main.current.building_add_part(self, grid_pos, 0)
 	
 	Main.current.register_tick_entity(self)
 	
@@ -42,44 +36,16 @@ func _grid_transform_changed() -> void:
 	_update.call_deferred()
 
 
-func can_place_item(pos: Vector2i, _item_type: Item) -> bool:
-	assert(pos == grid_pos)
-	return item == null
-
-
-func can_place_item_from(pos: Vector2i, from_pos: Vector2i) -> bool:
-	assert(pos == grid_pos)
-	var d = from_pos - grid_pos
-	assert(abs(d.x) + abs(d.y) == 1)
-	return (d == Vector2i.LEFT) if not is_flipped() else (d == Vector2i.RIGHT)
-
-
-func can_take_item(pos: Vector2i) -> bool:
-	assert(pos == grid_pos)
-	return item != null
-
-
-func can_take_item_from(pos: Vector2i, from_pos: Vector2i) -> bool:
-	assert(pos == grid_pos)
-	var d = from_pos - grid_pos
-	assert(abs(d.x) + abs(d.y) == 1)
-	return (d == Vector2i.RIGHT) if not is_flipped() else (d == Vector2i.LEFT)
-
-
-func place_item(pos: Vector2i, item_inst: ItemInstance) -> void:
-	assert(pos == grid_pos)
-	assert(item == null)
-	item = item_inst
+func _place_item(_part: BuildingPart, item_inst: ItemInstance) -> bool:
+	if item:
+		return false
 	
+	item = item_inst
 	_update.call_deferred()
+	return true
 
 
-func get_item(_pos: Vector2i) -> ItemInstance:
-	return item
-
-
-func take_item(_pos: Vector2i) -> ItemInstance:
-	assert(item != null)
+func _take_item(_part: BuildingPart) -> ItemInstance:
 	var item_inst = item
 	item = null
 	_update.call_deferred()
@@ -94,3 +60,7 @@ func _update() -> void:
 	crane.frame = 0 if item == null else 2
 	item_slot.position.x = -16 if (item == null) == (not is_flipped()) else 16
 	item_slot.remote_path = item.require_sprite().get_path() if item else ^""
+	
+	part.is_input = item == null
+	part.is_output = not part.is_input
+	part.accept_dirs = BuildingPart.ACCEPT_W if (not is_flipped() != part.is_input) else BuildingPart.ACCEPT_E

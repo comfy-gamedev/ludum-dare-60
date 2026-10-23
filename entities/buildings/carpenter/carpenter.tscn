@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://dwh77wreals4b"]
 
-[ext_resource type="Script" uid="uid://bfj6pq81olnwd" path="res://entities/buildings/carpenter/carpenter.gd" id="1_fijm4"]
+[ext_resource type="Script" uid="uid://c57uiknf3fvin" path="res://systems/building/workshop_building.gd" id="1_f4c5b"]
 [ext_resource type="Texture2D" uid="uid://catx87s1ogpdu" path="res://entities/buildings/carpenter/carpenter_sheet.png" id="2_bp0hb"]
-[ext_resource type="Script" uid="uid://cchp5tq7wkj8" path="res://entities/buildings/mill_and_bakery/item_gimbal.gd" id="3_wlnx6"]
+[ext_resource type="PackedScene" uid="uid://cbvxti0totmfr" path="res://systems/building/gimbal.tscn" id="3_0pxjy"]
+[ext_resource type="PackedScene" uid="uid://cjcknapjy4r3k" path="res://systems/building/input_indicator.tscn" id="4_84mos"]
+[ext_resource type="PackedScene" uid="uid://dead73tpvv0yq" path="res://systems/building/output_indicator.tscn" id="5_f4c5b"]
+[ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="6_f4c5b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wlnx6"]
 atlas = ExtResource("2_bp0hb")
@@ -52,27 +55,77 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Carpenter" type="Node2D" unique_id=71010867]
+[node name="Carpenter" type="Node2D" unique_id=734075239 node_paths=PackedStringArray("gimbal", "building_sprite")]
 y_sort_enabled = true
-script = ExtResource("1_fijm4")
-type_name = "Carpenter"
+script = ExtResource("1_f4c5b")
+kind = 2
+gimbal = NodePath("Gimbal")
+building_sprite = NodePath("AnimatedSprite2D")
+metadata/_custom_type_script = "uid://c57uiknf3fvin"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759348162]
 position = Vector2(16, 16)
 sprite_frames = SubResource("SpriteFrames_2adgm")
 animation = &"inactive"
 autoplay = "inactive"
-offset = Vector2(0, -20)
+offset = Vector2(0, -18)
 
-[node name="Gimbal" type="Node2D" parent="." unique_id=1431331948]
-position = Vector2(0, -6)
-script = ExtResource("3_wlnx6")
+[node name="Gimbal" parent="." unique_id=1730563155 instance=ExtResource("3_0pxjy")]
 
-[node name="ItemSlot" type="RemoteTransform2D" parent="Gimbal" unique_id=1333541742]
-position = Vector2(-15, -12)
+[node name="BuildingPart" type="Node2D" parent="." unique_id=1378353307]
+z_index = 1
+script = ExtResource("6_f4c5b")
+is_input = true
 
-[node name="ItemSlot2" type="RemoteTransform2D" parent="Gimbal" unique_id=2122571662]
-position = Vector2(-1.1435933, -12)
+[node name="BuildingPart2" type="Node2D" parent="." unique_id=515330832]
+z_index = 1
+position = Vector2(-16, 0)
+script = ExtResource("6_f4c5b")
+is_input = true
 
-[node name="ItemSlot3" type="RemoteTransform2D" parent="Gimbal" unique_id=102966512]
-position = Vector2(-8.071796, 4.7683716e-07)
+[node name="BuildingPart3" type="Node2D" parent="." unique_id=871583096]
+z_index = 1
+position = Vector2(32, 0)
+script = ExtResource("6_f4c5b")
+is_output = true
+
+[node name="BuildingPart4" type="Node2D" parent="." unique_id=1633717795]
+z_index = 1
+position = Vector2(-16, -16)
+script = ExtResource("6_f4c5b")
+
+[node name="BuildingPart5" type="Node2D" parent="." unique_id=1172234161]
+z_index = 1
+position = Vector2(0, -16)
+script = ExtResource("6_f4c5b")
+
+[node name="BuildingPart6" type="Node2D" parent="." unique_id=1833356811]
+z_index = 1
+position = Vector2(32, -16)
+script = ExtResource("6_f4c5b")
+
+[node name="InputIndicator" parent="." unique_id=1354068831 instance=ExtResource("4_84mos")]
+position = Vector2(-8, 24)
+rotation = -1.5707964
+
+[node name="InputIndicator2" parent="." unique_id=1620479119 instance=ExtResource("4_84mos")]
+position = Vector2(8, 24)
+rotation = -1.5707964
+
+[node name="InputIndicator3" parent="." unique_id=1059277697 instance=ExtResource("4_84mos")]
+position = Vector2(-24, 8)
+
+[node name="OutputIndicator" parent="." unique_id=1832416709 instance=ExtResource("5_f4c5b")]
+position = Vector2(40, 24)
+rotation = 1.5707964
+
+[node name="OutputIndicator2" parent="." unique_id=936462759 instance=ExtResource("5_f4c5b")]
+position = Vector2(56, 8)
+
+[node name="OutputIndicator3" parent="." unique_id=1545995180 instance=ExtResource("5_f4c5b")]
+position = Vector2(24, 8)
+rotation = 3.1415925
+
+[node name="InputIndicator4" parent="." unique_id=159973489 instance=ExtResource("4_84mos")]
+position = Vector2(24, 8)
+rotation = -3.1415925

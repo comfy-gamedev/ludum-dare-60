@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cbvxti0totmfr"]
+
+[ext_resource type="Script" uid="uid://cchp5tq7wkj8" path="res://systems/building/item_gimbal.gd" id="1_hdyrg"]
+
+[node name="Gimbal" type="Node2D" unique_id=1730563155]
+script = ExtResource("1_hdyrg")
+
+[node name="ItemSlot" type="Node2D" parent="." unique_id=1104009928]
+position = Vector2(-15, -12)
+
+[node name="ItemSlot2" type="Node2D" parent="." unique_id=279624553]
+position = Vector2(-1.1435933, -12)
+
+[node name="ItemSlot3" type="Node2D" parent="." unique_id=1680162377]
+position = Vector2(-8.071796, 4.7683716e-07)

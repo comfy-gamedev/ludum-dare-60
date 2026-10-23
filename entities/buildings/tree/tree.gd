@@ -1,5 +1,5 @@
-class_name TreeEntity
 extends BaseBuilding
+class_name TreeEntity
 
 @export var item: Item
 @export var item_value: int = 1
@@ -12,7 +12,6 @@ var remaining: int = 0: set = set_remaining
 
 
 func _ready() -> void:
-	Main.current.building_add_part(self, grid_pos, 0)
 	Main.current.register_tick_entity(self)
 	remaining = daily_limit
 	sprite_2d.visible = remaining > 0
@@ -24,27 +23,14 @@ func tick(t: int) -> void:
 		remaining = daily_limit
 
 
-func can_place_item(pos: Vector2i, _item_type: Item) -> bool:
-	assert(pos == grid_pos)
+func _place_item(_part: BuildingPart, _item_inst: ItemInstance) -> bool:
+	assert(false)
 	return false
 
 
-func can_take_item(pos: Vector2i) -> bool:
-	assert(pos == grid_pos)
-	return remaining > 0
-
-
-func place_item(_pos: Vector2i, _item_inst: ItemInstance) -> void:
-	assert(false)
-
-
-func get_item(_pos: Vector2i) -> ItemInstance:
-	return null
-
-
-func take_item(pos: Vector2i) -> ItemInstance:
-	assert(pos == grid_pos)
-	assert(remaining > 0)
+func _take_item(_part: BuildingPart) -> ItemInstance:
+	if remaining <= 0:
+		return null
 	var item_inst = ItemInstance.new()
 	item_inst.item = item
 	item_inst.value = item_value

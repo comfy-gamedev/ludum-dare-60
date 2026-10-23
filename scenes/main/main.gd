@@ -69,7 +69,7 @@ enum TileType {
 @onready var auto_check_button: CheckButton = $UICanvasLayer/NightPanel/AutoCheckButton
 @onready var go_button: Button = $UICanvasLayer/NightPanel/GoButton
 
-var building_parts: Dictionary[Vector2i, BuildingPart]
+var building_parts: Dictionary[Vector2i, RegisteredBuildingPart]
 
 var tick_entities: Dictionary[Node, bool] # HashSet
 var pedestals: Array[BaseBuilding] = []
@@ -102,6 +102,9 @@ var _tool_rot: int = 0
 var _objective: BaseBuilding
 
 var _queued_load_save_data: PackedByteArray
+
+## Used for mouse enter/exit signals
+var _mouse_building: BaseBuilding
 
 func _ready() -> void:
 	current = self
@@ -216,6 +219,19 @@ func _unhandled_input(event: InputEvent) -> void:
 			var data = hotbar.get_data(hotbar.selected)
 			if data is not ConstructionInfo or data.mode != ConstructionInfo.Mode.BUILDING:
 				_do_tool(gp, data)
+		
+		# Building mouse enter/exit
+		
+		if not is_instance_valid(_mouse_building):
+			_mouse_building = null
+		var new_mouse_building_part = get_building_part(gp)
+		var new_mouse_building = new_mouse_building_part.building if new_mouse_building_part else null
+		if new_mouse_building != _mouse_building:
+			if _mouse_building:
+				_mouse_building.mouse_exited.emit()
+			_mouse_building = new_mouse_building
+			if _mouse_building:
+				_mouse_building.mouse_entered.emit()
 	
 	elif OS.is_debug_build() and event.is_action_pressed("debug_goto_night") and _ticking:
 		_tick_t = CYCLE_END
@@ -385,7 +401,7 @@ func get_tile_type(grid_pos: Vector2i) -> TileType:
 
 func building_add_part(building: BaseBuilding, grid_pos: Vector2i, part: int) -> void:
 	assert(grid_pos not in building_parts)
-	var bp = BuildingPart.new()
+	var bp = RegisteredBuildingPart.new()
 	bp.building = building
 	bp.grid_pos = grid_pos
 	bp.part = part
@@ -413,7 +429,7 @@ func building_teardown(building: BaseBuilding) -> void:
 		building_remove_part(building, parts[0], parts[1])
 
 
-func get_building_part(grid_pos: Vector2i) -> BuildingPart:
+func get_building_part(grid_pos: Vector2i) -> RegisteredBuildingPart:
 	return building_parts.get(grid_pos)
 
 
@@ -643,7 +659,7 @@ func _on_center_button_pressed() -> void:
 	camera_2d.position = Vector2(WORLD_SIZE) * GridMetric.GRID_PX * 0.5
 
 
-class BuildingPart:
+class RegisteredBuildingPart:
 	var building: BaseBuilding
 	var grid_pos: Vector2i
 	var part: int

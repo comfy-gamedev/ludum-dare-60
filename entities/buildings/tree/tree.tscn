@@ -4,13 +4,13 @@
 [ext_resource type="Resource" uid="uid://dr8h1qvukffh4" path="res://systems/crafting/items/log.tres" id="2_ucxdr"]
 [ext_resource type="Texture2D" uid="uid://bjh3duyobv4ls" path="res://entities/buildings/tree/tree.png" id="3_cku2b"]
 [ext_resource type="Texture2D" uid="uid://cdpibqs257gqf" path="res://entities/buildings/tree/tree_depleted.png" id="4_cku2b"]
+[ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="5_n1l86"]
 
 [node name="Tree" type="Node2D" unique_id=744563053]
 y_sort_enabled = true
 script = ExtResource("1_bafd8")
 item = ExtResource("2_ucxdr")
 is_resource = true
-type_name = "Tree"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=873779887]
 position = Vector2(7, 11)
@@ -23,3 +23,8 @@ position = Vector2(7, 11)
 texture = ExtResource("4_cku2b")
 centered = false
 offset = Vector2(-7, -20)
+
+[node name="BuildingPart" type="Node2D" parent="." unique_id=1552111312]
+script = ExtResource("5_n1l86")
+is_output = true
+metadata/_custom_type_script = "uid://bhi7itw1wcrsg"

@@ -9,9 +9,7 @@ var can_spawn: bool = true
 func _ready() -> void:
 	if is_preview:
 		return
-	
 	Main.current.register_tick_entity(self)
-	Main.current.building_add_part(self, grid_pos, 0)
 
 
 func tick(t: int) -> void:
@@ -26,24 +24,11 @@ func tick(t: int) -> void:
 		can_spawn = false
 
 
-func can_place_item(pos: Vector2i, _item_type: Item) -> bool:
-	assert(pos == grid_pos)
-	return false
-
-
-func can_take_item(pos: Vector2i) -> bool:
-	assert(pos == grid_pos)
-	return false
-
-
-func place_item(_pos: Vector2i, _item_inst: ItemInstance) -> void:
+func _place_item(_part: BuildingPart, _item_inst: ItemInstance) -> bool:
 	assert(false)
+	return false
 
 
-func get_item(_pos: Vector2i) -> ItemInstance:
-	return null
-
-
-func take_item(_pos: Vector2i) -> ItemInstance:
+func _take_item(_part: BuildingPart) -> ItemInstance:
 	assert(false)
 	return null

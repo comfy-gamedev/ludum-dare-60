@@ -43,6 +43,7 @@ func tick(t: int) -> void:
 	
 	var sid = Main.current.surface_tile_map_layer.get_cell_source_id(grid_pos)
 	
+	@warning_ignore("integer_division")
 	var st = (step_ticks / 2) if sid == 3 else step_ticks
 	
 	if t % st != 0:
@@ -54,8 +55,8 @@ func tick(t: int) -> void:
 		if Main.current.get_tile_type(look) == Main.TileType.BUILDING:
 			var bp = Main.current.get_building_part(look)
 			if bp and not _held_item:
-				if bp.building.can_take_item(look) and bp.building.can_take_item_from(look, grid_pos):
-					_held_item = bp.building.take_item(look)
+				_held_item = bp.building.try_take_item(look, grid_pos - look)
+				if _held_item:
 					MusicMan.event_oneshot_2d("BushHit" + str(randi_range(1, 4)), get_viewport(), position)
 	
 	for turn in [0, 1, 3]:
@@ -75,8 +76,7 @@ func tick(t: int) -> void:
 		if Main.current.get_tile_type(look) == Main.TileType.BUILDING:
 			var bp = Main.current.get_building_part(look)
 			if bp and _held_item:
-				if bp.building.can_place_item(look, _held_item.item) and bp.building.can_place_item_from(look, grid_pos):
-					bp.building.place_item(look, _held_item)
+				if bp.building.try_place_item(look, grid_pos - look, _held_item):
 					_held_item = null
 					MusicMan.event_oneshot_2d("Bonk" + str(randi_range(1, 4)), get_viewport(), position)
 

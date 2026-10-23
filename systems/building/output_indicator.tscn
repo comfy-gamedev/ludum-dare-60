@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dead73tpvv0yq"]
+
+[ext_resource type="Texture2D" uid="uid://b2fo58ktvsm1i" path="res://systems/building/building_output.png" id="1_pyhf8"]
+[ext_resource type="Script" uid="uid://bkhhx3igamcff" path="res://systems/building/indicator.gd" id="2_lod1c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lod1c"]
+atlas = ExtResource("1_pyhf8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rggy4"]
+atlas = ExtResource("1_pyhf8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fihp2"]
+atlas = ExtResource("1_pyhf8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aiyym"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lod1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rggy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fihp2")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="OutputIndicator" type="AnimatedSprite2D" unique_id=1354068831]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_aiyym")
+autoplay = "default"
+frame_progress = 0.060415294
+script = ExtResource("2_lod1c")

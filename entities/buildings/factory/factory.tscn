@@ -4,13 +4,13 @@
 [ext_resource type="SpriteFrames" uid="uid://d38csxte7sa77" path="res://entities/buildings/factory/input_slot_frames.tres" id="2_4c0lw"]
 [ext_resource type="Texture2D" uid="uid://datpgllnr7dxb" path="res://entities/buildings/factory/background.png" id="2_5dai4"]
 [ext_resource type="SpriteFrames" uid="uid://dary2jxuhhswh" path="res://entities/buildings/factory/output_slot_frames.tres" id="4_5dai4"]
+[ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="5_5dai4"]
 
 [node name="Factory" type="Node2D" unique_id=29687319]
 y_sort_enabled = true
 script = ExtResource("1_838ka")
 input_sprite_frames = ExtResource("2_4c0lw")
 output_sprite_frames = ExtResource("4_5dai4")
-type_name = "Factory"
 
 [node name="BackgroundSprite2D" type="Sprite2D" parent="." unique_id=128320248]
 position = Vector2(0, -15)
@@ -41,3 +41,30 @@ position = Vector2(8, -1)
 sprite_frames = ExtResource("4_5dai4")
 autoplay = "default"
 offset = Vector2(0, -6.5)
+
+[node name="BuildingPart" type="Node2D" parent="." unique_id=1982649333]
+z_index = 1
+script = ExtResource("5_5dai4")
+is_input = true
+metadata/_custom_type_script = "uid://bhi7itw1wcrsg"
+
+[node name="BuildingPart2" type="Node2D" parent="." unique_id=1467232376]
+z_index = 1
+position = Vector2(-16, 0)
+script = ExtResource("5_5dai4")
+is_input = true
+metadata/_custom_type_script = "uid://bhi7itw1wcrsg"
+
+[node name="BuildingPart3" type="Node2D" parent="." unique_id=758258970]
+z_index = 1
+position = Vector2(-16, -16)
+script = ExtResource("5_5dai4")
+is_input = true
+metadata/_custom_type_script = "uid://bhi7itw1wcrsg"
+
+[node name="BuildingPart4" type="Node2D" parent="." unique_id=1435983047]
+z_index = 1
+position = Vector2(0, -16)
+script = ExtResource("5_5dai4")
+is_output = true
+metadata/_custom_type_script = "uid://bhi7itw1wcrsg"

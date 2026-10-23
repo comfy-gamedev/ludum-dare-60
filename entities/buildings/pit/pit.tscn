@@ -2,12 +2,17 @@
 
 [ext_resource type="Script" uid="uid://hl8jnkpo616c" path="res://entities/buildings/pit/pit.gd" id="1_7i8w7"]
 [ext_resource type="Texture2D" uid="uid://biyu0bcpw1ns4" path="res://icon.svg" id="2_jnbq8"]
+[ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="3_jnbq8"]
 
 [node name="Pit" type="Node2D" unique_id=234020847]
 script = ExtResource("1_7i8w7")
-type_name = "Pit"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=462331627]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(8, 8)
 texture = ExtResource("2_jnbq8")
+
+[node name="BuildingPart" type="Node2D" parent="." unique_id=1224098085]
+script = ExtResource("3_jnbq8")
+is_input = true
+metadata/_custom_type_script = "uid://bhi7itw1wcrsg"
