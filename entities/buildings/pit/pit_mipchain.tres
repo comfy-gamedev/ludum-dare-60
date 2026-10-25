@@ -1,0 +1,11 @@
+[gd_resource type="Texture2D" script_class="CustomMipChain" format=3 uid="uid://c6mbur75fverr"]
+
+[ext_resource type="Texture2D" uid="uid://dcqrhkd0u45fr" path="res://entities/buildings/pit/pit.png" id="1_a8u43"]
+[ext_resource type="Texture2D" uid="uid://ddr04f5tombu" path="res://entities/buildings/pit/pit_mip1.png" id="2_h53mv"]
+[ext_resource type="Script" uid="uid://bcny2b766qpdn" path="res://systems/custom_mip_chain.gd" id="3_hoqix"]
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_hoqix")
+mips = Array[Texture2D]([ExtResource("1_a8u43"), ExtResource("2_h53mv")])

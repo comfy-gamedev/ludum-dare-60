@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://fohd4r7tj11x"]
 
 [ext_resource type="PackedScene" uid="uid://bayold7n6brg0" path="res://entities/buildings/tree/tree.tscn" id="1_vuvn6"]
-[ext_resource type="Texture2D" uid="uid://bola01764oi8c" path="res://entities/buildings/tree/bush.png" id="2_vnfd8"]
 [ext_resource type="Resource" uid="uid://b85py3u67a205" path="res://systems/crafting/items/wheat.tres" id="2_xw7s3"]
+[ext_resource type="Texture2D" uid="uid://crmm5pxoghdxd" path="res://entities/buildings/tree/bush_mipchain.tres" id="3_4ufwj"]
 [ext_resource type="Texture2D" uid="uid://dehbfo08koj1h" path="res://entities/buildings/tree/bush_deplted.png" id="4_1fr0s"]
 
 [node name="Bush" unique_id=744563053 instance=ExtResource("1_vuvn6")]
 item = ExtResource("2_xw7s3")
-is_resource = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=873779887]
-position = Vector2(8, 14)
-texture = ExtResource("2_vnfd8")
+position = Vector2(8, 13)
+texture = ExtResource("3_4ufwj")
 offset = Vector2(-9, -21)
 
 [node name="DepletedSprite2D" parent="." index="1" unique_id=855206188]
+visible = false
 position = Vector2(8, 13)
 texture = ExtResource("4_1fr0s")
-offset = Vector2(-9, -20)
+offset = Vector2(-9, -21)

@@ -1,0 +1,11 @@
+[gd_resource type="Texture2D" script_class="CustomMipChain" format=3 uid="uid://doty8h6bqlsn4"]
+
+[ext_resource type="Texture2D" uid="uid://catx87s1ogpdu" path="res://entities/buildings/carpenter/carpenter_sheet.png" id="1_hue06"]
+[ext_resource type="Texture2D" uid="uid://pyfhbsajc1y" path="res://entities/buildings/carpenter/carpenter_sheet_mip1.png" id="2_0mary"]
+[ext_resource type="Script" uid="uid://bcny2b766qpdn" path="res://systems/custom_mip_chain.gd" id="3_68fkn"]
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_68fkn")
+mips = Array[Texture2D]([ExtResource("1_hue06"), ExtResource("2_0mary")])

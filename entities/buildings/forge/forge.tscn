@@ -1,35 +1,35 @@
 [gd_scene format=3 uid="uid://b3rsti74ag4iw"]
 
 [ext_resource type="Script" uid="uid://c57uiknf3fvin" path="res://systems/building/workshop_building.gd" id="1_y1yo2"]
-[ext_resource type="Texture2D" uid="uid://c1mesxuv5ulgn" path="res://entities/buildings/forge/forge_sheet.png" id="2_2vygn"]
+[ext_resource type="Texture2D" uid="uid://bmrcoh51exjld" path="res://entities/buildings/forge/forge_sheet_mipchain.tres" id="2_y1yo2"]
 [ext_resource type="PackedScene" uid="uid://cbvxti0totmfr" path="res://systems/building/gimbal.tscn" id="3_6w0ur"]
 [ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="4_seyk7"]
 [ext_resource type="PackedScene" uid="uid://cjcknapjy4r3k" path="res://systems/building/input_indicator.tscn" id="5_105mk"]
 [ext_resource type="PackedScene" uid="uid://dead73tpvv0yq" path="res://systems/building/output_indicator.tscn" id="6_y1yo2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gfstc"]
-atlas = ExtResource("2_2vygn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgdnp"]
+atlas = ExtResource("2_y1yo2")
 region = Rect2(0, 0, 32, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6w0ur"]
-atlas = ExtResource("2_2vygn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ayty"]
+atlas = ExtResource("2_y1yo2")
 region = Rect2(32, 0, 32, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_seyk7"]
-atlas = ExtResource("2_2vygn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiyym"]
+atlas = ExtResource("2_y1yo2")
 region = Rect2(64, 0, 32, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_105mk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gfstc")
+"texture": SubResource("AtlasTexture_kgdnp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6w0ur")
+"texture": SubResource("AtlasTexture_0ayty")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_seyk7")
+"texture": SubResource("AtlasTexture_aiyym")
 }],
 "loop": 1,
 "name": &"active",
@@ -37,7 +37,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gfstc")
+"texture": SubResource("AtlasTexture_kgdnp")
 }],
 "loop": 1,
 "name": &"inactive",
@@ -55,7 +55,7 @@ metadata/_custom_type_script = "uid://c57uiknf3fvin"
 [node name="ForgeSheet" type="AnimatedSprite2D" parent="." unique_id=597571652]
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_105mk")
-animation = &"inactive"
+animation = &"active"
 offset = Vector2(0, -20)
 
 [node name="Gimbal" parent="." unique_id=1730563155 instance=ExtResource("3_6w0ur")]

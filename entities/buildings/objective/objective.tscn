@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://y1b2xhywjcbr" path="res://systems/crafting/items/tank.tres" id="2_44jwa"]
 [ext_resource type="Texture2D" uid="uid://diqjbh4qyavyd" path="res://entities/buildings/objective/objective_sheet.png" id="3_44jwa"]
 [ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="4_wp025"]
+[ext_resource type="PackedScene" uid="uid://bvaufvo8li18e" path="res://entities/buildings/scarecrow/scarecrow.tscn" id="5_7ey4u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wp025"]
 atlas = ExtResource("3_44jwa")
@@ -56,6 +57,7 @@ animations = [{
 }]
 
 [node name="Objective" type="Node2D" unique_id=634543322]
+y_sort_enabled = true
 script = ExtResource("1_ve3gv")
 need = ExtResource("2_44jwa")
 
@@ -70,3 +72,6 @@ offset = Vector2(0, 8)
 script = ExtResource("4_wp025")
 is_input = true
 metadata/_custom_type_script = "uid://bhi7itw1wcrsg"
+
+[node name="Scarecrow" parent="." unique_id=1374855060 instance=ExtResource("5_7ey4u")]
+position = Vector2(64, 0)

@@ -2,19 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://bayold7n6brg0" path="res://entities/buildings/tree/tree.tscn" id="1_t4op1"]
 [ext_resource type="Resource" uid="uid://pyc3op2eww5v" path="res://systems/crafting/items/rock.tres" id="2_v6qoy"]
-[ext_resource type="Texture2D" uid="uid://dnjywanwt36gv" path="res://entities/buildings/tree/rock.png" id="3_v6qoy"]
+[ext_resource type="Texture2D" uid="uid://cxangjaot07pa" path="res://entities/buildings/tree/rock_mipchain.tres" id="3_puhe6"]
 [ext_resource type="Texture2D" uid="uid://xwgkxx1palll" path="res://entities/buildings/tree/rock_depleted.png" id="4_puhe6"]
 
 [node name="Rock" unique_id=744563053 instance=ExtResource("1_t4op1")]
 item = ExtResource("2_v6qoy")
-is_resource = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=873779887]
 position = Vector2(8, 14)
-texture = ExtResource("3_v6qoy")
-offset = Vector2(-10, -17)
+texture = ExtResource("3_puhe6")
+offset = Vector2(-12, -18)
 
 [node name="DepletedSprite2D" parent="." index="1" unique_id=855206188]
+visible = false
 position = Vector2(8, 14)
 texture = ExtResource("4_puhe6")
-offset = Vector2(-10, -17)
+offset = Vector2(-12, -18)

@@ -1,0 +1,12 @@
+[gd_resource type="Texture2D" script_class="CustomMipChain" format=3 uid="uid://7hmfm2brgsdf"]
+
+[ext_resource type="Script" uid="uid://bcny2b766qpdn" path="res://systems/custom_mip_chain.gd" id="1_mgi0a"]
+[ext_resource type="Texture2D" uid="uid://ct888di2shypl" path="res://entities/buildings/scarecrow/scarecrow.png" id="1_vymwh"]
+[ext_resource type="Texture2D" uid="uid://t6y874cog1qp" path="res://entities/buildings/scarecrow/scarecrow_mip1.png" id="2_ajmqd"]
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_mgi0a")
+mips = Array[Texture2D]([ExtResource("1_vymwh"), ExtResource("2_ajmqd")])
+metadata/_custom_type_script = "uid://bcny2b766qpdn"

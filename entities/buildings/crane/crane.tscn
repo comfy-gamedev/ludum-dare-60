@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dd0b7d87b2r6f"]
 
 [ext_resource type="Script" uid="uid://cjb6roqeev2l3" path="res://entities/buildings/crane/crane.gd" id="1_d282b"]
-[ext_resource type="Texture2D" uid="uid://c6fg3vb4jtp1n" path="res://entities/buildings/crane/crane.png" id="2_d282b"]
+[ext_resource type="Texture2D" uid="uid://b0f3d4vsdwxdw" path="res://entities/buildings/crane/crane_mipchain.tres" id="2_3ib5h"]
 [ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="3_cl40c"]
 [ext_resource type="PackedScene" uid="uid://cjcknapjy4r3k" path="res://systems/building/input_indicator.tscn" id="4_3ib5h"]
+[ext_resource type="PackedScene" uid="uid://dead73tpvv0yq" path="res://systems/building/output_indicator.tscn" id="5_24b7i"]
 
 [node name="Crane" type="Node2D" unique_id=29687319]
 y_sort_enabled = true
@@ -11,7 +12,7 @@ script = ExtResource("1_d282b")
 
 [node name="Crane" type="Sprite2D" parent="." unique_id=2019076546]
 position = Vector2(8, 14)
-texture = ExtResource("2_d282b")
+texture = ExtResource("2_3ib5h")
 offset = Vector2(0, -19)
 hframes = 3
 
@@ -26,3 +27,6 @@ metadata/_custom_type_script = "uid://bhi7itw1wcrsg"
 
 [node name="InputIndicator" parent="." unique_id=1354068831 instance=ExtResource("4_3ib5h")]
 position = Vector2(-8, 8)
+
+[node name="OutputIndicator" parent="." unique_id=901954918 instance=ExtResource("5_24b7i")]
+position = Vector2(24, 8)

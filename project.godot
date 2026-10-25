@@ -36,6 +36,10 @@ window/size/window_height_override=640
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/custom_mip_chain/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
@@ -355,8 +359,9 @@ joypads/ignore_joypad_on_unfocused_application=true
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_filter=3
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 lights_and_shadows/multi_bounce_occlusion/enabled=true
+2d/snap/snap_2d_vertices_to_pixel=true

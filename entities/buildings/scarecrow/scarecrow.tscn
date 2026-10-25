@@ -1,10 +1,58 @@
 [gd_scene format=3 uid="uid://bvaufvo8li18e"]
 
-[ext_resource type="Texture2D" uid="uid://ct888di2shypl" path="res://entities/buildings/scarecrow/scarecrow.png" id="1_tlj4v"]
+[ext_resource type="Texture2D" uid="uid://b5f5hp1xkptl0" path="res://entities/buildings/scarecrow/scarecrow_shadow.png" id="1_b5nof"]
+[ext_resource type="Texture2D" uid="uid://7hmfm2brgsdf" path="res://entities/buildings/scarecrow/scarecrow_mips.tres" id="2_b5nof"]
+
+[sub_resource type="Animation" id="Animation_tlj4v"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scarecrow:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_b5nof"]
+resource_name = "dance"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scarecrow:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.06981317, -0.10000001, -0.011635529, 0, 0, -0.06981317, -0.06666666, 0.023271056, 0, 0, 0, -0.10000001, -0.011635529, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w080h"]
+_data = {
+&"RESET": SubResource("Animation_tlj4v"),
+&"dance": SubResource("Animation_b5nof")
+}
 
 [node name="Scarecrow" type="Node2D" unique_id=1374855060]
+y_sort_enabled = true
+
+[node name="ScarecrowShadow" type="Sprite2D" parent="." unique_id=1708160866]
+position = Vector2(8, 13)
+texture = ExtResource("1_b5nof")
+offset = Vector2(0, -18)
 
 [node name="Scarecrow" type="Sprite2D" parent="." unique_id=835956158]
-position = Vector2(7, 13)
-texture = ExtResource("1_tlj4v")
-offset = Vector2(0, -17)
+position = Vector2(8, 13)
+texture = ExtResource("2_b5nof")
+offset = Vector2(0, -18)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1481415177]
+libraries/ = SubResource("AnimationLibrary_w080h")
+autoplay = &"dance"

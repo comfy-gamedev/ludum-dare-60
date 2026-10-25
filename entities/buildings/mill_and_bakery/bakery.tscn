@@ -2,41 +2,41 @@
 
 [ext_resource type="Script" uid="uid://c57uiknf3fvin" path="res://systems/building/workshop_building.gd" id="1_fr2um"]
 [ext_resource type="PackedScene" uid="uid://cbvxti0totmfr" path="res://systems/building/gimbal.tscn" id="2_7j68v"]
-[ext_resource type="Texture2D" uid="uid://dens6u188d8l5" path="res://entities/buildings/mill_and_bakery/mill_and_bakery_sheet.png" id="2_ppday"]
+[ext_resource type="Texture2D" uid="uid://cfalbqy78xgb1" path="res://entities/buildings/mill_and_bakery/mill_and_bakery_mipchain.tres" id="2_fr2um"]
 [ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="4_fr2um"]
 [ext_resource type="PackedScene" uid="uid://cjcknapjy4r3k" path="res://systems/building/input_indicator.tscn" id="4_x7oaj"]
 [ext_resource type="PackedScene" uid="uid://dead73tpvv0yq" path="res://systems/building/output_indicator.tscn" id="5_fr2um"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7j68v"]
-atlas = ExtResource("2_ppday")
-region = Rect2(0, 0, 48, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0mgs"]
+atlas = ExtResource("2_fr2um")
+region = Rect2(0, 0, 48, 68)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uf1bf"]
-atlas = ExtResource("2_ppday")
-region = Rect2(48, 0, 48, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e37l3"]
+atlas = ExtResource("2_fr2um")
+region = Rect2(48, 0, 48, 68)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x7oaj"]
-atlas = ExtResource("2_ppday")
-region = Rect2(96, 0, 48, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wcrj"]
+atlas = ExtResource("2_fr2um")
+region = Rect2(96, 0, 48, 68)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fr2um"]
-atlas = ExtResource("2_ppday")
-region = Rect2(144, 0, 48, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_86hul"]
+atlas = ExtResource("2_fr2um")
+region = Rect2(144, 0, 48, 68)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p0mgs"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7j68v")
+"texture": SubResource("AtlasTexture_p0mgs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uf1bf")
+"texture": SubResource("AtlasTexture_e37l3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x7oaj")
+"texture": SubResource("AtlasTexture_3wcrj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fr2um")
+"texture": SubResource("AtlasTexture_86hul")
 }],
 "loop": 1,
 "name": &"active",
@@ -44,7 +44,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7j68v")
+"texture": SubResource("AtlasTexture_p0mgs")
 }],
 "loop": 0,
 "name": &"inactive",
@@ -60,11 +60,11 @@ building_sprite = NodePath("MillAndBakerySheet")
 metadata/_custom_type_script = "uid://c57uiknf3fvin"
 
 [node name="MillAndBakerySheet" type="AnimatedSprite2D" parent="." unique_id=1138772530]
-position = Vector2(-8, 16)
+position = Vector2(-8, 14)
 sprite_frames = SubResource("SpriteFrames_p0mgs")
-animation = &"inactive"
+animation = &"active"
 autoplay = "inactive"
-offset = Vector2(0, -33)
+offset = Vector2(0, -32)
 
 [node name="Gimbal" parent="." unique_id=1730563155 instance=ExtResource("2_7j68v")]
 

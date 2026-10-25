@@ -165,8 +165,7 @@ func _process(delta: float) -> void:
 	var pan = Input.get_vector("pan_left", "pan_right", "pan_up", "pan_down")
 	if pan:
 		camera_2d.position += pan * PAN_SPEED * delta / camera_2d.zoom
-		if camera_2d.zoom != Vector2.ONE:
-			camera_2d.offset = camera_2d.position.snappedf(2.0) - camera_2d.position
+		camera_2d.offset = camera_2d.position.snappedf(1.0 / camera_2d.zoom.x) - camera_2d.position
 		# sync pos within limits
 		(func ():
 			camera_2d.position = camera_2d.position.clamp(Vector2(camera_2d.limit_left, camera_2d.limit_top), Vector2(camera_2d.limit_right, camera_2d.limit_bottom))
@@ -196,6 +195,7 @@ func _tick() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_toggle"):
 		camera_2d.zoom = Vector2(0.5, 0.5) if camera_2d.zoom == Vector2.ONE else Vector2.ONE
+		camera_2d.offset = camera_2d.position.snappedf(1.0 / camera_2d.zoom.x) - camera_2d.position
 	
 	elif event.is_action_pressed("toggle_compendium"):
 		recipe_map_panel.visible = not recipe_map_panel.visible

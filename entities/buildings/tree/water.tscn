@@ -2,17 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://bayold7n6brg0" path="res://entities/buildings/tree/tree.tscn" id="1_3xgim"]
 [ext_resource type="Resource" uid="uid://dnrw1g5j5q7b8" path="res://systems/crafting/items/water.tres" id="2_p5v53"]
-[ext_resource type="Texture2D" uid="uid://bvhkas8s0j5om" path="res://entities/buildings/well/well.png" id="3_p5v53"]
+[ext_resource type="Texture2D" uid="uid://bgh08q3b73b7b" path="res://entities/buildings/well/well_mipchain.tres" id="3_p5v53"]
 
 [node name="Water" unique_id=744563053 instance=ExtResource("1_3xgim")]
 item = ExtResource("2_p5v53")
 daily_limit = 99999
-is_resource = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=873779887]
 position = Vector2(8, 12)
 texture = ExtResource("3_p5v53")
-offset = Vector2(-8, -19)
+offset = Vector2(-8, -20)
 
 [node name="DepletedSprite2D" parent="." index="1" unique_id=855206188]
 visible = false

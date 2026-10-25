@@ -1,0 +1,11 @@
+[gd_resource type="Texture2D" script_class="CustomMipChain" format=3 uid="uid://bgh08q3b73b7b"]
+
+[ext_resource type="Texture2D" uid="uid://bvhkas8s0j5om" path="res://entities/buildings/well/well.png" id="1_bnhi0"]
+[ext_resource type="Texture2D" uid="uid://b5ttfgkitmota" path="res://entities/buildings/well/well_mip1.png" id="2_bwmc0"]
+[ext_resource type="Script" uid="uid://bcny2b766qpdn" path="res://systems/custom_mip_chain.gd" id="3_co56w"]
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_co56w")
+mips = Array[Texture2D]([ExtResource("1_bnhi0"), ExtResource("2_bwmc0")])

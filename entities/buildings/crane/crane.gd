@@ -5,6 +5,8 @@ var item: ItemInstance
 @onready var crane: Sprite2D = $Crane
 @onready var item_slot: RemoteTransform2D = $ItemSlot
 @onready var part: BuildingPart = $BuildingPart
+@onready var input_indicator: AnimatedSprite2D = $InputIndicator
+@onready var output_indicator: AnimatedSprite2D = $OutputIndicator
 
 func _init() -> void:
 	grid_transform_changed.connect(_grid_transform_changed)
@@ -63,4 +65,9 @@ func _update() -> void:
 	
 	part.is_input = item == null
 	part.is_output = not part.is_input
-	part.accept_dirs = BuildingPart.ACCEPT_W if (not is_flipped() != part.is_input) else BuildingPart.ACCEPT_E
+	part.accept_dirs = BuildingPart.ACCEPT_W if (is_flipped() != part.is_input) else BuildingPart.ACCEPT_E
+	
+	input_indicator.position.x = -8.0 if not is_flipped() else 24.0
+	input_indicator.rotation = 0.0 if not is_flipped() else PI
+	output_indicator.position.x = 24.0 if not is_flipped() else -8.0
+	output_indicator.rotation = 0.0 if not is_flipped() else PI

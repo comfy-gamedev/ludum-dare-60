@@ -24,11 +24,11 @@ func _notification(what: int) -> void:
 func tick(t: int) -> void:
 	if t == Main.CYCLE_END:
 		for item in items:
-			if item.sprite:
-				item.sprite.queue_free()
+			item.free_sprite()
+			gimbal.remove_item(item)
 		items.clear()
-		if result and result.sprite:
-			result.sprite.queue_free()
+		if result:
+			result.free_sprite()
 			result = null
 		_update()
 

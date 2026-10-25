@@ -13,7 +13,6 @@ var rank_counts: Dictionary[int, int]
 
 func _ready() -> void:
 	for item in Cookbook.items:
-		print("Ensuring ", item)
 		_ensure_panel_for(item)
 
 

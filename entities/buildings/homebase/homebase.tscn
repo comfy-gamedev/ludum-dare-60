@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://xgk4sw8nurj8"]
 
 [ext_resource type="Script" uid="uid://cms8nwbv42ij7" path="res://entities/buildings/homebase/homebase.gd" id="1_hfr5c"]
-[ext_resource type="Texture2D" uid="uid://ew4u6aa52qgt" path="res://entities/buildings/storage/barn.png" id="3_hfr5c"]
+[ext_resource type="Texture2D" uid="uid://kjdfhiitqqwb" path="res://entities/buildings/storage/barn_mipchain.tres" id="2_65iju"]
 [ext_resource type="Texture2D" uid="uid://dxkmjtodf7d23" path="res://entities/buildings/storage/down_arrow.png" id="4_65iju"]
 [ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="4_osjcv"]
 
@@ -10,7 +10,7 @@ script = ExtResource("1_hfr5c")
 
 [node name="HomebaseCenter" type="Sprite2D" parent="." unique_id=2072700081]
 position = Vector2(8, 29)
-texture = ExtResource("3_hfr5c")
+texture = ExtResource("2_65iju")
 offset = Vector2(0, -24)
 
 [node name="Label" type="Label" parent="." unique_id=2020009046]
