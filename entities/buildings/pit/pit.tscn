@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://hl8jnkpo616c" path="res://entities/buildings/pit/pit.gd" id="1_7i8w7"]
 [ext_resource type="Texture2D" uid="uid://c6mbur75fverr" path="res://entities/buildings/pit/pit_mipchain.tres" id="2_jnbq8"]
 [ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="3_jnbq8"]
+[ext_resource type="PackedScene" uid="uid://cjcknapjy4r3k" path="res://systems/building/input_indicator.tscn" id="4_q3jmu"]
 
 [node name="Pit" type="Node2D" unique_id=234020847]
 script = ExtResource("1_7i8w7")
@@ -15,3 +16,18 @@ texture = ExtResource("2_jnbq8")
 script = ExtResource("3_jnbq8")
 is_input = true
 metadata/_custom_type_script = "uid://bhi7itw1wcrsg"
+
+[node name="InputIndicator" parent="." unique_id=1354068831 instance=ExtResource("4_q3jmu")]
+position = Vector2(-8, 8)
+
+[node name="InputIndicator2" parent="." unique_id=50107135 instance=ExtResource("4_q3jmu")]
+position = Vector2(8, -8)
+rotation = 1.5707964
+
+[node name="InputIndicator3" parent="." unique_id=637606751 instance=ExtResource("4_q3jmu")]
+position = Vector2(24, 8)
+rotation = 3.1415927
+
+[node name="InputIndicator4" parent="." unique_id=381512602 instance=ExtResource("4_q3jmu")]
+position = Vector2(8, 24)
+rotation = 4.712389

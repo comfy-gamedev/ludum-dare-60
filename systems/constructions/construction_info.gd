@@ -21,8 +21,6 @@ enum Mode {
 @export var gold_cost: int
 @export var item_req: Item
 
-@export var placement_size: Rect2i = Rect2i(0, 0, 1, 1)
-
 var hotbar_index: int = -1
 
 

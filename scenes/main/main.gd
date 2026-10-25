@@ -8,8 +8,11 @@ const CYCLE_END = 8*40
 const OBJECTIVE_GOAL = 1
 
 const META_REGISTERED_PARTS = &"Main__registered_parts"
+const META_BUILD_BLOCKED_SIGN = &"Main__build_blocked_sign"
 
 const ERASE_ICON = preload("uid://r63jdvojly4a")
+const BUILD_BLOCKED_ICON = preload("uid://d31q2nuro1kt8")
+
 
 const HOUSE = preload("uid://6gtvs4ggkcwd")
 const PIT = preload("uid://btc2onty6jr4i")
@@ -214,7 +217,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion:
 		var gp: Vector2i = Vector2i((get_viewport().canvas_transform.affine_inverse() * event.position / GridMetric.GRID_PX).floor())
 		if _tool_preview:
-			_tool_preview.position = Vector2(gp) * GridMetric.GRID_PX
+			preview_root.position = (get_global_mouse_position() / GridMetric.GRID_PX).floor() * GridMetric.GRID_PX
+			if _tool_preview is BaseBuilding:
+				_check_tool_building_overlap()
 		if event.button_mask & MOUSE_BUTTON_MASK_LEFT:
 			var data = hotbar.get_data(hotbar.selected)
 			if data is not ConstructionInfo or data.mode != ConstructionInfo.Mode.BUILDING:
@@ -574,12 +579,8 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 				
 				# check placement
 				
-				var placement_rect = tool.placement_size
-				placement_rect.position += grid_pos
-				for y in placement_rect.size.y:
-					for x in placement_rect.size.x:
-						if get_tile_type(placement_rect.position + Vector2i(x, y)) != TileType.NOTHING:
-							return
+				if _check_tool_building_overlap():
+					return
 				
 				# check costs
 				
@@ -630,17 +631,49 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 
 func _refresh_preview() -> void:
 	if _tool_preview:
+		if _tool_preview is BaseBuilding:
+			for p: BuildingPart in _tool_preview.parts:
+				if p.has_meta(META_BUILD_BLOCKED_SIGN):
+					var sgn: Sprite2D = p.get_meta(META_BUILD_BLOCKED_SIGN)
+					sgn.queue_free()
+					p.remove_meta(META_BUILD_BLOCKED_SIGN)
 		_tool_preview.queue_free()
 		_tool_preview = null
 	var data = hotbar.get_data(hotbar.selected)
 	if data is ConstructionInfo and data.mode == ConstructionInfo.Mode.BUILDING:
 		_tool_preview = data.building_scene.instantiate()
 		_tool_preview.is_preview = true
-		_tool_preview.position = Vector2((get_global_mouse_position() / GridMetric.GRID_PX).floor()) * GridMetric.GRID_PX
 		if data.building_can_rotate:
 			_tool_preview.grid_rot = _tool_rot
-		_tool_preview.modulate.a = 0.5
+		_tool_preview.modulate.a = 0.75
 		preview_root.add_child(_tool_preview)
+		preview_root.position = (get_global_mouse_position() / GridMetric.GRID_PX).floor() * GridMetric.GRID_PX
+		_check_tool_building_overlap()
+
+
+func _check_tool_building_overlap() -> bool:
+	assert(_tool_preview is BaseBuilding)
+	var has_overlap = false
+	for p: BuildingPart in _tool_preview.parts:
+		var gp: Vector2i = Vector2i(preview_root.position / GridMetric.GRID_PX) + p.get_grid_pos()
+		if get_tile_type(gp) != TileType.NOTHING:
+			has_overlap = true
+			if not p.has_meta(META_BUILD_BLOCKED_SIGN):
+				var sgn := Sprite2D.new()
+				sgn.texture = BUILD_BLOCKED_ICON
+				sgn.centered = false
+				sgn.z_index = 10
+				sgn.position = Vector2(p.get_grid_pos()) * GridMetric.GRID_PX
+				preview_root.add_child(sgn)
+				p.set_meta(META_BUILD_BLOCKED_SIGN, sgn)
+			else:
+				var sgn: Sprite2D = p.get_meta(META_BUILD_BLOCKED_SIGN)
+				sgn.position = Vector2(p.get_grid_pos()) * GridMetric.GRID_PX
+		elif p.has_meta(META_BUILD_BLOCKED_SIGN):
+			p.get_meta(META_BUILD_BLOCKED_SIGN).queue_free()
+			p.remove_meta(META_BUILD_BLOCKED_SIGN)
+	_tool_preview.modulate.a = 0.75 if not has_overlap else 0.5
+	return has_overlap
 
 
 func _on_hotbar_selection_changed() -> void:

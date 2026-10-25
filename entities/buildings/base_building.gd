@@ -60,10 +60,10 @@ func _take_item(_part: BuildingPart) -> ItemInstance:
 
 
 func register_part(part: BuildingPart) -> void:
+	parts.append(part)
 	if is_preview:
 		return
 	Main.current.building_add_part(self, grid_pos + part.get_grid_pos(), parts.size())
-	parts.append(part)
 
 
 func set_grid_pos(v: Vector2i) -> void:
