@@ -9,6 +9,7 @@ const OBJECTIVE_GOAL = 1
 
 const META_REGISTERED_PARTS = &"Main__registered_parts"
 const META_BUILD_BLOCKED_SIGN = &"Main__build_blocked_sign"
+const META_SCARECROW_POINTS = &"Main__scarecrow_points"
 
 const ERASE_ICON = preload("uid://r63jdvojly4a")
 const BUILD_BLOCKED_ICON = preload("uid://d31q2nuro1kt8")
@@ -42,6 +43,7 @@ const CONSTRUCTIONS = [
 	preload("uid://bsrvcnwyvw8pi"),
 	preload("uid://cniaep2ikgsjy"),
 	preload("uid://b16w8jlme64hc"),
+	preload("uid://blt8mm1i0l5gl"),
 ]
 
 const BASE_TILE_SOURCE = 1
@@ -76,6 +78,8 @@ var building_parts: Dictionary[Vector2i, RegisteredBuildingPart]
 
 var tick_entities: Dictionary[Node, bool] # HashSet
 var pedestals: Array[BaseBuilding] = []
+
+var scarecrow_map: Dictionary[Vector2i, int]
 
 var gold: int = 15:
 	set(val):
@@ -450,6 +454,28 @@ func unregister_tick_entity(ent: Node) -> void:
 	ent.tree_exiting.disconnect(unregister_tick_entity)
 
 
+func register_scarecrow(scarecrow: Scarecrow) -> void:
+	var pts = GridMetric.points_in_circle(scarecrow.grid_pos, scarecrow.scare_radius)
+	for p in pts:
+		scarecrow_map[p] = scarecrow_map.get(p, 0) + 1
+		var bld := get_building_part(p)
+		if bld and bld.building is TreeEntity:
+			bld.building.update_crows()
+	scarecrow.set_meta(META_SCARECROW_POINTS, pts)
+	scarecrow.tree_exited.connect(unregister_scarecrow, CONNECT_APPEND_SOURCE_OBJECT)
+
+
+func unregister_scarecrow(scarecrow: Scarecrow) -> void:
+	for p in scarecrow.get_meta(META_SCARECROW_POINTS):
+		scarecrow_map[p] = scarecrow_map.get(p, 0) - 1
+		if scarecrow_map[p] <= 0:
+			scarecrow_map.erase(p)
+		var bld := get_building_part(p)
+		if bld and bld.building is TreeEntity:
+			bld.building.update_crows()
+	scarecrow.remove_meta(META_SCARECROW_POINTS)
+
+
 func connect_paths(a: Vector2i, b: Vector2i) -> void:
 	assert((a-b) in GridMetric.DIRS)
 	assert(get_tile_type(a) == TileType.PATH)
@@ -544,7 +570,8 @@ func _do_tool(grid_pos: Vector2i, tool: Variant) -> void:
 						bp.building.result.sprite.queue_free()
 				bp.building.get_parent().remove_child(bp.building)
 				bp.building.queue_free()
-				gold += bp.building.info.gold_cost
+				if bp.building.info:
+					gold += bp.building.info.gold_cost
 		else:
 			if get_world_rect().has_point(grid_pos) and get_tile_type(grid_pos) != TileType.NOTHING:
 				match surface_tile_map_layer.get_cell_source_id(grid_pos):

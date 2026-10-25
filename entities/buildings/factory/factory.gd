@@ -26,9 +26,6 @@ func _ready() -> void:
 		_update()
 		return
 	
-	for part in 4:
-		Main.current.building_add_part(self, _part_to_pos(part), part)
-		assert(_pos_to_part(_part_to_pos(part)) == part) # unit test
 	Main.current.register_tick_entity(self)
 	
 	_update()

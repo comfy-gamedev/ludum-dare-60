@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bvaufvo8li18e"]
 
 [ext_resource type="Texture2D" uid="uid://b5f5hp1xkptl0" path="res://entities/buildings/scarecrow/scarecrow_shadow.png" id="1_b5nof"]
+[ext_resource type="Script" uid="uid://dinwe7herhcom" path="res://entities/buildings/scarecrow/scarecrow.gd" id="1_w080h"]
 [ext_resource type="Texture2D" uid="uid://7hmfm2brgsdf" path="res://entities/buildings/scarecrow/scarecrow_mips.tres" id="2_b5nof"]
+[ext_resource type="Script" uid="uid://bhi7itw1wcrsg" path="res://systems/building/building_part.gd" id="4_oamba"]
 
 [sub_resource type="Animation" id="Animation_tlj4v"]
 length = 0.001
@@ -42,6 +44,8 @@ _data = {
 
 [node name="Scarecrow" type="Node2D" unique_id=1374855060]
 y_sort_enabled = true
+script = ExtResource("1_w080h")
+scare_radius = 4.5
 
 [node name="ScarecrowShadow" type="Sprite2D" parent="." unique_id=1708160866]
 position = Vector2(8, 13)
@@ -56,3 +60,7 @@ offset = Vector2(0, -18)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1481415177]
 libraries/ = SubResource("AnimationLibrary_w080h")
 autoplay = &"dance"
+
+[node name="BuildingPart" type="Node2D" parent="." unique_id=115818986]
+script = ExtResource("4_oamba")
+metadata/_custom_type_script = "uid://bhi7itw1wcrsg"

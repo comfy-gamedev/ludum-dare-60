@@ -95,7 +95,8 @@ _data = {
 [node name="Crystal" unique_id=744563053 instance=ExtResource("1_c2jsj")]
 item = ExtResource("2_7uoe4")
 item_value = 3
-daily_limit = 1
+crow_limit = 1
+daily_limit = 3
 
 [node name="Sprite2D" parent="." index="0" unique_id=873779887]
 position = Vector2(8, 16)
@@ -115,6 +116,6 @@ position = Vector2(8, 16)
 texture = ExtResource("4_eebso")
 offset = Vector2(-8, -16)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=2112116735]
+[node name="CrystalAnimationPlayer" type="AnimationPlayer" parent="." index="8" unique_id=2112116735]
 libraries/ = SubResource("AnimationLibrary_yosbm")
 autoplay = &"beat"
